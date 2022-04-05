@@ -1,18 +1,14 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React from 'react'
 import Navbar from '../components/Navbar';
-import LIForm from '../components/FormLI';
-import imgLI_1 from '../img/imgLI_1.svg';
-import imgLI_2 from '../img/imgLI_2.svg';
-import imgLI_3 from '../img/imgLI_3.svg';
-import './LogIn.css';
-
+import FPWForm from '../components/FormFPW';
+import imgFPW from '../img/imgFPW.svg';
+import {Link} from 'react-router-dom';
 
 function Titolo(){
     return(
         <div className='d-flex justify-content-center'>
             <div className='row'>
-                <h1>Autenticati alla piattaforma!</h1>
+                <h1>Recupera la tua password!</h1>
             </div>
         </div>
     );
@@ -22,21 +18,9 @@ function Sottotitolo(){
     return(
         <div className='d-flex justify-content-center'>
             <div className='row'>
-                <p>Inserisci qui sotto i dati con cui ti sei registrato alla piattaforma per entrare subito nel tuo account!</p>
+                <p>Inserisci qui sotto il tuo nome utente e ti verrà recapitata una mail all'indirizzo email usato
+                in fase di registrazione per resettare la password!</p>
             </div>
-        </div>
-    );
-}
-
-function Redirect(){
-    return(
-        <div className='row offset-md-1'>
-            <p>
-                Non possiedi ancora un account? Clicca <Link to='../signup'>qui</Link> per registrarti!
-            </p>
-            <p>
-                Hai dimenticato la password? Clicca <Link to='../forgotpw'>qui</Link> per recuperarla!
-            </p>
         </div>
     );
 }
@@ -44,12 +28,23 @@ function Redirect(){
 function Immagine(){
     return(
         <div className=''>
-            <img src={imgLI_3} className='img-fluid'/>
+            <img src={imgFPW} className='img-fluid'/>
         </div>
     )
 }
 
-function LogIn(){
+function Redirect(){
+    return(
+        <div className='row offset-md-1'>
+            <p>
+                Ricordi le tue credenziali e vuoi accedere all'account?
+                Clicca <Link to='../login'>qui</Link> per autenticarti!
+            </p>
+        </div>
+    );
+}
+
+function ForgotPW(){
     return(
         <div className='container-fluid'>
             <Navbar/>
@@ -58,7 +53,7 @@ function LogIn(){
             <div className='container'>
                 <div className='row align-items-center'>
                     <div className='col-xs-12 col-sm-6'>
-                        <LIForm/>
+                        <FPWForm/>
                     </div>
                     <div className='col-xs-12 col-sm-6'>
                         <Immagine/>
@@ -70,4 +65,4 @@ function LogIn(){
     );
 }
 
-export default LogIn;
+export default ForgotPW;

@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
+import ForgotPW from './pages/ForgotPW';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -14,6 +15,7 @@ ReactDOM.render(
             <Route path='/' element={<App/>}/>
             <Route path='signup' element={<SignUp/>}/>
             <Route path='login' element={<LogIn/>}/>
+            <Route path='forgotpw' element={<ForgotPW/>}/>
         </Routes>
     </BrowserRouter>,
   document.getElementById('root')
