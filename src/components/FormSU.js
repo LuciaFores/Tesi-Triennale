@@ -116,11 +116,8 @@ class SUForm extends Component{
             };
 
             axios.post('http://localhost/tirocinio/userRegistration.php', obj)
-                .then(res => console.log(res.data))
-                .catch(error => {
-                    console.log(error.response)
-                }
-            );
+                .then(res => window.location.href = '/login')
+                .catch(error => window.location.href = '/userae');
 
             this.setState({
                 name : "",

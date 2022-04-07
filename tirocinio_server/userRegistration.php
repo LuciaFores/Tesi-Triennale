@@ -14,12 +14,28 @@ if(isset($postdata) && !empty($postdata)){
     $email = $request->email;
     $password = $request->password;
     $role = $request->role;
-    $sql = "INSERT INTO caregiver (fiscalCode, name, surname, email, password, role) VALUES ('$fiscalCode', '$name', '$surname', '$email', '$password', '$role')";
-    if(mysqli_query($db,$sql)){
-        http_response_code(201);
+    $query = "SELECT * FROM caregiver WHERE fiscalCode = '".$fiscalCode."'";
+    $result = mysqli_query($db, $query);
+    $row = mysqli_fetch_assoc($result);
+    if(empty($row)){
+        $query = "SELECT * FROM caregiver WHERE email = '".$email."'";
+        $result = mysqli_query($db, $query);
+        $row = mysqli_fetch_assoc($result);
+        if(empty($row)){
+            $query = "INSERT INTO caregiver (fiscalCode, name, surname, email, password, role) VALUES ('$fiscalCode', '$name', '$surname', '$email', '$password', '$role')";
+            if(mysqli_query($db,$query)){
+                http_response_code(201);
+            }
+            else{
+                http_response_code(422);
+            }
+        }
+        else{
+            http_response_code(409);
+        }
     }
     else{
-        http_response_code(422);
+        http_response_code(409);
     }
 }
 ?>

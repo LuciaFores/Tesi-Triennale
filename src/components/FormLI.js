@@ -17,20 +17,6 @@ function LIForm(){
                         <input type='password' className='form-control' id='inputPassword' placeholder='Inserire Password' required/>
                     </div>
                 </div>
-                <div className='form-row'>
-                    <div className='form-group col-md-6'>
-                        <input className='form-check-input' type='radio' name='ruolo' id='ruoloProf' value='professionale'/>
-                        <label for='ruoloProf' className='ms-1'>
-                            Caregiver Professionale
-                        </label>
-                    </div>
-                    <div className='form-group col-md-6'>
-                        <input className='form-check-input' type='radio' name='ruolo' id='ruoloNonProf' value='nonProfessionale'/>
-                        <label for='ruoloNonProf' className='ms-1'>
-                            Caregiver Non Professionale
-                        </label>
-                    </div>
-                </div>
             </form>
             <button type='submit' className='btn btn-primary'>Log In!</button>
         </div>

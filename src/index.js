@@ -8,6 +8,8 @@ import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import ForgotPW from './pages/ForgotPW';
 import reportWebVitals from './reportWebVitals';
+import CaregiverProfile from './pages/CaregiverProfile';
+import UserAlreadyExists from './pages/UserAlreadyExists';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -16,6 +18,8 @@ ReactDOM.render(
             <Route path='signup' element={<SignUp/>}/>
             <Route path='login' element={<LogIn/>}/>
             <Route path='forgotpw' element={<ForgotPW/>}/>
+            <Route path='caregiverprofile' element={<CaregiverProfile/>}/>
+            <Route path='userae' element={<UserAlreadyExists/>}/>
         </Routes>
     </BrowserRouter>,
   document.getElementById('root')
