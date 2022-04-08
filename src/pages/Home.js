@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/Navbar'
+import Navbar from '../components/NavbarSULI'
 import blob from '../img/blob.svg';
 
 function Benvenuto(){

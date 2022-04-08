@@ -10,6 +10,7 @@ import ForgotPW from './pages/ForgotPW';
 import reportWebVitals from './reportWebVitals';
 import CaregiverProfile from './pages/CaregiverProfile';
 import UserAlreadyExists from './pages/UserAlreadyExists';
+import UserNotFound from './pages/UserNotFound';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -20,6 +21,7 @@ ReactDOM.render(
             <Route path='forgotpw' element={<ForgotPW/>}/>
             <Route path='caregiverprofile' element={<CaregiverProfile/>}/>
             <Route path='userae' element={<UserAlreadyExists/>}/>
+            <Route path='usernf' element={<UserNotFound/>}/>
         </Routes>
     </BrowserRouter>,
   document.getElementById('root')

@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/Navbar'
+import Navbar from '../components/NavbarSULI'
 import SUForm from '../components/FormSU'
 import { Link } from 'react-router-dom';
 import imgSU from '../img/imgSU.svg'
