@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {passwordRE, emailRE, fiscalCodeRE} from './RegEx';
+import {passwordRE, emailRE, fiscalCodeRE} from './Utils';
 import './FormSU.css';
 
 
@@ -165,7 +165,7 @@ class SUForm extends Component{
                             <input type='password' className='form-control' id='inputConfirmPassword' placeholder='Confermare Password' value={this.state.confirmPassword} onChange={this.onChangeConfirmPassword} required/>
                         </div>
                     </div>
-                    <div className='form-row'>
+                    <div className='form-row mt-2'>
                         <div className='form-group col-md-6 mx-1'>
                             <input className='form-check-input' type='radio' name='ruolo' id='ruoloProf' value='professionale' onChange={this.onChangeRole}/>
                             <label htmlFor='ruoloProf' className='ms-1'>
@@ -179,7 +179,7 @@ class SUForm extends Component{
                             </label>
                         </div>
                     </div>
-                    <button type='submit' className='btn btn-primary offset-4' onClick={this.onSubmit}>Registrati!</button>
+                    <button type='submit' className='btn btn-primary mt-2 mb-2' onClick={this.onSubmit}>Registrati!</button>
                 </form>
             </div>
         );

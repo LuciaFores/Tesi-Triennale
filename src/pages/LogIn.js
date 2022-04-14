@@ -30,11 +30,10 @@ function Sottotitolo(){
 
 function Redirect(){
     return(
-        <div className='row offset-md-1'>
+        <div className='row offset-md-1 mt-3'>
             <p>
                 Non possiedi ancora un account? Clicca <Link to='../signup'>qui</Link> per registrarti!
-            </p>
-            <p>
+                <br/>
                 Hai dimenticato la password? Clicca <Link to='../forgotpw'>qui</Link> per recuperarla!
             </p>
         </div>
@@ -44,12 +43,14 @@ function Redirect(){
 function Immagine(){
     return(
         <div className=''>
-            <img src={imgLI_3} className='img-fluid'/>
+            <img src={imgLI_3} className='img-fluid d-block my-3'/>
         </div>
     )
 }
 
 function LogIn(){
+    
+    
     return(
         <div className='container-fluid'>
             <Navbar/>
@@ -59,13 +60,13 @@ function LogIn(){
                 <div className='row align-items-center'>
                     <div className='col-xs-12 col-sm-6'>
                         <LIForm/>
+                        <Redirect/>
                     </div>
                     <div className='col-xs-12 col-sm-6'>
                         <Immagine/>
                     </div>
                 </div>
             </div>
-            <Redirect/>
         </div>
     );
 }

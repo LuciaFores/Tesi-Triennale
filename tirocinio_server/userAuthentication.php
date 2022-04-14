@@ -1,14 +1,8 @@
 <?php
-session_start();
 require 'connect.php';
 header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
-
-if (isset($_SESSION['session_id'])){
-    header('Location: index.html');
-    exit;
-}
 
 $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
@@ -30,9 +24,12 @@ if(isset($postdata) && !empty($postdata)){
         }
     }
     // in ogni caso se arrivo a questo punto ho la riga con i dati dell'utente
-    $uPassword =  $row['password'];
-    if($password == $uPassword){
+    //$uPassword =  $row['password'];
+    $checkPassword = password_verify($password, $row['password']);
+    if($checkPassword){
+        echo(json_encode($row));
         http_response_code(201);
+        //return json_encode($row);
     }
     else{
         http_response_code(409);

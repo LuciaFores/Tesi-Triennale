@@ -13,8 +13,9 @@ if(isset($postdata) && !empty($postdata)){
     $fiscalCode = $request->fiscalCode;
     $email = $request->email;
     $password = $request->password;
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $role = $request->role;
-    $query = "SELECT * FROM caregiver WHERE fiscalCode = '".$fiscalCode."'";
+    $query = "SELECT * FROM utente WHERE fiscalCode = '".$fiscalCode."'";
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($result);
     if(empty($row)){
@@ -22,9 +23,12 @@ if(isset($postdata) && !empty($postdata)){
         $result = mysqli_query($db, $query);
         $row = mysqli_fetch_assoc($result);
         if(empty($row)){
-            $query = "INSERT INTO caregiver (fiscalCode, name, surname, email, password, role) VALUES ('$fiscalCode', '$name', '$surname', '$email', '$password', '$role')";
+            $query = "INSERT INTO utente (fiscalCode, name, surname) VALUES ('$fiscalCode', '$name', '$surname')";
             if(mysqli_query($db,$query)){
-                http_response_code(201);
+                $query = "INSERT INTO caregiver (fiscalCode, name, surname, email, password, role) VALUES ('$fiscalCode', '$name', '$surname', '$email', '$hashedPassword', '$role')";
+                if(mysqli_query($db,$query)){
+                    http_response_code(201);
+                }
             }
             else{
                 http_response_code(422);

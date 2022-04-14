@@ -37,12 +37,16 @@ function Redirect(){
 function Immagine(){
     return(
         <div className=''>
-            <img src={imgSU} className='img-fluid'/>
+            <img src={imgSU} className='img-fluid d-block my-5'/>
         </div>
     )
 }
 
 function SignUp(){
+    if(localStorage.getItem('fiscalcode') != null){
+        window.location.href = '/caregiverprofile';
+    }
+
     return(
         <div className='container-fluid'>
             <Navbar/>
@@ -55,10 +59,11 @@ function SignUp(){
                 </div>
                 <div className='col-xs-12 col-sm-6'>
                     <SUForm/>
+                    <Redirect/>
                 </div>
             </div>
             </div>
-            <Redirect/>
+            
 
         </div>
     );

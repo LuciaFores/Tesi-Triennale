@@ -21,11 +21,13 @@ function Navbar(){
                     <div className='navbar-nav'>
                         <NavLink className='nav-link' to='/'>Home</NavLink>
                         <HashLink smooth className='nav-link' to='/#about'>About</HashLink>
+                        <HashLink smooth className='nav-link' to='/#funzionalita'>Servizi</HashLink>
+                        <HashLink smooth className='nav-link' to='/#redirect'>Prossimi passi</HashLink>
                         <HashLink smooth className='nav-link' to='/#contatti'>Contatti</HashLink>
                     </div>
                     <div className='navbar-nav ms-auto'>
                         <NavLink className='nav-link' to='/caregiverprofile'>{uprIcon} Profile</NavLink>
-                        <NavLink className='nav-link' to='/'>{loIcon} Logout</NavLink>
+                        <NavLink className='nav-link' to='/' onClick={() => localStorage.clear()}>{loIcon} Logout</NavLink>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/NavbarSULI';
 
 function UserNotFound(){
+    if(localStorage.getItem('fiscalcode') != null){
+        window.location.href = '/caregiverprofile';
+    }
+
     return(
         <div>
             <Navbar/>

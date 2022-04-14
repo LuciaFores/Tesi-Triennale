@@ -28,14 +28,14 @@ function Sottotitolo(){
 function Immagine(){
     return(
         <div className=''>
-            <img src={imgFPW} className='img-fluid'/>
+            <img src={imgFPW} className='img-fluid d-block my-2'/>
         </div>
     )
 }
 
 function Redirect(){
     return(
-        <div className='row offset-md-1'>
+        <div className='row offset-md-1 mt-3'>
             <p>
                 Ricordi le tue credenziali e vuoi accedere all'account?
                 Clicca <Link to='../login'>qui</Link> per autenticarti!
@@ -54,13 +54,13 @@ function ForgotPW(){
                 <div className='row align-items-center'>
                     <div className='col-xs-12 col-sm-6'>
                         <FPWForm/>
+                        <Redirect/>
                     </div>
                     <div className='col-xs-12 col-sm-6'>
                         <Immagine/>
                     </div>
                 </div>
             </div>
-            <Redirect/>
         </div>
     );
 }

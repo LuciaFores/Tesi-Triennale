@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {passwordRE, emailRE, fiscalCodeRE} from './RegEx';
+import {passwordRE, emailRE, fiscalCodeRE} from './Utils';
 import './FormLI.css'
+import { parsePath } from 'react-router-dom';
 
 class LIForm extends Component{
     constructor(props){
@@ -50,19 +51,23 @@ class LIForm extends Component{
             }
 
             axios.post('http://localhost/tirocinio/userAuthentication.php', obj)
-                .then(res => window.location.href = '/caregiverprofile')
-                .catch(error => window.location.href = '/usernf');
-                
-            
-            /*axios.post('http://localhost/tirocinio/userAuthentication.php',obj)
-            .then(res=> console.log(res.data))
-            .catch(error => {
-                console.log(error.response)
-            });*/
-    }
+                .then(res => 
+                localStorage.setItem('data', res.data),
+                window.location.href = '/caregiverprofile'
+                )
+                .catch(error => window.location.href = '/usernf'
+                );
+
+
+        }
     }
 
+    
+
     render(){
+        if(localStorage.getItem('fiscalcode') != null){
+            window.location.href = '/caregiverprofile';
+        }
         return(
             <div className='container-fluid col-md-10 offset-md-1 mt-5'>
                 <form>
@@ -79,7 +84,7 @@ class LIForm extends Component{
                         </div>
                     </div>
                 </form>
-                <button type='submit' className='btn btn-primary' onClick={this.onSubmit}>Log In!</button>
+                <button type='submit' className='btn btn-primary mt-3' onClick={this.onSubmit}>Log In!</button>
             </div>
         );
     }
