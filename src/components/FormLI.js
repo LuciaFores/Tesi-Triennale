@@ -73,10 +73,8 @@ class LIForm extends Component{
                 <form>
                     <div className='form-row'>
                         <div className='form-group col-md-6'>
-                            <label htmlFor='inputUserName'>Nome Utente</label>
-                            <input type='text' className='form-control' id='inputUserName' placeholder='Inserire Nome Utente' value={this.state.user} onChange={this.onChangeUser} required/>
-                            <small id='userNameHelp' className='form-text text-muted'>Si ricorda che il nome utente può essere l'email con cui ci si è iscritti alla piattaforma oppure 
-                            il proprio codice fiscale</small>
+                            <label htmlFor='inputUserName'>Email o Codice Fiscale</label>
+                            <input type='text' className='form-control' id='inputUserName' placeholder='Inserire Email o Codice Fiscale' value={this.state.user} onChange={this.onChangeUser} required/>
                         </div>
                         <div className='form-group col-md-6'>
                             <label htmlFor='inputPassword'>Password</label>

@@ -1,11 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import Home from './pages/Home';
+import HomeLI from './pages/HomeLI';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
+  if(localStorage.getItem('fiscalcode') != null){
+    window.location.href = '/homelo'
+  } 
   return (
-    <Home/>
+    <HomeLI/>
   );
 }
 

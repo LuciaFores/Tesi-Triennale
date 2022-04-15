@@ -22,3 +22,25 @@ export function clearUserData(){
     const role = roleData[1]
     localStorage.setItem('role', role);
 }
+
+export function clearPatientData(){
+    let data = localStorage.getItem('patientData');
+    data = data.slice(25, (data.length)-1)
+    data = data.replace(/"/g, '');
+    const datas = data.split(',');
+    const fiscalcodeData= datas[0].split(':');
+    const fiscalcode = fiscalcodeData[1]
+    localStorage.setItem('patientFiscalcode', fiscalcode);
+    const nameData= datas[1].split(':');
+    const name = nameData[1]
+    localStorage.setItem('patientName', name);
+    const surnameData = datas[2].split(':');
+    const surname = surnameData[1]
+    localStorage.setItem('patientSurname', surname);
+}
+
+export function changePatient(){
+    localStorage.removeItem('patientFiscalcode');
+    localStorage.removeItem('patientName');
+    localStorage.removeItem('patientSurname');
+}

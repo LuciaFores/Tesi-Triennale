@@ -4,6 +4,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
+import HomeLO from './pages/HomeLO';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import ForgotPW from './pages/ForgotPW';
@@ -12,16 +13,19 @@ import CaregiverProfile from './pages/CaregiverProfile';
 import UserAlreadyExists from './pages/UserAlreadyExists';
 import UserNotFound from './pages/UserNotFound';
 import ChangePassword from './pages/ChangePassword';
+import PatientProfile from './pages/PatientProfile';
 
 ReactDOM.render(
     <BrowserRouter>
         <Routes>
             <Route path='/' element={<App/>}/>
+            <Route path='/homelo' element={<HomeLO/>}/>
             <Route path='signup' element={<SignUp/>}/>
             <Route path='login' element={<LogIn/>}/>
             <Route path='forgotpw' element={<ForgotPW/>}/>
             <Route path='caregiverprofile' element={<CaregiverProfile/>}/>
             <Route path='caregiverprofile/changePW' element={<ChangePassword/>}/>
+            <Route path='patientProfile' element={<PatientProfile/>}/>
             <Route path='userae' element={<UserAlreadyExists/>}/>
             <Route path='usernf' element={<UserNotFound/>}/>
         </Routes>

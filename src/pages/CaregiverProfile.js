@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/NavbarPRLO';
 import FormChoosePatient from '../components/FormChoosePatient';
+import FormRegisterPatient from '../components/FormRegisterPatient';
 import { clearUserData } from '../components/Utils';
 import imgCard from '../img/imgCard.svg';
 import imgCP from '../img/imgCP.svg';
-import imgChoosePatient from '../img/imgChoosePatient.svg'
+import imgChoosePatient from '../img/imgChoosePatient.svg';
+import imgAP from '../img/imgAP.svg';
 import './CaregiverProfile.css'; 
 
 function UserCard(){
@@ -25,13 +27,13 @@ function UserCard(){
             <div className="card-body">
                 <p className="card-text">
                     Dati dell'utente:
-                    <ul>
-                        <li>Nome: {name}</li>
-                        <li>Cognome: {surname}</li>
-                        <li>Codice Fiscale: {fiscalcode}</li>
-                        <li>Ruolo: {caregiverRole}</li>
-                    </ul>
                 </p>
+                <ul>
+                    <li>Nome: {name}</li>
+                    <li>Cognome: {surname}</li>
+                    <li>Codice Fiscale: {fiscalcode}</li>
+                    <li>Ruolo: {caregiverRole}</li>
+                </ul>
             </div>
         </div>
     );
@@ -54,7 +56,7 @@ function ChangePasswordCard(){
 
 function ChoosePatient(){
     return(
-        <div className="card mt-4 border-primary">
+        <div className="card mt-4 border-primary md-long-card">
             <img className="card-img-top img-fluid" src={imgChoosePatient} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
@@ -62,6 +64,22 @@ function ChoosePatient(){
                     Con quale dei bambini di cui ti occupi vuoi lavorare?
                 </p>
                 <FormChoosePatient/>
+            </div>
+        </div>
+    );
+}
+
+function RegisterPatient(){
+    return(
+        <div className="card mt-4 border-primary md-long-card">
+            <img className="card-img-top img-fluid" src={imgAP} alt="Card image cap"/>
+            <hr/>
+            <div className="card-body">
+                <p className="card-text">
+                    Vuoi registrare un nuovo paziente nella piattaforma? Inserisci qui sotto i suoi dati! <br/>
+                    Funzione abilitata solo per <strong>caregiver professionisti</strong>.
+                </p>
+                <FormRegisterPatient/>
             </div>
         </div>
     );
@@ -85,19 +103,22 @@ function CaregiverProfile(){
         <div>
             <Navbar/>
             <div className='container'>
-                <div className='row mt-4'>
+                <div className='row mt-5'>
                     <div className='col'>
                         <h1>{name} {surname}, questo è il tuo profilo!</h1>
                     </div>
                 </div>
                 <div className='row justify-content-end'>
-                    <div className='col-md-9 col-xs-12 mt-2'>
+                <div className='col-md-4 col-xs-12 mb-md-2'>
+                        <RegisterPatient/>
+                    </div>
+                    <div className='col-md-5 col-xs-12'>
                         <ChoosePatient/>
                     </div>
                     <div className='col-md-3 col-xs-12'>
                         <UserCard/>
                         <div className='row'>
-                            <div className='col-md-12 mt-md-4 col-xs-12'>
+                            <div className='col-md-12 col-xs-12'>
                                 <ChangePasswordCard/>
                                 <br/>
                             </div>

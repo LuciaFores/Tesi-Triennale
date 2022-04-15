@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/NavbarSULI'
 import imgHome from '../img/imgHome.svg';
+import imgAbout from '../img/imgAbout.svg';
+import imgFunc from '../img/imgFunc.svg';
+import imgNext from '../img/imgNext.svg';
 
 function Titolo(){
     return(
@@ -13,10 +16,34 @@ function Titolo(){
     );
 }
 
-function Immagine(){
+function ImmagineHome(){
     return(
         <div className=''>
             <img src={imgHome} className='img-fluid d-block my-5'/>
+        </div>
+    )
+}
+
+function ImmagineAbout(){
+    return(
+        <div className=''>
+            <img src={imgAbout} className='img-fluid d-block my-5'/>
+        </div>
+    )
+}
+
+function ImmagineFunc(){
+    return(
+        <div className=''>
+            <img src={imgFunc} className='img-fluid d-block my-5'/>
+        </div>
+    )
+}
+
+function ImmagineNext(){
+    return(
+        <div className=''>
+            <img src={imgNext} className='img-fluid d-block my-5'/>
         </div>
     )
 }
@@ -102,24 +129,21 @@ function PlaceHolder(){
 }
 
 
-function Home(){
+function HomeLI(){
     return(
         <div className='container-fluid'>
             <Navbar/>
             <div className='container'>
                 <div className='row align-items-center'>
-                    <div className='col-xs-12 col-sm-6'>
+                    <div className='col-xs-12 col-sm-6 offset-md-3 mt-md-4 mb-md-5'>
                         <Titolo/>
-                    </div>
-                    <div className='col-xs-12 col-sm-6'>
-                        <Immagine/>
                     </div>
                 </div>
             </div>
             <div className='container'>
                 <div className='row align-items-center'>
                     <div className='col-xs-12 col-sm-6'>
-                        <Immagine/>
+                        <ImmagineAbout/>
                     </div>
                     <div className='col-xs-12 col-sm-6'>
                         <About/>
@@ -132,14 +156,14 @@ function Home(){
                         <Funzionalita/>
                     </div>
                     <div className='col-xs-12 col-sm-6'>
-                        <Immagine/>
+                        <ImmagineFunc/>
                     </div>
                 </div>
             </div>
             <div className='container'>
                 <div className='row align-items-center'>
                     <div className='col-xs-12 col-sm-6'>
-                        <Immagine/>
+                        <ImmagineNext/>
                     </div>
                     <div className='col-xs-12 col-sm-6'>
                         <Redirect/>
@@ -151,4 +175,4 @@ function Home(){
     );
 }
 
-export default Home;
+export default HomeLI;
