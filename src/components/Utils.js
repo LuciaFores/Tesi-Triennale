@@ -1,3 +1,5 @@
+var RandExp = require('randexp');
+
 export const passwordRE = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,16}$/;
 
 export const emailRE = /^[a-zA-Z0-9.!#$%&'*+\/=?^ `{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -43,4 +45,9 @@ export function changePatient(){
     localStorage.removeItem('patientFiscalcode');
     localStorage.removeItem('patientName');
     localStorage.removeItem('patientSurname');
+}
+
+export function randPw(){
+    var randPw = new RandExp(passwordRE).gen();
+    return randPw;
 }

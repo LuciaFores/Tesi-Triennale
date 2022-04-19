@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {passwordRE, emailRE, fiscalCodeRE} from './Utils';
 import './FormLI.css'
-import { parsePath } from 'react-router-dom';
 
 class LIForm extends Component{
     constructor(props){
