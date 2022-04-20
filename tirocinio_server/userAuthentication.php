@@ -11,7 +11,7 @@ if(isset($postdata) && !empty($postdata)){
     $user = $request -> user;
     $password = $request -> password;
 
-    $query = "SELECT * FROM caregiver WHERE fiscalCode = '".$user."'";
+    $query = "SELECT * FROM caregiver WHERE utente = '".$user."'";
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($result);
     // vuol dire che l'utente non si è autenticato con il codice fiscale ma con la mail
@@ -24,7 +24,6 @@ if(isset($postdata) && !empty($postdata)){
         }
     }
     // in ogni caso se arrivo a questo punto ho la riga con i dati dell'utente
-    //$uPassword =  $row['password'];
     $checkPassword = password_verify($password, $row['password']);
     if($checkPassword){
         echo(json_encode($row));

@@ -11,31 +11,32 @@ if(isset($postdata) && !empty($postdata)){
     $name = $request->name;
     $surname = $request->surname;
     $fiscalCode = $request->fiscalCode;
-    $disability = $request->disability;
     $birthDate = $request->birthDate;
-    $query = "SELECT * FROM utente WHERE fiscalCode = '".$fiscalCode."'";
+    $disabilities = $request->disabilities;
+    
+    $query = "SELECT * FROM utente WHERE cf = '".$fiscalCode."'";
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($result);
     if(empty($row)){
-        //$query = "SELECT * FROM bambino WHERE fiscalcode = '".$fiscalcode."'";
-        //$result = mysqli_query($db, $query);
-        //$row = mysqli_fetch_assoc($result);
-        //if(empty($row)){
-        $query = "INSERT INTO utente (fiscalCode, name, surname) VALUES ('$fiscalCode', '$name', '$surname')";
+        $query = "INSERT INTO utente (cf, nome, cognome) VALUES ('$fiscalCode', '$name', '$surname')";
         if(mysqli_query($db,$query)){
-            http_response_code(201);
-            /*$query = "INSERT INTO caregiver (fiscalCode, name, surname, email, password, role) VALUES ('$fiscalCode', '$name', '$surname', '$email', '$hashedPassword', '$role')";
+            $query = "INSERT INTO bambino (utente, nome, cognome, nascita) VALUES ('$fiscalCode', '$name', '$surname', '$birthDate')";
             if(mysqli_query($db,$query)){
-                http_response_code(201);
-            }*/
+                for($i = 0; $i < count($disabilities); $i++){
+                    $disability = $disabilities[$i];
+                    $query = "INSERT INTO bdisabilita (bambino, disabilita) VALUES ('$fiscalCode', '$disability')";
+                    if(mysqli_query($db, $query)){
+                        continue;
+                    }
+                    else{
+                        http_response_code(201);
+                    }
+                }
+            }
         }
         else{
             http_response_code(422);
         }
-        //}
-        //else{
-        //    http_response_code(409);
-        //}
     }
     else{
         http_response_code(409);

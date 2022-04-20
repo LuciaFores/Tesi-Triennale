@@ -10,7 +10,7 @@ class RegisterPatientForm extends Component{
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeSurname = this.onChangeSurname.bind(this);
         this.onChangeFiscalCode = this.onChangeFiscalCode.bind(this);
-        this.onChangeDisability = this.onChangeDisability.bind(this);
+        this.onChangeDisabilities = this.onChangeDisabilities.bind(this);
         this.onChangeBirthDate = this.onChangeBirthDate.bind(this);
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -19,7 +19,7 @@ class RegisterPatientForm extends Component{
             name : "",
             surname : "",
             fiscalCode : "",
-            disability : "",
+            disabilities : [],
             birthDate : "",
         }
     }
@@ -42,10 +42,16 @@ class RegisterPatientForm extends Component{
         });
     }
 
-    onChangeDisability(e){
+    onChangeDisabilities(e){
+        let disability = Array.from(
+            e.target.selectedOptions,
+            (option) => option.value
+            );
+        //console.log("disability", disability);
         this.setState({
-            disability : e.target.value
+            disabilities : disability,
         });
+        //console.log(this.state.disabilities);
     }
 
     onChangeBirthDate(e){
@@ -67,6 +73,23 @@ class RegisterPatientForm extends Component{
        console.log(obj);
     }*/
 
+    /*onSubmit(e){
+       let text = 'Hai selezionato ';
+       for(var i = 0; i < this.state.disabilities.length; i++){
+        text += this.state.disabilities[i];
+        text += ', ';
+       }
+       text = text.slice(0, -2);
+       alert(text);
+        
+        e.preventDefault();
+        
+        /*console.log(this.state.disabilities);
+        e.preventDefault();
+        
+    }
+    */
+
     onSubmit(e){
         e.preventDefault();
 
@@ -76,7 +99,7 @@ class RegisterPatientForm extends Component{
                 name : "",
                 surname : "",
                 fiscalCode: "",
-                disability : "",
+                disabilities : [],
                 birthDate : "",
             })
             return false;
@@ -92,7 +115,7 @@ class RegisterPatientForm extends Component{
                 name : this.state.name,
                 surname : this.state.surname,
                 fiscalCode : this.state.fiscalCode,
-                disability : this.state.disability,
+                disabilities : this.state.disabilities,
                 birthDate : this.state.birthDate,
             };
 
@@ -104,7 +127,7 @@ class RegisterPatientForm extends Component{
                 name : "",
                 surname : "",
                 fiscalCode: "",
-                disability : "",
+                disabilities : [],
                 birthDate : "",
             })
         }
@@ -131,11 +154,18 @@ class RegisterPatientForm extends Component{
                     <div className='form-row'>
                         <div className='form-group col mx-1'>
                             <label htmlFor='inputDisability'>Disabilità</label>
-                            <input type='text' className='form-control' id='inputDisability' placeholder='Inserire Disabilità' value={this.state.disability} onChange={this.onChangeDisability} required/>
+                            <select className='form-control' id='inputDisability' value={this.state.disabilities} onChange={this.onChangeDisabilities} multiple={true}>
+                                <option value='Disabilità Psico Motoria'>Disabilità Psico Motoria</option>
+                                <option value='Disabilità Motoria'>Disabilità Motoria</option>
+                                <option value='Disabilità Cognitiva'>Disabilità Cognitiva</option>
+                            </select>
+                            <small className='text-muted' id='helpSelect'>Si ricorda che in caso si vogliano selezionare più
+                            disabilità è necessario tenere premuto il tasto CTRL (su Windows) oppure il tasto Command ⌘ (su Mac)
+                            durante la selezione</small>
                         </div>
                         <div className='form-group col mx-1'>
                             <label htmlFor='inputBirthDate'>Data di nascita</label>
-                            <input type='text' className='form-control' id='inputBirthDate' placeholder='Inserire Data di Nascita' value={this.state.birthDate} onChange={this.onChangeBirthDate} required/>
+                            <input type='date' className='form-control' id='inputBirthDate' value={this.state.birthDate} onChange={this.onChangeBirthDate} required/>
                         </div>
                     </div>
                     <button type='submit' className='btn btn-primary mt-2 mb-2' onClick={this.onSubmit}>Registra il paziente!</button>

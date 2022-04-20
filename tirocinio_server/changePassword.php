@@ -11,7 +11,7 @@ if(isset($postdata) && !empty($postdata)){
     $user = $request->user;
     $oldPw = $request->oldPw;
     $newPw = $request->newPw;
-    $query = "SELECT * FROM caregiver WHERE fiscalCode = '".$user."'";
+    $query = "SELECT * FROM caregiver WHERE cf = '".$user."'";
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($result);
     if(!empty($row)){
@@ -19,7 +19,7 @@ if(isset($postdata) && !empty($postdata)){
         $pwCheck = password_verify($oldPw, $row['password']);
         if($pwCheck){
             $hashedPassword = password_hash($newPw, PASSWORD_DEFAULT);
-            $update = "UPDATE caregiver SET password = '".$hashedPassword."' WHERE fiscalCode = '".$user."'";
+            $update = "UPDATE caregiver SET password = '".$hashedPassword."' WHERE cf = '".$user."'";
             if(mysqli_query($db, $update)){
                 http_response_code(201);
             }

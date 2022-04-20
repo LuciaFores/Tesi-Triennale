@@ -10,7 +10,7 @@ if(isset($postdata) && !empty($postdata)){
 
     $patient = $request -> patient;
 
-    $query = "SELECT * FROM utente WHERE fiscalCode = '".$patient."'";
+    $query = "SELECT * FROM bambino WHERE utente = '".$patient."'";
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($result);
     if(!empty($row)){

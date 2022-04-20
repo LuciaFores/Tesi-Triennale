@@ -15,8 +15,7 @@ if(isset($postdata) && !empty($postdata)){
     $message_object = 'Cambio della password';
     $message_text =  "È stata inviata una richiesta per il cambio della password del tuo account.\n
     Per modificare la password segui i prossimi passi:
-    1. Autenticati al tuo account con la password temporanea
-    ";
+    1. Autenticati al tuo account con la password temporanea";
     $message_text .= $password;
     $message_text .= "
     2. Modifica la tua password dall'apposita sezione nel tuo profilo
@@ -24,7 +23,7 @@ if(isset($postdata) && !empty($postdata)){
     per accedere al tuo account
     ";
 
-    $query = "SELECT * FROM caregiver WHERE fiscalCode = '".$user."'";
+    $query = "SELECT * FROM caregiver WHERE cf = '".$user."'";
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($result);
     // vuol dire che l'utente non si è autenticato con il codice fiscale ma con la mail
@@ -39,7 +38,9 @@ if(isset($postdata) && !empty($postdata)){
         // altrimenti modifico la password di accesso con quella randomizzata
         $update = "UPDATE caregiver SET password = '".$hashedPassword."' WHERE email = '".$user."'";
     }
-    $update = "UPDATE caregiver SET password = '".$hashedPassword."' WHERE fiscalcode = '".$user."'";
+    else{
+        $update = "UPDATE caregiver SET password = '".$hashedPassword."' WHERE cf = '".$user."'";
+    }
     if(mysqli_query($db, $update)){
         // se la modifica è andata a buon fine allora invio una mail con la password e le indicazioni
         $message_reciever = $row['email'];
