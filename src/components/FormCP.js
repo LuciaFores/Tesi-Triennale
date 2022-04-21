@@ -13,7 +13,7 @@ class CPForm extends Component{
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            user : localStorage.getItem('fiscalcode'),
+            user : localStorage.getItem('caregiverFiscalcode'),
             oldPw : '',
             newPw : '',
             confirmNewPw: '',
@@ -64,7 +64,7 @@ class CPForm extends Component{
         }
         if(passwordValidity && passwordConfirmed){
             const obj = {
-                user : localStorage.getItem('fiscalcode'),
+                user : localStorage.getItem('caregiverFiscalcode'),
                 oldPw : this.state.oldPw,
                 newPw : this.state.newPw,
             };
@@ -74,7 +74,7 @@ class CPForm extends Component{
                 .catch(error => window.location.href = '/userae');
 
             this.setState({
-                user : localStorage.getItem('fiscalcode'),
+                user : localStorage.getItem('caregiverFiscalcode'),
                 oldPw : '',
                 newPw : '',
                 confirmNewPw: '',

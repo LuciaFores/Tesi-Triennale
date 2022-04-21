@@ -8,6 +8,7 @@ $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
 
+    $caregiver = $request->caregiver;
     $name = $request->name;
     $surname = $request->surname;
     $fiscalCode = $request->fiscalCode;
@@ -20,18 +21,24 @@ if(isset($postdata) && !empty($postdata)){
     if(empty($row)){
         $query = "INSERT INTO utente (cf, nome, cognome) VALUES ('$fiscalCode', '$name', '$surname')";
         if(mysqli_query($db,$query)){
-            $query = "INSERT INTO bambino (utente, nome, cognome, nascita) VALUES ('$fiscalCode', '$name', '$surname', '$birthDate')";
-            if(mysqli_query($db,$query)){
-                for($i = 0; $i < count($disabilities); $i++){
-                    $disability = $disabilities[$i];
-                    $query = "INSERT INTO bdisabilita (bambino, disabilita) VALUES ('$fiscalCode', '$disability')";
-                    if(mysqli_query($db, $query)){
-                        continue;
-                    }
-                    else{
-                        http_response_code(201);
+            $query = "INSERT INTO cgbambino (caregiver, bambino) VALUES ('$caregiver', '$fiscalCode')";
+            if(mysqli_query($db, $query)){
+                $query = "INSERT INTO bambino (utente, nome, cognome, nascita) VALUES ('$fiscalCode', '$name', '$surname', '$birthDate')";
+                if(mysqli_query($db,$query)){
+                    for($i = 0; $i < count($disabilities); $i++){
+                        $disability = $disabilities[$i];
+                        $query = "INSERT INTO bdisabilita (bambino, disabilita) VALUES ('$fiscalCode', '$disability')";
+                        if(mysqli_query($db, $query)){
+                            continue;
+                        }
+                        else{
+                            http_response_code(201);
+                        }
                     }
                 }
+            }
+            else{
+                http_response_code(409);
             }
         }
         else{

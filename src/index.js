@@ -13,6 +13,7 @@ import CaregiverProfile from './pages/CaregiverProfile';
 import UserAlreadyExists from './pages/UserAlreadyExists';
 import UserNotFound from './pages/UserNotFound';
 import ChangePassword from './pages/ChangePassword';
+import RegisterDisability from './pages/RegisterDisability';
 import PatientProfile from './pages/PatientProfile';
 
 ReactDOM.render(
@@ -25,6 +26,7 @@ ReactDOM.render(
             <Route path='forgotpw' element={<ForgotPW/>}/>
             <Route path='caregiverprofile' element={<CaregiverProfile/>}/>
             <Route path='caregiverprofile/changePW' element={<ChangePassword/>}/>
+            <Route path='registerDisability' element={<RegisterDisability/>}/>
             <Route path='patientProfile' element={<PatientProfile/>}/>
             <Route path='userae' element={<UserAlreadyExists/>}/>
             <Route path='usernf' element={<UserNotFound/>}/>

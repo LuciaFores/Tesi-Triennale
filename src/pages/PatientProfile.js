@@ -23,16 +23,18 @@ function PatientProfile(){
         clearPatientData();
         localStorage.removeItem('patientData');
     }
-
+    
     const name = localStorage.getItem('patientName');
     const surname = localStorage.getItem('patientSurname');
     const fiscalCode = localStorage.getItem('patientFiscalcode');
+    const birthDate = localStorage.getItem('patientBirthDate');
+    const disabilities = localStorage.getItem('patientDisabilities');
 
     return(
         <div>
             <NavbarPRLO/>
             <h1>Benvenuto nella pagina relativa al paziente {name} {surname}, il cui codice fiscale
-            è {fiscalCode}</h1>
+            è {fiscalCode}, nato il {birthDate} e le disabilità sono {disabilities}</h1>
             <GoBack/>
         </div>
     )

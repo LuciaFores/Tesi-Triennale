@@ -51,7 +51,7 @@ class LIForm extends Component{
 
             axios.post('http://localhost/tirocinio/userAuthentication.php', obj)
                 .then(res => 
-                localStorage.setItem('data', res.data),
+                localStorage.setItem('caregiverData', res.data),
                 window.location.href = '/caregiverprofile'
                 )
                 .catch(error => window.location.href = '/usernf'

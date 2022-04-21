@@ -43,7 +43,7 @@ function Immagine(){
 }
 
 function SignUp(){
-    if(localStorage.getItem('fiscalcode') != null){
+    if(localStorage.getItem('caregiverFiscalcode') != null){
         window.location.href = '/caregiverprofile';
     }
 

@@ -1,8 +1,18 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {fiscalCodeRE} from './Utils';
 import './FormSU.css';
 
+function Redirect(){
+    return(
+        <div className='row offset-md-1 mt-3'>
+            <p>
+                Non trovi la disabilità del paziente? Clicca <Link to='/registerDisability'>qui</Link> per registrarla nella piattaforma!
+            </p>
+        </div>
+    );
+}
 
 class RegisterPatientForm extends Component{
     constructor(props){
@@ -16,6 +26,7 @@ class RegisterPatientForm extends Component{
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
+            caregiver : localStorage.getItem('caregiverFiscalcode'),
             name : "",
             surname : "",
             fiscalCode : "",
@@ -96,6 +107,7 @@ class RegisterPatientForm extends Component{
         if(localStorage.getItem('role') === 'nonProfessionale'){
             alert('La funzione è abilitata solo per caregiver professionali');
             this.setState({
+                caregiver : localStorage.getItem('caregiverFiscalcode'),
                 name : "",
                 surname : "",
                 fiscalCode: "",
@@ -112,6 +124,7 @@ class RegisterPatientForm extends Component{
         }
         else{
             const obj = {
+                caregiver : localStorage.getItem('caregiverFiscalcode'),
                 name : this.state.name,
                 surname : this.state.surname,
                 fiscalCode : this.state.fiscalCode,
@@ -124,6 +137,7 @@ class RegisterPatientForm extends Component{
                 .catch(error => window.location.href = '/userae');
 
             this.setState({
+                caregiver : localStorage.getItem('caregiverFiscalcode'),
                 name : "",
                 surname : "",
                 fiscalCode: "",
@@ -132,6 +146,8 @@ class RegisterPatientForm extends Component{
             })
         }
     }
+
+
 
     render(){
         return(
@@ -155,9 +171,9 @@ class RegisterPatientForm extends Component{
                         <div className='form-group col mx-1'>
                             <label htmlFor='inputDisability'>Disabilità</label>
                             <select className='form-control' id='inputDisability' value={this.state.disabilities} onChange={this.onChangeDisabilities} multiple={true}>
-                                <option value='Disabilità Psico Motoria'>Disabilità Psico Motoria</option>
-                                <option value='Disabilità Motoria'>Disabilità Motoria</option>
-                                <option value='Disabilità Cognitiva'>Disabilità Cognitiva</option>
+                                <option value='Psico Motoria'>Disabilità Psico Motoria</option>
+                                <option value='Motoria'>Disabilità Motoria</option>
+                                <option value='Cognitiva'>Disabilità Cognitiva</option>
                             </select>
                             <small className='text-muted' id='helpSelect'>Si ricorda che in caso si vogliano selezionare più
                             disabilità è necessario tenere premuto il tasto CTRL (su Windows) oppure il tasto Command ⌘ (su Mac)
@@ -170,6 +186,7 @@ class RegisterPatientForm extends Component{
                     </div>
                     <button type='submit' className='btn btn-primary mt-2 mb-2' onClick={this.onSubmit}>Registra il paziente!</button>
                 </form>
+                <Redirect/>
             </div>
         );
     }

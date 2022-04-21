@@ -13,9 +13,15 @@ if(isset($postdata) && !empty($postdata)){
     $query = "SELECT * FROM bambino WHERE utente = '".$patient."'";
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($result);
-    if(!empty($row)){
+    if(!empty($patient)){
+        $query = "SELECT disabilita FROM bdisabilita WHERE bambino = '".$patient."'";
+        $result = mysqli_query($db, $query);
+        //$disabilities = mysqli_fetch_array($result);
+        while($disability = mysqli_fetch_array($result, MYSQLI_NUM)){
+            $row = array_merge($row, $disability);
+        }
         echo(json_encode($row));
-        http_response_code(201);
+        //http_response_code(201);
         //return json_encode($row);
     }
     else{
