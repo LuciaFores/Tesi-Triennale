@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {fiscalCodeRE} from './Utils';
-import { parsePath } from 'react-router-dom';
 
 class ChoosePatientForm extends Component{
     constructor(props){
@@ -12,6 +11,7 @@ class ChoosePatientForm extends Component{
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state={
+            caregiver : localStorage.getItem('caregiverFiscalcode'),
             patient  : '',
         }
     }
@@ -32,6 +32,7 @@ class ChoosePatientForm extends Component{
         }
         else{
             const obj = {
+                caregiver : this.state.caregiver,
                 patient : this.state.patient,
             }
 
@@ -40,9 +41,8 @@ class ChoosePatientForm extends Component{
                 localStorage.setItem('patientData', res.data),
                 window.location.href = '/patientProfile'
                 )
-                .catch(error => window.location.href = '/usernf'
+                .catch(error => window.location.href = '/patientnf'
                 );
-
 
         }
     }

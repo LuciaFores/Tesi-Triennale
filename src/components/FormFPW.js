@@ -47,12 +47,8 @@ class FPWForm extends Component{
 
             //console.log(obj);
             axios.post('http://localhost/tirocinio/forgotPassword.php', obj)
-                .then(res => 
-                //console.log(res.data),
-                window.location.href = '/login'
-                )
-                .catch(error => window.location.href = '/usernf'
-                );
+                .then(res => window.location.href = '/forgotpw/success')
+                .catch(error => window.location.href = '/forgotpw/error');
         }
     }
 

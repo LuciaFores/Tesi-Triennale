@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/NavbarSULI';
 import RDForm from '../components/FormRD';
-import imgFPW from '../img/imgFPW.svg';
+import imgRD from '../img/imgRD.svg';
 import {Link} from 'react-router-dom';
 
 function Titolo(){
@@ -20,7 +20,8 @@ function Sottotitolo(){
             <div className='row'>
                 <p>Inserisci qui sotto il nome e la descrizione della disabilità: questa verrà subito registrata
                 nel sistema e un amministratore proovederà al più presto a renderla disponibile nella sezione di
-                scelta della disabilità durante la registrazione del paziente!</p>
+                scelta della disabilità durante la registrazione del paziente! <br/>
+                Funzione abilitata solo per <strong>caregiver professionisti</strong>.</p>
             </div>
         </div>
     );
@@ -29,7 +30,7 @@ function Sottotitolo(){
 function Immagine(){
     return(
         <div className=''>
-            <img src={imgFPW} className='img-fluid d-block my-2'/>
+            <img src={imgRD} className='img-fluid d-block my-2'/>
         </div>
     )
 }
@@ -46,6 +47,10 @@ function Redirect(){
 }
 
 function RegisterDisability(){
+    if(localStorage.getItem('caregiverFiscalcode') === null){
+        window.location.href='/login';
+    }
+    
     return(
         <div className='container-fluid'>
             <Navbar/>

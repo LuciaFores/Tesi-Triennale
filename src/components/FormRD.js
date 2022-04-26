@@ -31,6 +31,15 @@ class FormRD extends Component{
     onSubmit(e){
         e.preventDefault();
 
+        if(localStorage.getItem('caregiverRole') === 'nonProfessionale'){
+            alert('La funzione è abilitata solo per caregiver professionali');
+            this.setState({
+                name : '',
+                description : '',
+            })
+            return false;
+        }
+
         const obj = {
             name : this.state.name,
             description : this.state.description,
@@ -40,10 +49,9 @@ class FormRD extends Component{
         //console.log(obj);
         axios.post('http://localhost/tirocinio/registerDisability.php', obj)
             .then(res => 
-            //console.log(res.data),
-            window.location.href = '/caregiverprofile'
+            window.location.href = '/registerDisability/success'
             )
-            .catch(error => window.location.href = '/usernf'
+            .catch(error => window.location.href = '/registerDisability/error'
             );
     }
 

@@ -45,6 +45,10 @@ function Redirect(){
 }
 
 function ForgotPW(){
+    if(localStorage.getItem('caregiverFiscalcode') != null){
+        window.location.href = '/caregiverprofile';
+    }
+
     return(
         <div className='container-fluid'>
             <Navbar/>

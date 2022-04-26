@@ -64,9 +64,6 @@ class LIForm extends Component{
     
 
     render(){
-        if(localStorage.getItem('fiscalcode') != null){
-            window.location.href = '/caregiverprofile';
-        }
         return(
             <div className='container-fluid col-md-10 offset-md-1 mt-5'>
                 <form>

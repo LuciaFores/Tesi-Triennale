@@ -15,6 +15,15 @@ import UserNotFound from './pages/UserNotFound';
 import ChangePassword from './pages/ChangePassword';
 import RegisterDisability from './pages/RegisterDisability';
 import PatientProfile from './pages/PatientProfile';
+import CaregiverAlreadyConnected from './pages/CaregiverAlreadyConnected';
+import PatientNotFound from './pages/PatientNotFound';
+import PasswordNotModified from './pages/PasswordNotModified';
+import PasswordModified from './pages/PasswordModified';
+import FPWSuccess from './pages/FPWSuccess';
+import FPWError from './pages/FPWError';
+import RDSuccess from './pages/RDSuccess';
+import RDError from './pages/RDError';
+import PatientAlreadyExists from './pages/PatientAlreadyExists';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -24,12 +33,21 @@ ReactDOM.render(
             <Route path='signup' element={<SignUp/>}/>
             <Route path='login' element={<LogIn/>}/>
             <Route path='forgotpw' element={<ForgotPW/>}/>
+            <Route path='forgotpw/success' element={<FPWSuccess/>}/>
+            <Route path='forgotpw/error' element={<FPWError/>}/>
             <Route path='caregiverprofile' element={<CaregiverProfile/>}/>
             <Route path='caregiverprofile/changePW' element={<ChangePassword/>}/>
+            <Route path='caregiverprofile/changePW/pwnm' element={<PasswordNotModified/>}/>
+            <Route path='caregiverprofile/changePW/pwmd' element={<PasswordModified/>}/>
             <Route path='registerDisability' element={<RegisterDisability/>}/>
+            <Route path='registerDisability/success' element={<RDSuccess/>}/>
+            <Route path='registerDisability/error' element={<RDError/>}/>
             <Route path='patientProfile' element={<PatientProfile/>}/>
             <Route path='userae' element={<UserAlreadyExists/>}/>
             <Route path='usernf' element={<UserNotFound/>}/>
+            <Route path='caregiverac' element={<CaregiverAlreadyConnected/>}/>
+            <Route path='patientnf' element={<PatientNotFound/>}/>
+            <Route path='patientae' element={<PatientAlreadyExists/>}/>
         </Routes>
     </BrowserRouter>,
   document.getElementById('root')

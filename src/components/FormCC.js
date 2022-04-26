@@ -38,7 +38,7 @@ class CCForm extends Component{
 
         axios.post('http://localhost/tirocinio/connectCaregiver.php', obj)
             .then(res => window.location.href = '/caregiverprofile')
-            .catch(error => window.location.href = '/userae');
+            .catch(error => window.location.href = '/caregiverac');
 
         this.setState({
             user : localStorage.getItem('caregiverFiscalcode'),

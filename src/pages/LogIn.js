@@ -2,10 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Navbar from '../components/NavbarSULI';
 import LIForm from '../components/FormLI';
-import imgLI_1 from '../img/imgLI_1.svg';
-import imgLI_2 from '../img/imgLI_2.svg';
 import imgLI_3 from '../img/imgLI_3.svg';
-import './LogIn.css';
 
 
 function Titolo(){
@@ -49,7 +46,9 @@ function Immagine(){
 }
 
 function LogIn(){
-    
+    if(localStorage.getItem('caregiverFiscalcode') != null){
+        window.location.href = '/caregiverprofile';
+    }
     
     return(
         <div className='container-fluid'>

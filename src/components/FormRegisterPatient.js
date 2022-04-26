@@ -6,7 +6,7 @@ import './FormSU.css';
 
 function Redirect(){
     return(
-        <div className='row offset-md-1 mt-3'>
+        <div className='row mt-3'>
             <p>
                 Non trovi la disabilità del paziente? Clicca <Link to='/registerDisability'>qui</Link> per registrarla nella piattaforma!
             </p>
@@ -58,11 +58,9 @@ class RegisterPatientForm extends Component{
             e.target.selectedOptions,
             (option) => option.value
             );
-        //console.log("disability", disability);
         this.setState({
             disabilities : disability,
         });
-        //console.log(this.state.disabilities);
     }
 
     onChangeBirthDate(e){
@@ -71,40 +69,10 @@ class RegisterPatientForm extends Component{
         });
     }
 
-    /*onSubmit(e){
-        e.preventDefault();
-        const obj = {
-            name : this.state.name,
-            surname : this.state.surname,
-            fiscalCode : this.state.fiscalCode,
-            disability : this.state.disability,
-            birthDate : this.state.birthDate,
-        };
-      
-       console.log(obj);
-    }*/
-
-    /*onSubmit(e){
-       let text = 'Hai selezionato ';
-       for(var i = 0; i < this.state.disabilities.length; i++){
-        text += this.state.disabilities[i];
-        text += ', ';
-       }
-       text = text.slice(0, -2);
-       alert(text);
-        
-        e.preventDefault();
-        
-        /*console.log(this.state.disabilities);
-        e.preventDefault();
-        
-    }
-    */
-
     onSubmit(e){
         e.preventDefault();
 
-        if(localStorage.getItem('role') === 'nonProfessionale'){
+        if(localStorage.getItem('cargiverRole') === 'nonProfessionale'){
             alert('La funzione è abilitata solo per caregiver professionali');
             this.setState({
                 caregiver : localStorage.getItem('caregiverFiscalcode'),
@@ -134,7 +102,7 @@ class RegisterPatientForm extends Component{
 
             axios.post('http://localhost/tirocinio/patientRegistration.php', obj)
                 .then(res => window.location.href = '/caregiverprofile')
-                .catch(error => window.location.href = '/userae');
+                .catch(error => window.location.href = '/patientae');
 
             this.setState({
                 caregiver : localStorage.getItem('caregiverFiscalcode'),

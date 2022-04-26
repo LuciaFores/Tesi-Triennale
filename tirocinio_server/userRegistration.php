@@ -15,6 +15,7 @@ if(isset($postdata) && !empty($postdata)){
     $password = $request->password;
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $role = $request->role;
+
     $query = "SELECT * FROM utente WHERE cf = '".$fiscalCode."'";
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($result);
@@ -31,7 +32,7 @@ if(isset($postdata) && !empty($postdata)){
                 }
             }
             else{
-                http_response_code(422);
+                http_response_code(409);
             }
         }
         else{

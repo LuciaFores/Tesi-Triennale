@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/NavbarSULI';
 
 function UserNotFound(){
-    if(localStorage.getItem('fiscalcode') != null){
+    if(localStorage.getItem('caregiverFiscalcode') != null){
         window.location.href = '/caregiverprofile';
     }
 

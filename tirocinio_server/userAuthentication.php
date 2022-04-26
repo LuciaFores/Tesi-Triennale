@@ -28,7 +28,6 @@ if(isset($postdata) && !empty($postdata)){
     if($checkPassword){
         echo(json_encode($row));
         http_response_code(201);
-        //return json_encode($row);
     }
     else{
         http_response_code(409);

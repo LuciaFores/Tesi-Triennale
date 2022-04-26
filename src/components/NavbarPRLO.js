@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import './Navbar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/js/dist/collapse'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

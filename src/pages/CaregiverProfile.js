@@ -10,7 +10,6 @@ import imgCP from '../img/imgCP.svg';
 import imgChoosePatient from '../img/imgChoosePatient.svg';
 import imgAP from '../img/imgAP.svg';
 import imgCC from '../img/imgCC.svg';
-import './CaregiverProfile.css'; 
 
 function UserCard(){
     const fiscalcode = localStorage.getItem('caregiverFiscalcode');

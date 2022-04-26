@@ -70,8 +70,8 @@ class CPForm extends Component{
             };
 
             axios.post('http://localhost/tirocinio/changePassword.php', obj)
-                .then(res => window.location.href = '/caregiverprofile')
-                .catch(error => window.location.href = '/userae');
+                .then(res => window.location.href = 'caregiverprofile/changePW/pwmd')
+                .catch(error => window.location.href = 'caregiverprofile/changePW/pwnm');
 
             this.setState({
                 user : localStorage.getItem('caregiverFiscalcode'),

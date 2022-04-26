@@ -26,8 +26,9 @@ if(isset($postdata) && !empty($postdata)){
     $query = "SELECT * FROM caregiver WHERE cf = '".$user."'";
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($result);
-    // vuol dire che l'utente non si è autenticato con il codice fiscale ma con la mail
+    // potrebbe voler dire che l'utente non si è autenticato con il codice fiscale
     if(empty($row)){
+        // provo a vedere se si è autenticato con l'email
         $query = "SELECT * FROM caregiver WHERE email = '".$user."'";
         $result = mysqli_query($db, $query);
         $row = mysqli_fetch_assoc($result);
@@ -36,17 +37,22 @@ if(isset($postdata) && !empty($postdata)){
             http_response_code(409);
         }
         // altrimenti modifico la password di accesso con quella randomizzata
+        // scrivendo la query indicando che l'utente si è autenticato con la mail
         $update = "UPDATE caregiver SET password = '".$hashedPassword."' WHERE email = '".$user."'";
     }
     else{
+        // modifico la password di accesso con quella randomizzata 
+        // scrivendo la query indicando che l'utente si è autenticato con il codice fiscale
         $update = "UPDATE caregiver SET password = '".$hashedPassword."' WHERE cf = '".$user."'";
     }
+    // se la query va a buon fine
     if(mysqli_query($db, $update)){
-        // se la modifica è andata a buon fine allora invio una mail con la password e le indicazioni
+        // invio una mail con la password e le indicazioni
         $message_reciever = $row['email'];
         mail($message_reciever, $message_object, $message_text);
         http_response_code(201);
     }
+    // altrimenti mando un errore
     else{
         http_response_code(409);
     }

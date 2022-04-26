@@ -15,8 +15,12 @@ function GoBack(){
 }
 
 function PatientProfile(){
+    if(localStorage.getItem('caregiverFiscalcode') === null){
+        window.location.href='/login';
+    }
+
     if((localStorage.getItem('patientData') === null) && (localStorage.getItem('patientFiscalcode') === null)){
-        window.location.href = '/login';
+        window.location.href = '/caregiverprofile';
     }
     
     if(localStorage.getItem('patientData') != null){

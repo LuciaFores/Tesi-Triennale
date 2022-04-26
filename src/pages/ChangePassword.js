@@ -45,6 +45,10 @@ function Immagine(){
 }
 
 function ChangePassword(){
+    if(localStorage.getItem('caregiverFiscalcode') === null){
+        window.location.href='/login';
+    }
+
     return(
         <div className='container-fluid'>
             <NavbarPRLO/>

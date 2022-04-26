@@ -70,20 +70,6 @@ class SUForm extends Component{
         });
     }
 
-    /*onSubmit(e){
-        e.preventDefault();
-        const obj = {
-            name : this.state.name,
-            surname : this.state.surname,
-            fiscalCode : this.state.fiscalCode,
-            email : this.state.email,
-            password : this.state.password,
-            role : this.state.role,
-        };
-      
-       console.log(obj);
-    }*/
-
     onSubmit(e){
         e.preventDefault();
 
