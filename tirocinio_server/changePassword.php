@@ -12,7 +12,7 @@ if(isset($postdata) && !empty($postdata)){
     $oldPw = $request->oldPw;
     $newPw = $request->newPw;
 
-    $query = "SELECT * FROM caregiver WHERE cf = '".$user."'";
+    $query = "SELECT * FROM caregiver WHERE utente = '".$user."'";
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($result);
     // vuol dire che esiste un utente con la chiave dichiarata
@@ -22,7 +22,7 @@ if(isset($postdata) && !empty($postdata)){
         // se la vecchia password combacia con quella registrata
         if($pwCheck){
             $hashedPassword = password_hash($newPw, PASSWORD_DEFAULT);
-            $update = "UPDATE caregiver SET password = '".$hashedPassword."' WHERE cf = '".$user."'";
+            $update = "UPDATE caregiver SET password = '".$hashedPassword."' WHERE utente = '".$user."'";
             // se la query di modifica va a buon fine
             if(mysqli_query($db, $update)){
                 // allora avverto che l'entry è stata modificata correttamente

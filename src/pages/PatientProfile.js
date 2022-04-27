@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavbarPRLO from '../components/NavbarPRLO';
-import {clearPatientData, changePatient, calculateAge, prettifyDisString, changeDateFormat} from '../components/Utils';
+import {clearPatientData, changePatient, calculateAge, prettifyDisString, changeDateFormat, getTypes} from '../components/Utils';
 import imgPatientCard from '../img/imgPatientCard.svg';
 import imgExList from '../img/imgExList.svg';
 import imgRoutine from '../img/imgRoutine.svg';
@@ -24,6 +24,7 @@ function PatientCard(){
     var birthdate = localStorage.getItem('patientBirthDate');
     const age = calculateAge(birthdate);
     birthdate = changeDateFormat(birthdate);
+    const exListNum = localStorage.getItem('patientExListNum');
     const disabilities = prettifyDisString(localStorage.getItem('patientDisabilities'));
 
     return(
@@ -40,6 +41,7 @@ function PatientCard(){
                     <li>Codice Fiscale: {fiscalcode}</li>
                     <li>Data di nascita: {birthdate}</li>
                     <li>Età: {age} anni</li>
+                    <li>Identificativo percorso terapeutico: {exListNum}</li>
                     <li>Disabilità: {disabilities}</li>
                 </ul>
             </div>
@@ -59,7 +61,7 @@ function TherapyExercisesListCard(){
                 paziente, creare nuove implementazioni di esercizi già assegnati e controllare gli
                 esiti delle esecuzioni degli esercizi da parte del paziente.
             </p>
-            <button className="btn btn-outline-primary col-7"><Link to='/patientProfile/therapyExercisesList'>Vai al percorso terapeutico di {name}</Link></button>
+            <button className="btn btn-outline-primary col-7"><Link to='/patientProfile/therapyExercisesList' onClick={getTypes}>Vai al percorso terapeutico di {name}</Link></button>
         </div>
     );
 }

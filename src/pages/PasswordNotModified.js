@@ -12,7 +12,7 @@ function PasswordNotModified(){
             <Navbar/>
             <h1>La richiesta di modifica della password non è andata a buon fine</h1>
             <p>Clicca <Link to='/caregiverprofile'>qui</Link> per tornare al tuo profilo </p>
-            <p>Oppure clicca <Link to='/changepw'>qui</Link> per ripetere la procedura</p>
+            <p>Oppure clicca <Link to='/caregiverprofile/changepw'>qui</Link> per ripetere la procedura</p>
         </div>
     )
 }

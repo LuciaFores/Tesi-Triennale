@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/NavbarPRLO';
+import ExercisesTypeTable from '../components/ExercisesTypeTable';
 
 function TherapyExercisesList(){
     if(localStorage.getItem('caregiverFiscalcode') === null){
@@ -14,7 +15,25 @@ function TherapyExercisesList(){
     return(
         <div>
             <Navbar/>
-            <h1>Benvenuto nel percorso terapeutico di {patientName}</h1>
+            <div className='container'>
+                <div className='row'>
+                    <h1>Benvenuto nel percorso terapeutico di {patientName}</h1>   
+                </div>
+                <div className='row'>
+                    <p>
+                    Qui troverai tutte le tipologie di esercizi assegnati a {patientName}: consultando le
+                    singole tipologie troverai le informazioni sul tipo di esercizio e sulle diverse implementazioni
+                    già assegnate. <br/>
+                    Vuoi inserire un nuovo esercizio? Clicca <Link to='patientProfile/therapyExercisesList/newExercise'>qui</Link> per
+                    scegliere la tipologia e l'abilità dell'esercizio.<br/>
+                    Non preoccuparti di eventuali ripetizioni, in caso sia già stato assegnato un esercizio
+                    uguale a {patientName} l'inserimento verrà bloccato.
+                    </p>
+                </div>
+                <div className='row'>
+                    <ExercisesTypeTable/>
+                </div>
+            </div>
         </div>
     )
 }
