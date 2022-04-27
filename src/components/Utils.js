@@ -63,3 +63,26 @@ export function randPw(){
     var randPw = new RandExp(passwordRE).gen();
     return randPw;
 }
+
+export function calculateAge(birthdate){
+    var today = new Date();
+    var birthDate = new Date(birthdate);
+    // calcolo gli anni
+    var age = today.getFullYear() - birthDate.getFullYear();
+    // potrei non aver ancora compiuto gli anni in un determinato anno se non è arrivato il mese
+    // del compleanno oppure se è arrivato ma non è ancora arrivato il giorno del mio compleanno
+    // quindi aggiusto l'età di conseguenza
+    var m = today.getMonth() - birthDate.getMonth();
+    if(m < 0 || (m === 0 && today.getDate() < birthDate.getDate())){
+        age--;
+    }
+    return age;
+}
+
+export function prettifyDisString(disabilities){
+    return disabilities.replace(/,/g, ', ');
+}
+
+export function changeDateFormat(birthdate){
+    return birthdate.split('-').reverse().join('-');
+}

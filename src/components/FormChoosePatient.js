@@ -51,7 +51,7 @@ class ChoosePatientForm extends Component{
 
     render(){
         return(
-            <div className='container-fluid col-md-10 offset-md-1 mt-5'>
+            <div className='container-fluid col-md-10 offset-md-1'>
                 <form>
                     <div className='form-row'>
                         <div className='form-group col-md-6'>
