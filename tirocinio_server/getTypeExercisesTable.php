@@ -10,28 +10,14 @@ if(isset($postdata) && !empty($postdata)){
 
     $exListNum = $request -> exListNum;
 
-    /*$query = "SELECT * FROM bambino WHERE utente = '".$patient."'";
-    $result = mysqli_query($db, $query);
-    $row = mysqli_fetch_assoc($result);
-    echo(json_encode($row));*/
-
     $query = "SELECT DISTINCT tipologia FROM implementazioneEsercizio WHERE percFisio = $exListNum";
 
     $result = mysqli_query($db, $query);
-    /*$row = mysqli_fetch_assoc($result);
-    echo(json_encode($row));*/
     $types = [];
-        while($type = mysqli_fetch_array($result, MYSQLI_NUM)){
-            $types = array_merge($types, $type);
-        }
-        echo(json_encode($types));
-    
-    /*if($result){
-        
+    while($type = mysqli_fetch_array($result, MYSQLI_NUM)){
+        $types = array_merge($types, $type);
     }
-    else{
-        http_response_code(409);
-    }*/
+    echo(json_encode($types));
     
 }
 ?>

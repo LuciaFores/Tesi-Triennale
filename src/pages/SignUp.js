@@ -28,7 +28,7 @@ function Redirect(){
     return(
         <div className='d-flex justify-content-center'>
             <p>
-                Hai già un account? Clicca <Link to='../login'>qui</Link> per autenticarti!
+                Hai già un account? Clicca <Link to='/login'>qui</Link> per autenticarti!
             </p>
         </div>
     );

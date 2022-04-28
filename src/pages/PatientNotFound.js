@@ -11,7 +11,7 @@ function PatientNotFound(){
         <div>
             <Navbar/>
             <h1>Non siamo riusciti a trovare un paziente con i dati inseriti</h1>
-            <p>Clicca <Link to='caregiverprofile'>qui</Link> per tornare al tuo profilo e inserire nuovamente
+            <p>Clicca <Link to='/caregiverprofile'>qui</Link> per tornare al tuo profilo e inserire nuovamente
             i dati del paziente per la ricerca oppure per procedere alla registrazione di un nuovo paziente</p>
         </div>
     )

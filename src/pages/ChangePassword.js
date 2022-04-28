@@ -30,7 +30,7 @@ function Redirect(){
     return(
         <div className='d-flex justify-content-center'>
             <p>
-               Vuoi tornare al tuo profilo senza effettuare cambiamenti? Clicca <Link to='../login'>qui</Link>!
+               Vuoi tornare al tuo profilo senza effettuare cambiamenti? Clicca <Link to='/caregiverprofile'>qui</Link>!
             </p>
         </div>
     );

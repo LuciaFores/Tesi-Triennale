@@ -40,7 +40,7 @@ function Redirect(){
         <div className='row offset-md-1 mt-3'>
             <p>
                 Vuoi tornare al tuo profilo?
-                Clicca <Link to='../caregiverprofile'>qui</Link>!
+                Clicca <Link to='/caregiverprofile'>qui</Link>!
             </p>
         </div>
     );

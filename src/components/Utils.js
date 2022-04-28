@@ -109,12 +109,10 @@ export function clearExTypesData(){
     let data = localStorage.getItem('exTypesData');
     data = data.slice(25, (data.length)-1)
     data = data.replace(/"/g, '');
-    //localStorage.removeItem('exTypesData');
+    localStorage.removeItem('exTypesData');
     localStorage.setItem('exTypes', data);
 }
 
-export function createTable(types){
-    return(
-    <h1>{types}</h1>
-    );
+export function clearExTypes(){
+    localStorage.removeItem('exTypes');
 }

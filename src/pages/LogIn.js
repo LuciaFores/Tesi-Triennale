@@ -29,9 +29,9 @@ function Redirect(){
     return(
         <div className='row offset-md-1 mt-3'>
             <p>
-                Non possiedi ancora un account? Clicca <Link to='../signup'>qui</Link> per registrarti!
+                Non possiedi ancora un account? Clicca <Link to='/signup'>qui</Link> per registrarti!
                 <br/>
-                Hai dimenticato la password? Clicca <Link to='../forgotpw'>qui</Link> per recuperarla!
+                Hai dimenticato la password? Clicca <Link to='/forgotpw'>qui</Link> per recuperarla!
             </p>
         </div>
     );

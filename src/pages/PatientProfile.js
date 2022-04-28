@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavbarPRLO from '../components/NavbarPRLO';
-import {clearPatientData, changePatient, calculateAge, prettifyDisString, changeDateFormat, getTypes} from '../components/Utils';
+import {clearPatientData, changePatient, calculateAge, prettifyDisString, changeDateFormat, getTypes, clearExTypes} from '../components/Utils';
 import imgPatientCard from '../img/imgPatientCard.svg';
 import imgExList from '../img/imgExList.svg';
 import imgRoutine from '../img/imgRoutine.svg';
@@ -94,6 +94,10 @@ function PatientProfile(){
     if(localStorage.getItem('patientData') != null){
         clearPatientData();
         localStorage.removeItem('patientData');
+    }
+
+    if(localStorage.getItem('exTypes') != null){
+        clearExTypes();
     }
     
     const name = localStorage.getItem('patientName');

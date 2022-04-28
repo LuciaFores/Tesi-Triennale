@@ -2,6 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/NavbarPRLO';
 import ExercisesTypeTable from '../components/ExercisesTypeTable';
+import {clearExTypes} from '../components/Utils';
+
+function Redirect(){
+    return(
+        <p>
+            Vuoi tornare al profilo del paziente? Clicca <Link to='/patientprofile' onClick={clearExTypes}>qui</Link>
+        </p>
+    );
+}
 
 function TherapyExercisesList(){
     if(localStorage.getItem('caregiverFiscalcode') === null){
@@ -32,6 +41,9 @@ function TherapyExercisesList(){
                 </div>
                 <div className='row'>
                     <ExercisesTypeTable/>
+                </div>
+                <div className='row'>
+                    <Redirect/>
                 </div>
             </div>
         </div>

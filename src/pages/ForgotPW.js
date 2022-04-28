@@ -38,7 +38,7 @@ function Redirect(){
         <div className='row offset-md-1 mt-3'>
             <p>
                 Ricordi le tue credenziali e vuoi accedere all'account?
-                Clicca <Link to='../login'>qui</Link> per autenticarti!
+                Clicca <Link to='/login'>qui</Link> per autenticarti!
             </p>
         </div>
     );

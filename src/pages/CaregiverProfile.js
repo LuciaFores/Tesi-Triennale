@@ -4,7 +4,7 @@ import Navbar from '../components/NavbarPRLO';
 import FormChoosePatient from '../components/FormChoosePatient';
 import FormRegisterPatient from '../components/FormRegisterPatient';
 import FormCC from '../components/FormCC';
-import { clearUserData } from '../components/Utils';
+import { clearUserData, changePatient, clearExTypes } from '../components/Utils';
 import imgCard from '../img/imgCard.svg';
 import imgCP from '../img/imgCP.svg';
 import imgChoosePatient from '../img/imgChoosePatient.svg';
@@ -111,6 +111,14 @@ function CaregiverProfile(){
     if(localStorage.getItem('caregiverData') != null){
         clearUserData();
         localStorage.removeItem('caregiverData');
+    }
+
+    if(localStorage.getItem('patientFiscalcode') != null){
+        changePatient();
+    }
+
+    if(localStorage.getItem('exTypes') != null){
+        clearExTypes();
     }
 
     const name = localStorage.getItem('caregiverName');
