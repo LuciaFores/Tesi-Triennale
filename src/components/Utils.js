@@ -116,3 +116,73 @@ export function clearExTypesData(){
 export function clearExTypes(){
     localStorage.removeItem('exTypes');
 }
+
+export function getExercises(type){
+    localStorage.setItem('typeChosen', type);
+    const obj = {
+        exListNum : localStorage.getItem('patientExListNum'),
+        exType : type,
+    }
+    //console.log(obj);
+    axios.post('http://localhost/tirocinio/getExercisesList.php', obj)
+        .then(res => localStorage.setItem('exercisesData', res.data))
+        .catch(error => console.log('errore'))
+}
+
+export function clearExercisesData(){
+    let data = localStorage.getItem('exercisesData');
+    data = data.slice(25, (data.length)-1);
+    data = data.replace(/"/g, '');
+    localStorage.removeItem('exercisesData');
+    localStorage.setItem('exercises', data);
+}
+
+export function rearrangeExercises(){
+    let exercises = localStorage.getItem('exercises').split(',');
+    let exercisesList = [];
+    for (var i = 0; i<exercises.length; i+=7){
+        let exercise = []
+        exercise.push(exercises[i]);
+        exercise.push(exercises[i+1]);
+        exercise.push(exercises[i+2]);
+        exercise.push(exercises[i+3]);
+        exercise.push(exercises[i+4]);
+        exercise.push(exercises[i+5]);
+        exercise.push(exercises[i+6]);
+        exercisesList.push(exercise);
+    }
+    return exercisesList;
+}
+
+export function clearExercisesList(){
+    localStorage.removeItem('exercisesList');
+    localStorage.removeItem('typeChosen');
+}
+
+export function getExerciseInformation(){
+    const obj = {
+        exType : localStorage.getItem('typeChosen'),
+    }
+    axios.post('http://localhost/tirocinio/getExerciseInformation.php', obj)
+    .then(res => localStorage.setItem('exerciseInformationData', res.data))
+    .catch(error => console.log('errore'))
+}
+
+export function clearExerciseInformationData(){
+    let data = localStorage.getItem('exerciseInformationData');
+    data = data.slice(25, (data.length)-1)
+    data = data.replace(/"/g, '');
+    const datas = data.split(',');
+    const exerciseNameData= datas[0].split(':');
+    const exerciseName = exerciseNameData[1]
+    localStorage.setItem('exerciseName', exerciseName);
+    const exerciseDescriptionData= datas[1].split(':');
+    const exerciseDescription = exerciseDescriptionData[1]
+    localStorage.setItem('exerciseDescription', exerciseDescription);
+    const exerciseExecutionData = datas[2].split(':');
+    const exerciseExecution = exerciseExecutionData[1];
+    localStorage.setItem('exerciseExecution', exerciseExecution);
+    const exerciseResData = datas[3].split(':');
+    const exerciseRes = exerciseResData[1];
+    localStorage.setItem('exerciseRes', exerciseRes);
+}

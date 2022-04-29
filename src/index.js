@@ -24,8 +24,9 @@ import FPWError from './pages/FPWError';
 import RDSuccess from './pages/RDSuccess';
 import RDError from './pages/RDError';
 import PatientAlreadyExists from './pages/PatientAlreadyExists';
-import TherapyExercisesList from './pages/TherapyExercisesList';
+import TherapyExercisesTypeList from './pages/TherapyExercisesTypeList';
 import RoutineSelection from './pages/RoutineSelection';
+import TherapyExercisesList from './pages/TherapyExercisesList';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -45,7 +46,8 @@ ReactDOM.render(
             <Route path='registerDisability/success' element={<RDSuccess/>}/>
             <Route path='registerDisability/error' element={<RDError/>}/>
             <Route path='patientProfile' element={<PatientProfile/>}/>
-            <Route path='patientProfile/therapyExercisesList' element={<TherapyExercisesList/>}/>
+            <Route path='patientProfile/therapyExercisesTypeList' element={<TherapyExercisesTypeList/>}/>
+            <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList' element={<TherapyExercisesList/>}/>
             <Route path='patientProfile/routineSelection' element={<RoutineSelection/>}/>
             <Route path='userae' element={<UserAlreadyExists/>}/>
             <Route path='usernf' element={<UserNotFound/>}/>

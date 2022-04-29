@@ -1,5 +1,6 @@
 import React from 'react';
-import {clearExTypesData} from '../components/Utils';
+import { Link } from 'react-router-dom';
+import {clearExTypesData, getExercises} from '../components/Utils';
 
 function ExercisesTypeTable(){
     if(localStorage.getItem('exTypesData')===null && localStorage.getItem('exTypes')===null){
@@ -14,6 +15,7 @@ function ExercisesTypeTable(){
         <tr key={index}>
             <td>{index+1}</td>
             <td>{type}</td>
+            <td><button className='btn btn-primary' onClick={() => getExercises(type)}><Link to='./therapyExercisesList'>Consulta!</Link></button></td>
         </tr>
     ) 
     return(

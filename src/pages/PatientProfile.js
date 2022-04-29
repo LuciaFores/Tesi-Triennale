@@ -61,7 +61,7 @@ function TherapyExercisesListCard(){
                 paziente, creare nuove implementazioni di esercizi già assegnati e controllare gli
                 esiti delle esecuzioni degli esercizi da parte del paziente.
             </p>
-            <button className="btn btn-outline-primary col-7"><Link to='/patientProfile/therapyExercisesList' onClick={getTypes}>Vai al percorso terapeutico di {name}</Link></button>
+            <button className="btn btn-outline-primary col-7"><Link to='/patientProfile/therapyExercisesTypeList' onClick={getTypes}>Vai al percorso terapeutico di {name}</Link></button>
         </div>
     );
 }
