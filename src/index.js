@@ -27,6 +27,8 @@ import PatientAlreadyExists from './pages/PatientAlreadyExists';
 import TherapyExercisesTypeList from './pages/TherapyExercisesTypeList';
 import RoutineSelection from './pages/RoutineSelection';
 import TherapyExercisesList from './pages/TherapyExercisesList';
+import NewExerciseInList from './pages/NewExerciseInList';
+import Contact from './pages/Contact';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -47,6 +49,8 @@ ReactDOM.render(
             <Route path='registerDisability/error' element={<RDError/>}/>
             <Route path='patientProfile' element={<PatientProfile/>}/>
             <Route path='patientProfile/therapyExercisesTypeList' element={<TherapyExercisesTypeList/>}/>
+            <Route path='patientProfile/therapyExercisesTypeList/newExercise' element={<NewExerciseInList/>}/>
+            <Route path='patientProfile/therapyExercisesTypeList/newExercise/contactForm' element={<Contact/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList' element={<TherapyExercisesList/>}/>
             <Route path='patientProfile/routineSelection' element={<RoutineSelection/>}/>
             <Route path='userae' element={<UserAlreadyExists/>}/>

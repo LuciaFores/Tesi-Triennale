@@ -186,3 +186,14 @@ export function clearExerciseInformationData(){
     const exerciseRes = exerciseResData[1];
     localStorage.setItem('exerciseRes', exerciseRes);
 }
+
+export function validInsertion(caregiverRole, exTypeChosen){
+    if(caregiverRole === 'nonProfessionale'){
+        const exTypes = localStorage.getItem('exTypes');
+        if(exTypeChosen in exTypes){
+            return true;
+        }
+        return false;
+    }
+    return true;
+}

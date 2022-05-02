@@ -55,7 +55,7 @@ function TherapyExercisesList(){
                     Qui troverai tutte le tipologie di esercizi assegnati a {patientName}: consultando le
                     singole tipologie troverai le informazioni sul tipo di esercizio e sulle diverse implementazioni
                     già assegnate. <br/>
-                    Vuoi inserire un nuovo esercizio? Clicca <Link to='patientProfile/therapyExercisesList/newExercise'>qui</Link> per
+                    Vuoi inserire un nuovo esercizio? Clicca <Link to='./newExercise'>qui</Link> per
                     scegliere la tipologia e l'abilità dell'esercizio.<br/>
                     Non preoccuparti di eventuali ripetizioni, in caso sia già stato assegnato un esercizio
                     uguale a {patientName} l'inserimento verrà bloccato.
