@@ -26,8 +26,17 @@ if(isset($postdata) && !empty($postdata)){
     // in ogni caso se arrivo a questo punto ho la riga con i dati dell'utente
     $checkPassword = password_verify($password, $row['password']);
     if($checkPassword){
-        echo(json_encode($row));
-        http_response_code(201);
+        $fiscalcode = $row['utente'];
+        $query = "SELECT nome, cognome FROM utente WHERE cf = '".$fiscalcode."'";
+        $result = mysqli_query($db, $query);
+        $user = mysqli_fetch_assoc($result);
+        if(!empty($user)){
+            $user = array_merge($user, $row);
+            echo(json_encode($user));
+        }
+        else{
+            http_response_code(409);
+        }
     }
     else{
         http_response_code(409);

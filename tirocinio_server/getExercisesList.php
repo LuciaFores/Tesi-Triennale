@@ -18,11 +18,6 @@ if(isset($postdata) && !empty($postdata)){
     while($exercise = mysqli_fetch_array($result, MYSQLI_NUM)){
         $exercises = array_merge($exercises, $exercise);
     }
-
-    /*$query = "SELECT * FROM tipologiaEsercizio WHERE nome = '".$exType."'";
-    $result = mysqli_query($db, $query);
-    $row = mysqli_fetch_assoc($result);
-    $exercises = array_merge($exercises, $row);*/
     echo(json_encode($exercises));
     
 }

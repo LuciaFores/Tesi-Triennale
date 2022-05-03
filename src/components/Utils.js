@@ -13,15 +13,15 @@ export function clearUserData(){
     data = data.slice(25, (data.length)-1)
     data = data.replace(/"/g, '');
     const datas = data.split(',');
-    const fiscalcodeData= datas[0].split(':');
-    const fiscalcode = fiscalcodeData[1]
-    localStorage.setItem('caregiverFiscalcode', fiscalcode);
-    const nameData= datas[1].split(':');
+    const nameData= datas[0].split(':');
     const name = nameData[1]
     localStorage.setItem('caregiverName', name);
-    const surnameData = datas[2].split(':');
+    const surnameData= datas[1].split(':');
     const surname = surnameData[1]
     localStorage.setItem('caregiverSurname', surname);
+    const fiscalcodeData = datas[2].split(':');
+    const fiscalcode = fiscalcodeData[1]
+    localStorage.setItem('caregiverFiscalcode', fiscalcode);
     const roleData = datas[5].split(':');
     const role = roleData[1]
     localStorage.setItem('caregiverRole', role);
@@ -35,18 +35,18 @@ export function clearPatientData(){
     const fiscalcodeData= datas[0].split(':');
     const fiscalcode = fiscalcodeData[1]
     localStorage.setItem('patientFiscalcode', fiscalcode);
-    const nameData= datas[1].split(':');
-    const name = nameData[1]
-    localStorage.setItem('patientName', name);
-    const surnameData = datas[2].split(':');
-    const surname = surnameData[1];
-    localStorage.setItem('patientSurname', surname);
-    const birthDateData = datas[3].split(':');
-    const birthDate = birthDateData[1];
+    const birthDateData= datas[1].split(':');
+    const birthDate = birthDateData[1]
     localStorage.setItem('patientBirthDate', birthDate);
-    const exListNumData = datas[4].split(':');
+    const exListNumData = datas[2].split(':');
     const exListNum = exListNumData[1];
     localStorage.setItem('patientExListNum', exListNum);
+    const nameData = datas[3].split(':');
+    const name = nameData[1];
+    localStorage.setItem('patientName', name);
+    const surnameData = datas[4].split(':');
+    const surname = surnameData[1];
+    localStorage.setItem('patientSurname', surname);
     var disabilities = []
     for(var i = 5; i < datas.length; i++){
         var disabilityData = datas[i].split(':');
@@ -95,7 +95,6 @@ export function changeDateFormat(birthdate){
 }
 
 export function getTypes(){
-    //console.log('eseguita');
     const obj = {
         exListNum : localStorage.getItem('patientExListNum'),
     }

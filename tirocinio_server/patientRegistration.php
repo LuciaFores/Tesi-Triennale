@@ -28,22 +28,39 @@ if(isset($postdata) && !empty($postdata)){
             $query = "INSERT INTO cgbambino (caregiver, bambino) VALUES ('$caregiver', '$fiscalCode')";
             // se la registrazione è andata a buon fine
             if(mysqli_query($db, $query)){
-                // registro che l'utente è un bambino
-                $query = "INSERT INTO bambino (utente, nome, cognome, nascita) VALUES ('$fiscalCode', '$name', '$surname', '$birthDate')";
-                // se la registrazione è andata a buon fine
+                //http_response_code(201);
+                $today = date('Y-m-d');
+                $query = "INSERT INTO percorsoFisioterapico (inserimento) VALUES ('$today')";
                 if(mysqli_query($db,$query)){
-                    // per ogni disabilità indicata
-                    for($i = 0; $i < count($disabilities); $i++){
-                        $disability = $disabilities[$i];
-                        // creo il collegamento tra la disabilità e il bambino
-                        $query = "INSERT INTO bdisabilita (bambino, disabilita) VALUES ('$fiscalCode', '$disability')";
+                    $percFisio = mysqli_insert_id($db);
+                    $query = "INSERT INTO cgPercFisio (caregiver, percFisio) VALUES ('$caregiver', $percFisio)";
+                    if(mysqli_query($db, $query)){
+                        // registro che l'utente è un bambino
+                        $query = "INSERT INTO bambino (utente, nascita, percFisio) VALUES ('$fiscalCode', '$birthDate', $percFisio)";
                         if(mysqli_query($db, $query)){
-                            continue;
+                            // per ogni disabilità indicata
+                            for($i = 0; $i < count($disabilities); $i++){
+                                $disability = $disabilities[$i];
+                                // creo il collegamento tra la disabilità e il bambino
+                                $query = "INSERT INTO bdisabilita (bambino, disabilita) VALUES ('$fiscalCode', '$disability')";
+                                if(mysqli_query($db, $query)){
+                                    continue;
+                                }
+                                else{
+                                    http_response_code(409);
+                                }
+                            }
                         }
                         else{
                             http_response_code(409);
                         }
                     }
+                    else{
+                        http_response_code(409);
+                    }
+                }
+                else{
+                    http_response_code(409);
                 }
             }
             // se la registrazione non è andata a buon fine mando un errore

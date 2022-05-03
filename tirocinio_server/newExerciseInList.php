@@ -14,23 +14,29 @@ if(isset($postdata) && !empty($postdata)){
     $ability = $request->ability;
     $insertionDate = $request->insertionDate;
 
-    $query = "SELECT * FROM implementazioneEsercizio WHERE percFisio = $exListNum AND tipologia = '".$exType."' AND abilita = '".$ability."'";
+    $query = "SELECT cod FROM abilita WHERE descrizione = '".$ability."'";
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($result);
-    //echo(json_encode($row));
-    if(empty($row)){
-        $query = "INSERT INTO implementazioneEsercizio (inserimento, tipologia, percFisio, abilita) VALUES ('$insertionDate', '$exType', '$exListNum', '$ability')";
-        // aggiungi cgcreaes
-        if(mysqli_query($db,$query)){
-            http_response_code(201);
-            //$query = "INSERT INTO cgCreaEs (inserimento, tipologia, percFisio, abilita) VALUES ('$insertionDate', '$exType', '$exListNum', '$ability')";
+    if(!empty($row)){
+        $cod = $row['cod'];
+        $query = "SELECT * FROM implementazioneEsercizio WHERE percFisio = $exListNum AND tipologia = '".$exType."' AND abilita = $cod";
+        $result = mysqli_query($db, $query);
+        $row = mysqli_fetch_assoc($result);
+        //echo(json_encode($row));
+        if(empty($row)){
+            $query = "INSERT INTO implementazioneEsercizio (inserimento, tipologia, percFisio, abilita) VALUES ('$insertionDate', '$exType', $exListNum, $cod)";
+            // aggiungi cgcreaes
+            if(mysqli_query($db,$query)){
+                http_response_code(201);
+                //$query = "INSERT INTO cgCreaEs (inserimento, tipologia, percFisio, abilita) VALUES ('$insertionDate', '$exType', '$exListNum', '$ability')";
+            }
+            else{
+                http_response_code(404);
+            }
         }
         else{
             http_response_code(409);
         }
-    }
-    else{
-        http_response_code(409);
-    }
+    }    
 }
 ?>

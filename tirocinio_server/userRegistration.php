@@ -26,7 +26,7 @@ if(isset($postdata) && !empty($postdata)){
         if(empty($row)){
             $query = "INSERT INTO utente (cf, nome, cognome) VALUES ('$fiscalCode', '$name', '$surname')";
             if(mysqli_query($db,$query)){
-                $query = "INSERT INTO caregiver (utente, nome, cognome, email, password, ruolo) VALUES ('$fiscalCode', '$name', '$surname', '$email', '$hashedPassword', '$role')";
+                $query = "INSERT INTO caregiver (utente, email, password, ruolo) VALUES ('$fiscalCode', '$email', '$hashedPassword', '$role')";
                 if(mysqli_query($db,$query)){
                     http_response_code(201);
                 }
