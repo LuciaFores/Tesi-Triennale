@@ -22,13 +22,17 @@ if(isset($postdata) && !empty($postdata)){
         $query = "SELECT * FROM implementazioneEsercizio WHERE percFisio = $exListNum AND tipologia = '".$exType."' AND abilita = $cod";
         $result = mysqli_query($db, $query);
         $row = mysqli_fetch_assoc($result);
-        //echo(json_encode($row));
         if(empty($row)){
             $query = "INSERT INTO implementazioneEsercizio (inserimento, tipologia, percFisio, abilita) VALUES ('$insertionDate', '$exType', $exListNum, $cod)";
-            // aggiungi cgcreaes
             if(mysqli_query($db,$query)){
-                http_response_code(201);
-                //$query = "INSERT INTO cgCreaEs (inserimento, tipologia, percFisio, abilita) VALUES ('$insertionDate', '$exType', '$exListNum', '$ability')";
+                $exercise = mysqli_insert_id($db);
+                $query = "INSERT INTO cgCreaEs (caregiver, esImpl) VALUES ('$caregiver', $exercise)";
+                if(mysqli_query($db, $query)){
+                    http_response_code(201);
+                }
+                else{
+                    http_response_code(409);
+                }
             }
             else{
                 http_response_code(404);

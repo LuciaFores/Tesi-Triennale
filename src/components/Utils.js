@@ -147,7 +147,9 @@ export function rearrangeExercises(){
         exercise.push(exercises[i+3]);
         exercise.push(exercises[i+4]);
         exercise.push(exercises[i+5]);
-        exercise.push(exercises[i+6]);
+        let cod = exercises[i+6];
+        let ability = TranslateTableAbility(cod);
+        exercise.push(ability);
         exercisesList.push(exercise);
     }
     return exercisesList;
@@ -195,4 +197,13 @@ export function validInsertion(caregiverRole, exTypeChosen){
         return false;
     }
     return true;
+}
+
+function TranslateTableAbility(cod){
+    if(cod == 1){
+        return 'Cane';
+    }
+    if(cod == 2){
+        return 'Gatto';
+    }
 }

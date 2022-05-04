@@ -5,19 +5,19 @@ class ContactForm extends Component{
     constructor(props){
         super(props);
 
-        this.onChangeRequest = this.onChangeRequest.bind(this);
+        this.onChangeDescription = this.onChangeDescription.bind(this);
 
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             caregiver : localStorage.getItem('caregiverFiscalcode'),
-            request : '',
+            description : '',
         }
     }
 
-    onChangeRequest(e){
+    onChangeDescription(e){
         this.setState({
-            request : e.target.value,
+            description : e.target.value,
         });
     }
 
@@ -26,16 +26,17 @@ class ContactForm extends Component{
 
         const obj = {
             caregiver : this.state.caregiver,
-            request : this.state.request
+            description : this.state.description
         }
 
         axios.post('http://localhost/tirocinio/newRequest.php', obj)
-            .then(res => console.log(res.data))
+            .then(res => console.log(res.data),
+            window.location.href = './contactForm/success')
             .catch(error => console.log('errore'))
 
         this.setState({
             caregiver : localStorage.getItem('caregiverFiscalcode'),
-            request : '',
+            description : '',
         })
     }
 
@@ -45,8 +46,8 @@ class ContactForm extends Component{
                 <form>
                 <div className='form-row'>
                         <div className='form-group col mx-1'>
-                            <label htmlFor='inputRequest'>Richiesta</label>
-                            <textarea className='form-control' id='inputRequest' value={this.state.request} onChange={this.onChangeRequest}></textarea>
+                            <label htmlFor='inputDescription'>Richiesta</label>
+                            <textarea className='form-control' id='inputDescription' value={this.state.description} onChange={this.onChangeDescription}></textarea>
                         </div>
                     </div>
                     <button type='submit' className='btn btn-primary mt-2 mb-2' onClick={this.onSubmit}>Effettua Richiesta!</button>

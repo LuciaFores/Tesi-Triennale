@@ -29,6 +29,7 @@ import RoutineSelection from './pages/RoutineSelection';
 import TherapyExercisesList from './pages/TherapyExercisesList';
 import NewExerciseInList from './pages/NewExerciseInList';
 import Contact from './pages/Contact';
+import RSSuccess from './pages/RSSuccess';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -51,6 +52,7 @@ ReactDOM.render(
             <Route path='patientProfile/therapyExercisesTypeList' element={<TherapyExercisesTypeList/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/newExercise' element={<NewExerciseInList/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/newExercise/contactForm' element={<Contact/>}/>
+            <Route path='patientProfile/therapyExercisesTypeList/newExercise/contactForm/success' element={<RSSuccess/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList' element={<TherapyExercisesList/>}/>
             <Route path='patientProfile/routineSelection' element={<RoutineSelection/>}/>
             <Route path='userae' element={<UserAlreadyExists/>}/>

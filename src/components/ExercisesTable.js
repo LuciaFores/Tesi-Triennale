@@ -1,5 +1,5 @@
 import React from 'react';
-import {clearExercisesData, rearrangeExercises, getExerciseInformation, clearExerciseInformationData} from '../components/Utils';
+import {clearExercisesData, rearrangeExercises} from '../components/Utils';
 
 function ExercisesTable(){
     if(localStorage.getItem('exercisesData') === null && localStorage.getItem('exercises') === null){
