@@ -72,7 +72,7 @@ class RegisterPatientForm extends Component{
     onSubmit(e){
         e.preventDefault();
 
-        if(localStorage.getItem('cargiverRole') == 'nonProfessionale'){
+        if( localStorage.getItem('caregiverRole') === 'nonProfessionale'){
             alert('La funzione è abilitata solo per caregiver professionali');
             this.setState({
                 caregiver : localStorage.getItem('caregiverFiscalcode'),
@@ -101,8 +101,8 @@ class RegisterPatientForm extends Component{
             };
 
             axios.post('http://localhost/tirocinio/patientRegistration.php', obj)
-                .then(res => console.log('ok')/*window.location.href = '/caregiverprofile'*/)
-                .catch(error => console.log(error)/*window.location.href = '/patientae'*/);
+                .then(res => window.location.href = '/caregiverprofile')
+                .catch(error => window.location.href = '/patientae');
 
             this.setState({
                 caregiver : localStorage.getItem('caregiverFiscalcode'),
