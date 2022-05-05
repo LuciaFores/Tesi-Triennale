@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../components/NavbarSULI';
+import Navbar from '../components/NavbarPRLO';
 import RDForm from '../components/FormRD';
 import imgRD from '../img/imgRD.svg';
 import {Link} from 'react-router-dom';

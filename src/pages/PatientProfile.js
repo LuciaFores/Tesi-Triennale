@@ -9,10 +9,12 @@ import imgRoutine from '../img/imgRoutine.svg';
 function GoBack(){
     return(
         <div>
-            <p>
-                Vuoi tornare alla selezione dei pazienti? <br/>
-                Clicca <Link to='/caregiverprofile' onClick={changePatient}>qui</Link>!
-            </p> 
+            <div>
+                <p>
+                    Vuoi tornare alla selezione dei pazienti? <br/>
+                    Clicca <Link to='/caregiverprofile' onClick={changePatient}>qui</Link>!
+                </p> 
+            </div>
         </div>
     )
 }
@@ -55,13 +57,15 @@ function TherapyExercisesListCard(){
         <div className="card mt-4 border-primary">
             <img className="card-img-top img-fluid" src={imgExList} alt='Card image cap'/>
             <hr/>
-            <p>
-                Vuoi consultare il percorso terapeutico del paziente?<br/>
-                Nella sezione relativa al percorso terapeutico potrai consultare gli esercizi assegnati al
-                paziente, creare nuove implementazioni di esercizi già assegnati e controllare gli
-                esiti delle esecuzioni degli esercizi da parte del paziente.
-            </p>
-            <button className="btn btn-primary col-7"><Link to='/patientProfile/therapyExercisesTypeList' onClick={getTypes} className='link-light text-decoration-none'>Vai al percorso terapeutico di {name}</Link></button>
+            <div className="card-body">
+                <p className="card-text">
+                    Vuoi consultare il percorso terapeutico del paziente?<br/>
+                    Nella sezione relativa al percorso terapeutico potrai consultare gli esercizi assegnati al
+                    paziente, creare nuove implementazioni di esercizi già assegnati e controllare gli
+                    esiti delle esecuzioni degli esercizi da parte del paziente.
+                </p>
+                <button className="btn btn-primary col-7 mb-2"><Link to='/patientProfile/therapyExercisesTypeList' onClick={getTypes} className='link-light text-decoration-none'>Vai al percorso terapeutico di {name}</Link></button>
+            </div>
         </div>
     );
 }
@@ -72,12 +76,14 @@ function TherapyRoutineExecutionCard(){
         <div className="card mt-4 border-primary">
             <img className="card-img-top img-fluid" src={imgRoutine} alt='Card image cap'/>
             <hr/>
-            <p>
-                Vuoi avviare una sessione di allenamento con {name}?
-                Potrai scegliere quali degli esercizi disponibili nel percorso terapeutico di {name} far 
-                eseguire e poi iniziare l'allenamento.
-            </p>
-            <button className="btn btn-primary col-7"><Link to='/patientProfile/routineSelection' className='link-light text-decoration-none'>Inizia ad allenarti con {name}!</Link></button>
+            <div className="card-body">
+                <p className="card-text">
+                    Vuoi avviare una sessione di allenamento con {name}?
+                    Potrai scegliere quali degli esercizi disponibili nel percorso terapeutico di {name} far 
+                    eseguire e poi iniziare l'allenamento.
+                </p>
+                <button className="btn btn-primary col-7 mb-2 offset-1"><Link to='/patientProfile/routineSelection' className='link-light text-decoration-none'>Inizia ad allenarti con {name}!</Link></button>
+            </div>
         </div>
     )
 }
@@ -123,8 +129,12 @@ function PatientProfile(){
                         <TherapyRoutineExecutionCard/>
                     </div>
                 </div>
+                <div className="row mt-md-3">
+                    <div className="col-md-3 col-xs-12">
+                        <GoBack/>
+                    </div>
+                </div>
             </div>
-            <GoBack/>
         </div>
     )
 }
