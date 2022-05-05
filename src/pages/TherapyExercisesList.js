@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/NavbarPRLO";
 import ExercisesTable from '../components/ExercisesTable';
-import { clearExercisesList, clearExerciseInformationData, getExerciseInformation } from "../components/Utils";
-import imgCard from '../img/imgCard.svg';
+import { clearExercisesList, clearExerciseInformationData, getExerciseInformation, unicodeToChar } from "../components/Utils";
+import imgDescription from '../img/imgDescription.svg';
+import imgResults from '../img/imgResults.svg';
+import imgExecution from '../img/imgExecution.svg';
 
 function Redirect(){
     return(
@@ -14,17 +16,18 @@ function Redirect(){
 }
 
 function DescriptionCard(){
-    const exerciseDescription = localStorage.getItem('exerciseDescription');
+    let exerciseDescription = localStorage.getItem('exerciseDescription');
+    exerciseDescription = unicodeToChar(exerciseDescription);
 
     return(
         <div className="card mt-4 border-primary">
-            <img className="card-img-top img-fluid" src={imgCard} alt="Card image cap"/>
+            <img className="card-img-top img-fluid" src={imgDescription} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
-                <h1 className="card-text">
+                <h2 className="card-text">
                     Descrizione dell'esercizio
-                </h1>
-                <p>
+                </h2>
+                <p className="mb-md-4">
                     {exerciseDescription}
                 </p>
             </div>
@@ -33,17 +36,18 @@ function DescriptionCard(){
 }
 
 function ExecutionCard(){
-    const exerciseExecution = localStorage.getItem('exerciseExecution');
+    let exerciseExecution = localStorage.getItem('exerciseExecution');
+    exerciseExecution = unicodeToChar(exerciseExecution);
 
     return(
         <div className="card mt-4 border-primary">
-            <img className="card-img-top img-fluid" src={imgCard} alt="Card image cap"/>
+            <img className="card-img-top img-fluid" src={imgExecution} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
-                <h1 className="card-text">
-                    Modalità di esecuzione dell'esercizio
-                </h1>
-                <p>
+                <h2 className="card-text">
+                    Modalità di esecuzione
+                </h2>
+                <p className="mb-md-5">
                     {exerciseExecution}
                 </p>
             </div>
@@ -52,17 +56,18 @@ function ExecutionCard(){
 }
 
 function ResultAttendedCard(){
-    const exerciseRes = localStorage.getItem('exerciseRes');
+    let exerciseRes = localStorage.getItem('exerciseRes');
+    exerciseRes = unicodeToChar(exerciseRes);
 
     return(
         <div className="card mt-4 border-primary">
-            <img className="card-img-top img-fluid" src={imgCard} alt="Card image cap"/>
+            <img className="card-img-top img-fluid" src={imgResults} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
-                <h1 className="card-text">
-                    Risultati attesi dall'esercizio
-                </h1>
-                <p>
+                <h2 className="card-text">
+                    Risultati attesi
+                </h2>
+                <p className="mb-md-4">
                     {exerciseRes}
                 </p>
             </div>
@@ -104,7 +109,7 @@ function TherapyExercisesList(){
                         <ResultAttendedCard/>
                     </div>
                 </div>
-                <div className="row table-responsive">
+                <div className="row table-responsive mt-md-5 mt-xs-3">
                     <ExercisesTable/>
                 </div>
 

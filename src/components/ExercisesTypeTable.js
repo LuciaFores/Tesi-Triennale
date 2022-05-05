@@ -15,7 +15,7 @@ function ExercisesTypeTable(){
         <tr key={index}>
             <td>{index+1}</td>
             <td>{type}</td>
-            <td><button className='btn btn-primary' onClick={() => getExercises(type)}><Link to='./therapyExercisesList'>Consulta!</Link></button></td>
+            <td><button className='btn btn-primary' onClick={() => getExercises(type)}><Link to='./therapyExercisesList' className='link-light text-decoration-none'>Consulta!</Link></button></td>
         </tr>
     ) 
     return(

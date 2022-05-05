@@ -61,7 +61,7 @@ function TherapyExercisesListCard(){
                 paziente, creare nuove implementazioni di esercizi già assegnati e controllare gli
                 esiti delle esecuzioni degli esercizi da parte del paziente.
             </p>
-            <button className="btn btn-outline-primary col-7"><Link to='/patientProfile/therapyExercisesTypeList' onClick={getTypes}>Vai al percorso terapeutico di {name}</Link></button>
+            <button className="btn btn-primary col-7"><Link to='/patientProfile/therapyExercisesTypeList' onClick={getTypes} className='link-light text-decoration-none'>Vai al percorso terapeutico di {name}</Link></button>
         </div>
     );
 }
@@ -77,7 +77,7 @@ function TherapyRoutineExecutionCard(){
                 Potrai scegliere quali degli esercizi disponibili nel percorso terapeutico di {name} far 
                 eseguire e poi iniziare l'allenamento.
             </p>
-            <button className="btn btn-outline-primary col-7"><Link to='/patientProfile/routineSelection'>Inizia ad allenarti con {name}!</Link></button>
+            <button className="btn btn-primary col-7"><Link to='/patientProfile/routineSelection' className='link-light text-decoration-none'>Inizia ad allenarti con {name}!</Link></button>
         </div>
     )
 }

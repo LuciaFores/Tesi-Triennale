@@ -90,8 +90,8 @@ export function prettifyDisString(disabilities){
     return disabilities.replace(/,/g, ', ');
 }
 
-export function changeDateFormat(birthdate){
-    return birthdate.split('-').reverse().join('-');
+export function changeDateFormat(date){
+    return date.split('-').reverse().join('-');
 }
 
 export function getTypes(){
@@ -141,14 +141,14 @@ export function rearrangeExercises(){
     let exercisesList = [];
     for (var i = 0; i<exercises.length; i+=7){
         let exercise = []
-        exercise.push(exercises[i]);
+        exercise.push(changeDateFormat(exercises[i]));
         exercise.push(exercises[i+1]);
         exercise.push(exercises[i+2]);
         exercise.push(exercises[i+3]);
         exercise.push(exercises[i+4]);
         exercise.push(exercises[i+5]);
         let cod = exercises[i+6];
-        let ability = TranslateTableAbility(cod);
+        let ability = translateTableAbility(cod);
         exercise.push(ability);
         exercisesList.push(exercise);
     }
@@ -190,8 +190,8 @@ export function clearExerciseInformationData(){
 
 export function validInsertion(caregiverRole, exTypeChosen){
     if(caregiverRole === 'nonProfessionale'){
-        const exTypes = localStorage.getItem('exTypes');
-        if(exTypeChosen in exTypes){
+        const exTypes = localStorage.getItem('exTypes').split(',');
+        if(exTypes.includes(exTypeChosen)){
             return true;
         }
         return false;
@@ -199,7 +199,7 @@ export function validInsertion(caregiverRole, exTypeChosen){
     return true;
 }
 
-function TranslateTableAbility(cod){
+function translateTableAbility(cod){
     if(cod == 1){
         return 'Cane';
     }
@@ -207,3 +207,10 @@ function TranslateTableAbility(cod){
         return 'Gatto';
     }
 }
+
+export function unicodeToChar(text) {
+    return text.replace(/\\u[\dA-F]{4}/gi, 
+           function (match) {
+                return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
+           });
+ }

@@ -88,7 +88,7 @@ function RegisterPatient(){
 
 function ConnectCaregiver(){
     return(
-        <div className="card mt-4 border-primary md-long-card">
+        <div className="card mt-4 border-primary mb-md-1">
             <img className="card-img-top img-fluid" src={imgCC} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
@@ -128,7 +128,7 @@ function CaregiverProfile(){
         <div>
             <Navbar/>
             <div className='container'>
-                <div className='row mt-5'>
+                <div className='row mt-3'>
                     <div className='col'>
                         <h1>{name} {surname}, questo è il tuo profilo!</h1>
                     </div>
