@@ -213,4 +213,10 @@ export function unicodeToChar(text) {
            function (match) {
                 return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
            });
- }
+}
+
+export function getRandomIndex(min, max){
+    return Math.floor(Math.random() * (max-min)+1 ) + min;
+}
+
+ 
