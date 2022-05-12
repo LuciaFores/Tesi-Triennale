@@ -5,6 +5,7 @@ import imgHome from '../img/imgHome.svg';
 import imgAbout from '../img/imgAbout.svg';
 import imgFunc from '../img/imgFunc.svg';
 import imgNext from '../img/imgNext.svg';
+import EserciziAppaiamento from '../components/EserciziAppaiamento';
 
 function Titolo(){
     return(

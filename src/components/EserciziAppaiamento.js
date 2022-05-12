@@ -1,6 +1,6 @@
 import React from 'react';
 import abilities from './Abilities';
-import { getRandomIndex } from './Utils';
+import { getRandomIndex, fisherYatesShuffle } from './Utils';
 
 function gamePreparation(){
     // Per ora le cambio da codice ma poi verrà parametrizzata prendendo quella scelta dal caregiver
@@ -23,11 +23,23 @@ function gamePreparation(){
     return [chosenAbility, wrongAbility1, wrongAbility2];
 }
 
+function check(id){
+    let chosenAbility = abilities.find(ability => ability.name === 'Cavallo');
+    if(id === chosenAbility['name']){
+        alert('Corretto!');
+    }
+    else{
+        alert('Non corretto :(');
+    }
+}
+
 function EserciziAppaiamento(){
     let abilities = gamePreparation();
     let correctAbility = abilities[0];
     let wrongAbility1 = abilities[1];
     let wrongAbility2 = abilities[2];
+    let pickedAbilities = [correctAbility, wrongAbility1, wrongAbility2]
+    fisherYatesShuffle(pickedAbilities)
 
     return(
         <div>
@@ -35,24 +47,20 @@ function EserciziAppaiamento(){
                 <h1>
                     Abilità corretta
                 </h1>
-                <div className='col'>
-                    Nome : {correctAbility['name']} <br/>
-                    Immagine : <img src={correctAbility['img']} className='img-fluid'/>
+                <div className='offset-md-4 col-md-4'>
+                   <img src={correctAbility['img']} className='img-fluid'/>
                 </div>
             </div>
-            <div className='col'>
+            <div className='row'>
                 <h1>Abilità tra cui scegliere</h1>
-                <div className='col'>
-                    Nome : {correctAbility['name']} <br/>
-                    Immagine : <img src={correctAbility['img']} className='img-fluid'/>
+                <div className='col-md-4'>
+                    <img src={pickedAbilities[0]['img']} className='img-fluid' onClick={() => check(pickedAbilities[0]['name'])}/>
                 </div>
-                <div className='col'>
-                    Nome : {wrongAbility1['name']} <br/>
-                    Immagine : <img src={wrongAbility1['img']} className='img-fluid'/>
+                <div className='col-md-4'>
+                    <img src={pickedAbilities[1]['img']} className='img-fluid' onClick={() => check(pickedAbilities[1]['name'])}/>
                 </div>
-                <div className='col'>
-                    Nome : {wrongAbility2['name']} <br/>
-                    Immagine : <img src={wrongAbility2['img']} className='img-fluid'/>
+                <div className='col-md-4'>
+                    <img src={pickedAbilities[2]['img']} className='img-fluid' onClick={() => check(pickedAbilities[2]['name'])}/>
                 </div>
             </div>
         </div>

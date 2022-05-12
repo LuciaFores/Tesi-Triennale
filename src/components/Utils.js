@@ -219,4 +219,15 @@ export function getRandomIndex(min, max){
     return Math.floor(Math.random() * (max-min)+1 ) + min;
 }
 
- 
+export function fisherYatesShuffle(array){
+    // La funzione, seguendo l'algoritmo di shuffling di Fisher-Yates nella versione di Durstenfeld e 
+    // Knuth serve a mischiare le tre abilità nell'array così da disporle in modo sempre più o meno
+    // diverso al bambino
+    for(let i = array.length - 1; i > 0; i--){
+        let j = Math.floor(Math.random() * (i+1));
+        let tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+    }
+}
+
