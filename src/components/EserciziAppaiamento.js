@@ -45,14 +45,14 @@ function EserciziAppaiamento(){
         <div>
             <div className='row'>
                 <h1>
-                    Abilità corretta
+                    Immagine da scegliere
                 </h1>
                 <div className='offset-md-4 col-md-4'>
                    <img src={correctAbility['img']} className='img-fluid'/>
                 </div>
             </div>
             <div className='row'>
-                <h1>Abilità tra cui scegliere</h1>
+                <h1>Immagine tra cui scegliere</h1>
                 <div className='col-md-4'>
                     <img src={pickedAbilities[0]['img']} className='img-fluid' onClick={() => check(pickedAbilities[0]['name'])}/>
                 </div>

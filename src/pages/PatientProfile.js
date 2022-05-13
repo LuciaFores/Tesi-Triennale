@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavbarPRLO from '../components/NavbarPRLO';
-import {clearPatientData, changePatient, calculateAge, prettifyDisString, changeDateFormat, getTypes, clearExTypes} from '../components/Utils';
+import {clearPatientData, changePatient, calculateAge, prettifyDisString, changeDateFormat, getTypes, clearExTypes, getAllExercises} from '../components/Utils';
 import imgPatientCard from '../img/imgPatientCard.svg';
 import imgExList from '../img/imgExList.svg';
 import imgRoutine from '../img/imgRoutine.svg';
@@ -82,7 +82,7 @@ function TherapyRoutineExecutionCard(){
                     Potrai scegliere quali degli esercizi disponibili nel percorso terapeutico di {name} far 
                     eseguire e poi iniziare l'allenamento.
                 </p>
-                <button className="btn btn-primary col-7 mb-2 offset-1"><Link to='/patientProfile/routineSelection' className='link-light text-decoration-none'>Inizia ad allenarti con {name}!</Link></button>
+                <button className="btn btn-primary col-7 mb-2 offset-1"><Link to='/patientProfile/routineSelection' onClick={getAllExercises} className='link-light text-decoration-none'>Inizia ad allenarti con {name}!</Link></button>
             </div>
         </div>
     )
@@ -104,6 +104,18 @@ function PatientProfile(){
 
     if(localStorage.getItem('exTypes') != null){
         clearExTypes();
+    }
+
+    if(localStorage.getItem('routine') != null){
+        localStorage.removeItem('routine');
+    }
+
+    if(localStorage.getItem('allExercises') != null){
+        localStorage.removeItem('allExercises');
+    }
+
+    if(localStorage.getItem('allExercisesData') != null){
+        localStorage.removeItem('allExercisesData');
     }
     
     const name = localStorage.getItem('patientName');

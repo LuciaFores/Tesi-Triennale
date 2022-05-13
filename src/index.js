@@ -30,6 +30,7 @@ import TherapyExercisesList from './pages/TherapyExercisesList';
 import NewExerciseInList from './pages/NewExerciseInList';
 import Contact from './pages/Contact';
 import RSSuccess from './pages/RSSuccess';
+import Appaiamento from './pages/Appaiamento';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -55,6 +56,7 @@ ReactDOM.render(
             <Route path='patientProfile/therapyExercisesTypeList/newExercise/contactForm/success' element={<RSSuccess/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList' element={<TherapyExercisesList/>}/>
             <Route path='patientProfile/routineSelection' element={<RoutineSelection/>}/>
+            <Route path='patientProfile/exercises/appaiamento' element={<Appaiamento/>}/>
             <Route path='userae' element={<UserAlreadyExists/>}/>
             <Route path='usernf' element={<UserNotFound/>}/>
             <Route path='caregiverac' element={<CaregiverAlreadyConnected/>}/>

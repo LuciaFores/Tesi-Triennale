@@ -39,7 +39,9 @@ function NewExerciseInList(){
                     </p>
                 </div>
                 <div className='row'>
-                    <NEForm/>
+                    <div className='col-md-6'>
+                        <NEForm/>
+                    </div>
                 </div>
                 <div className='row'>
                     <Redirect/>

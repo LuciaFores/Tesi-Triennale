@@ -206,6 +206,15 @@ function translateTableAbility(cod){
     if(cod == 2){
         return 'Gatto';
     }
+    if(cod == 3){
+        return 'Elefante';
+    }
+    if(cod == 4){
+        return 'Cavallo';
+    }
+    if(cod == 5){
+        return 'Mucca';
+    }
 }
 
 export function unicodeToChar(text) {
@@ -231,3 +240,53 @@ export function fisherYatesShuffle(array){
     }
 }
 
+export function getAllExercises(){
+    const obj = {
+        exListNum : localStorage.getItem('patientExListNum'),
+    }
+    //console.log(obj);
+    axios.post('http://localhost/tirocinio/getAllExercises.php', obj)
+        .then(res => localStorage.setItem('allExercisesData', res.data))
+        .catch(error => console.log('errore'))
+}
+
+export function clearAllExercisesData(){
+    let data = localStorage.getItem('allExercisesData');
+    data = data.slice(25, (data.length)-1);
+    data = data.replace(/"/g, '');
+    localStorage.removeItem('allExercisesData');
+    localStorage.setItem('allExercises', data);
+}
+
+export function rearrangeAllExercises(){
+    let allExercises = localStorage.getItem('allExercises').split(',');
+    let allExercisesList = [];
+    for (var i = 0; i<allExercises.length; i+=8){
+        let exercise = []
+        exercise.push(changeDateFormat(allExercises[i]));
+        exercise.push(allExercises[i+1]);
+        exercise.push(allExercises[i+2]);
+        exercise.push(allExercises[i+3]);
+        exercise.push(allExercises[i+4]);
+        exercise.push(allExercises[i+5]);
+        exercise.push(allExercises[i+6]);
+        let cod = allExercises[i+7];
+        let ability = translateTableAbility(cod);
+        exercise.push(ability);
+        allExercisesList.push(exercise);
+    }
+    return allExercisesList;
+}
+
+export function populateRoutine(exercise){
+    if(localStorage.getItem('routine') === null){
+        localStorage.setItem('routine', '');
+    }
+    let routine = localStorage.getItem('routine');
+    routine += exercise + ',';
+    localStorage.setItem('routine', routine);
+}
+
+export function clearRoutine(){
+    localStorage.removeItem('routine');
+}

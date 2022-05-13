@@ -89,6 +89,9 @@ class NEForm extends Component{
                                 <option></option>
                                 <option value='Cane'>Cane</option>
                                 <option value='Gatto'>Gatto</option>
+                                <option value='Elefante'>Elefante</option>
+                                <option value='Cavallo'>Cavallo</option>
+                                <option value='Mucca'>Mucca</option>
                             </select>
                         </div>
                     </div>
