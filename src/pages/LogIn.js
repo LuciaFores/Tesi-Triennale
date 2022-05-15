@@ -51,18 +51,24 @@ function LogIn(){
     }
     
     return(
-        <div className='container-fluid'>
+        <div>
             <Navbar/>
-            <Titolo/>
-            <Sottotitolo/>
+            <div className='container'>
+                <div className='row'>
+                    <Titolo/>
+                </div>
+                <div className='row'>
+                    <Sottotitolo/>
+                </div>
+            </div>
             <div className='container'>
                 <div className='row align-items-center'>
                     <div className='col-xs-12 col-sm-6'>
-                        <LIForm/>
-                        <Redirect/>
+                        <Immagine/>
                     </div>
                     <div className='col-xs-12 col-sm-6'>
-                        <Immagine/>
+                        <LIForm/>
+                        <Redirect/>
                     </div>
                 </div>
             </div>

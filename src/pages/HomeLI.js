@@ -124,7 +124,7 @@ function HomeLI(){
     }
 
     return(
-        <div className='container-fluid'>
+        <div>
             <Navbar/>
             <div className='container'>
                 <div className='row align-items-center'>
