@@ -13,9 +13,8 @@ function AllExercisesTable(){
 
     const allExercisesList = rearrangeAllExercises();
 
-    const tableItems = allExercisesList.map((exercise, index) => 
-        <tr key={index}>
-            <td>{index+1}</td>
+    const tableItems = allExercisesList.map((exercise) => 
+        <tr key={exercise[0]}>
             <td>{exercise[0]}</td>
             <td>{exercise[1]}</td>
             <td>{exercise[2]}</td>
@@ -24,7 +23,7 @@ function AllExercisesTable(){
             <td>{exercise[5]}</td>
             <td>{exercise[6]}</td>
             <td>{exercise[7]}</td>
-            <td><button className='btn btn-primary' onClick={() => populateRoutine([exercise[6], exercise[7]])}>Aggiungi!</button></td>
+            <td><button className='btn btn-primary' onClick={() => populateRoutine(exercise[0])}>Aggiungi!</button></td>
         </tr>
     ) 
     return(
@@ -36,7 +35,6 @@ function AllExercisesTable(){
                         <th className=''>Data inserimento</th>
                         <th className=''>Data apprendimento</th>
                         <th className=''>Data sospensione</th>
-                        <th className=''>Concluso</th>
                         <th className=''>Risposta Accettata</th>
                         <th className=''>Data ripasso</th>
                         <th className=''>Tipologia Esercizio</th>

@@ -40,6 +40,9 @@ function TherapyExercisesList(){
     if(localStorage.getItem('exerciseInformationData') != null){
         localStorage.removeItem('exerciseInformationData');
     }
+    if(localStorage.getItem('exercisesData') != null){
+        localStorage.removeItem('exercisesData');
+    }
     
 
     const patientName = localStorage.getItem('patientName');
@@ -47,14 +50,16 @@ function TherapyExercisesList(){
         <div>
             <Navbar/>
             <div className='container'>
-                <div className='row'>
+                <div className='row mt-md-3'>
                     <h1>Benvenuto nel percorso terapeutico di {patientName}</h1>   
                 </div>
                 <div className='row'>
                     <p>
                     Qui troverai tutte le tipologie di esercizi assegnati a {patientName}: consultando le
                     singole tipologie troverai le informazioni sul tipo di esercizio e sulle diverse implementazioni
-                    già assegnate. <br/>
+                    già assegnate.
+                    </p>
+                    <p>
                     Vuoi inserire un nuovo esercizio? Clicca <Link to='./newExercise'>qui</Link> per
                     scegliere la tipologia e l'abilità dell'esercizio.<br/>
                     Non preoccuparti di eventuali ripetizioni, in caso sia già stato assegnato un esercizio

@@ -95,8 +95,8 @@ function TherapyExercisesList(){
         <div>
             <Navbar/>
             <div className="container">
-                <div className="row">
-                    <h1>Esercizi {exTypeChosen}</h1>
+                <div className="row mt-md-3">
+                    <h1>{exTypeChosen}</h1>
                 </div>
                 <div className="row">
                     <div className="col-md-4 col-xs-12">

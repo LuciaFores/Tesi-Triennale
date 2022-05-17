@@ -50,20 +50,24 @@ function ChangePassword(){
     }
 
     return(
-        <div className='container-fluid'>
+        <div>
             <NavbarPRLO/>
-            <Titolo/>
-            <Sottotitolo/>
             <div className='container'>
-            <div className='row align-items-center'>
-                <div className='col-xs-12 col-sm-6'>
-                    <Immagine/>
+                <div className="row mt-md-3">
+                    <Titolo/>
                 </div>
-                <div className='col-xs-12 col-sm-6'>
-                    <CPForm/>
-                    <Redirect/>
+                <div className="row">
+                    <Sottotitolo/>
                 </div>
-            </div>
+                <div className='row align-items-center'>
+                    <div className='col-xs-12 col-sm-6'>
+                        <Immagine/>
+                    </div>
+                    <div className='col-xs-12 col-sm-6'>
+                        <CPForm/>
+                        <Redirect/>
+                    </div>
+                </div>
             </div>
             
 

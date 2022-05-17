@@ -12,9 +12,8 @@ function ExercisesTable(){
 
     const exercisesList = rearrangeExercises();
 
-    const tableItems = exercisesList.map((exercise, index) => 
-        <tr key={index}>
-            <td>{index+1}</td>
+    const tableItems = exercisesList.map((exercise) => 
+        <tr key={exercise[0]}>
             <td>{exercise[0]}</td>
             <td>{exercise[1]}</td>
             <td>{exercise[2]}</td>
@@ -34,7 +33,6 @@ function ExercisesTable(){
                         <th className=''>Data inserimento</th>
                         <th className=''>Data apprendimento</th>
                         <th className=''>Data sospensione</th>
-                        <th className=''>Concluso</th>
                         <th className=''>Risposta Accettata</th>
                         <th className=''>Data ripasso</th>
                         <th className=''>Abilità insegnata</th>

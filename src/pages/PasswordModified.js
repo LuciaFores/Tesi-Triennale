@@ -10,8 +10,14 @@ function PasswordNotModified(){
     return(
         <div>
             <Navbar/>
-            <h1>La tua password è stata correttamente modificata!</h1>
-            <p>Clicca <Link to='/caregiverprofile'>qui</Link> per tornare al tuo profilo </p>
+            <div className='container'> 
+                <div className='row mt-md-3'>
+                    <h1>La tua password è stata correttamente modificata!</h1>
+                </div>
+                <div className='row'>
+                    <p>Clicca <Link to='/caregiverprofile'>qui</Link> per tornare al tuo profilo </p>
+                </div>
+            </div>
         </div>
     )
 }

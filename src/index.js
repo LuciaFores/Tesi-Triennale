@@ -31,6 +31,8 @@ import NewExerciseInList from './pages/NewExerciseInList';
 import Contact from './pages/Contact';
 import RSSuccess from './pages/RSSuccess';
 import Appaiamento from './pages/Appaiamento';
+import NESuccess from './pages/NESuccess';
+import NEError from './pages/NEError';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -52,6 +54,8 @@ ReactDOM.render(
             <Route path='patientProfile' element={<PatientProfile/>}/>
             <Route path='patientProfile/therapyExercisesTypeList' element={<TherapyExercisesTypeList/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/newExercise' element={<NewExerciseInList/>}/>
+            <Route path='patientProfile/therapyExercisesTypeList/newExercise/success' element={<NESuccess/>}/>
+            <Route path='patientProfile/therapyExercisesTypeList/newExercise/error' element={<NEError/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/newExercise/contactForm' element={<Contact/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/newExercise/contactForm/success' element={<RSSuccess/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList' element={<TherapyExercisesList/>}/>

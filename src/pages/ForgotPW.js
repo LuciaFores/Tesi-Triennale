@@ -50,11 +50,15 @@ function ForgotPW(){
     }
 
     return(
-        <div className='container-fluid'>
+        <div>
             <Navbar/>
-            <Titolo/>
-            <Sottotitolo/>
             <div className='container'>
+                <div className='row mt-md-3'>
+                    <Titolo/>
+                </div>
+                <div className='row'>
+                    <Sottotitolo/>
+                </div>
                 <div className='row align-items-center'>
                     <div className='col-xs-12 col-sm-6'>
                         <Immagine/>

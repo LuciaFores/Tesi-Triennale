@@ -48,23 +48,25 @@ function SignUp(){
     }
 
     return(
-        <div className='container-fluid'>
+        <div>
             <Navbar/>
-            <Titolo/>
-            <Sottotitolo/>
             <div className='container'>
-            <div className='row'>
-                <div className='col-xs-12 col-sm-6'>
-                    <Immagine/>
+                <div className='row mt-md-3'>
+                    <Titolo/>
                 </div>
-                <div className='col-xs-12 col-sm-6'>
-                    <SUForm/>
-                    <Redirect/>
+                <div className='row'>
+                    <Sottotitolo/>
+                </div>
+                <div className='row'>
+                    <div className='col-xs-12 col-sm-6'>
+                        <Immagine/>
+                    </div>
+                    <div className='col-xs-12 col-sm-6'>
+                        <SUForm/>
+                        <Redirect/>
+                    </div>
                 </div>
             </div>
-            </div>
-            
-
         </div>
     );
 }

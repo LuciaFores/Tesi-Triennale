@@ -10,7 +10,7 @@ if(isset($postdata) && !empty($postdata)){
 
     $exListNum = $request -> exListNum;
 
-    $query = "SELECT inserimento, apprendimento, sospensione, concluso, rispAcc, ripasso, tipologia, abilita FROM implementazioneEsercizio WHERE percFisio = $exListNum";
+    $query = "SELECT id, inserimento, apprendimento, sospensione, rispAcc, ripasso, tipologia, abilita FROM implementazioneEsercizio WHERE percFisio = $exListNum";
 
     $result = mysqli_query($db, $query);
     $exercises = [];

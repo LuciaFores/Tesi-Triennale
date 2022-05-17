@@ -7,7 +7,7 @@ import {clearRoutine} from '../components/Utils';
 function Redirect(){
     return(
         <p>
-            Vuoi tornare alprofilo del paziente? Clicca <Link to='/patientprofile' onClick={clearRoutine}>qui</Link>
+            Vuoi tornare al profilo del paziente? Clicca <Link to='/patientprofile' onClick={clearRoutine}>qui</Link>!
         </p>
     );
 }
@@ -25,8 +25,13 @@ function RoutineSelection(){
         <div>
             <Navbar/>
             <div className='container'>
-                <div className='row'>
+                <div className='row mt-md-3'>
                     <h1>Benvenuto nella sezione per la creazione della routine di allenamento di {patientName}</h1>
+                </div>
+                <div className='row'>
+                    <p>
+                        Aggiungi alla routine tutti gli esercizi che desideri far eseguire al paziente!
+                    </p>
                 </div>
                 <div className='row table-responsive'>
                 <AllExercisesTable/>

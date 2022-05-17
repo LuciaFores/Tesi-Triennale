@@ -141,8 +141,8 @@ export function rearrangeExercises(){
     let exercisesList = [];
     for (var i = 0; i<exercises.length; i+=7){
         let exercise = []
-        exercise.push(changeDateFormat(exercises[i]));
-        exercise.push(exercises[i+1]);
+        exercise.push(exercises[i])
+        exercise.push(changeDateFormat(exercises[i+1]));
         exercise.push(exercises[i+2]);
         exercise.push(exercises[i+3]);
         exercise.push(exercises[i+4]);
@@ -152,6 +152,7 @@ export function rearrangeExercises(){
         exercise.push(ability);
         exercisesList.push(exercise);
     }
+    console.log(exercisesList);
     return exercisesList;
 }
 
@@ -263,8 +264,8 @@ export function rearrangeAllExercises(){
     let allExercisesList = [];
     for (var i = 0; i<allExercises.length; i+=8){
         let exercise = []
-        exercise.push(changeDateFormat(allExercises[i]));
-        exercise.push(allExercises[i+1]);
+        exercise.push(allExercises[i])
+        exercise.push(changeDateFormat(allExercises[i+1]));
         exercise.push(allExercises[i+2]);
         exercise.push(allExercises[i+3]);
         exercise.push(allExercises[i+4]);

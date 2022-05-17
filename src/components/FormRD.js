@@ -64,7 +64,7 @@ class FormRD extends Component{
                             <label htmlFor='inputName'>Nome Disabilità</label>
                             <input type='text' className='form-control' id='inputName' placeholder='Inserire Nome Disabilità' onChange={this.onChangeName} required/>
                             <label htmlFor='inputDescription'>Descrizione Disabilità</label>
-                            <textarea className='form-control' id='inputName' placeholder='Inserire Nome Disabilità' onChange={this.onChangeDescription} required/>
+                            <textarea className='form-control' id='inputName' placeholder='Inserire Descrizione Disabilità' onChange={this.onChangeDescription} required/>
                         </div>
                     </div>
                 </form>

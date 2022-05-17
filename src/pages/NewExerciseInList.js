@@ -24,12 +24,14 @@ function NewExerciseInList(){
         <div>
             <Navbar/>
             <div className='container'>
-                <div className='row'>
+                <div className='row mt-md-3'>
                     <h1>Inserisci un nuovo esercizio nel percorso terapeutico di {patientName}</h1>
                 </div>
                 <div className='row'>
                     <p>
-                        In questa sezione potrai inserire un nuovo esercizio nel percorso terapeutico di {patientName}.<br/>
+                        In questa sezione potrai inserire un nuovo esercizio nel percorso terapeutico di {patientName}.
+                    </p>
+                    <p>
                         Nel caso in cui tu sia un caregiver <strong>professionista</strong> potrai inserire nel
                         percorso esercizi anche di nuove tipologie rispetto a quelli già presenti. <br/>
                         Nel caso in cui tu sia un caregiver <strong>non professionista</strong> allora potrai inserire

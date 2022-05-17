@@ -9,7 +9,7 @@ function Titolo(){
     return(
         <div className='d-flex justify-content-center'>
             <div className='row'>
-                <h1>Autenticati alla piattaforma!</h1>
+                <h1>Autenticati sulla piattaforma!</h1>
             </div>
         </div>
     );
@@ -54,7 +54,7 @@ function LogIn(){
         <div>
             <Navbar/>
             <div className='container'>
-                <div className='row'>
+                <div className='row mt-md-3'>
                     <Titolo/>
                 </div>
                 <div className='row'>

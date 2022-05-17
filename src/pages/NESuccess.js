@@ -2,11 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/NavbarSULI';
 
-function FPWSuccess(){
-    if(localStorage.getItem('caregiverFiscalcode') != null){
-        window.location.href = '/caregiverprofile';
-    }
-
+function NESuccess(){
     return(
         <div>
             <Navbar/>
@@ -15,12 +11,12 @@ function FPWSuccess(){
                     <h1>Successo!</h1>
                 </div>
                 <div className='row'>
-                    <p>Abbiamo inviato una mail all'indirizzo specificato con la procedura per reimpostare la password!</p>
-                    <p>Ora clicca <Link to='/login'>qui</Link> per autenticarti!</p>
+                    <p>È stato inserito l'esercizio richiesto nel percorso terapeutico del paziente</p>
+                    <p>Ora clicca <Link to='/patientProfile/therapyExercisesTypeList'>qui</Link> per accedere al percorso terapeutico!</p>
                 </div>
             </div>
         </div>
     )
 }
 
-export default FPWSuccess;
+export default NESuccess;

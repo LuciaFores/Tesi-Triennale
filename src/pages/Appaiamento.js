@@ -6,7 +6,9 @@ function Appaiamento(){
     return(
         <div>
             <Navbar/>
-            <EserciziAppaiamento/>
+            <div className='container'>
+                <EserciziAppaiamento/>
+            </div>
         </div>
     )
 }

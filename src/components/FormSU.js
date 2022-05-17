@@ -119,7 +119,7 @@ class SUForm extends Component{
 
     render(){
         return(
-            <div className='container-fluid col-md-6 offset-md-3'>
+            <div className='container-fluid col-md-7 offset-md-3'>
                 <form>
                     <div className='form-row'>
                         <div className='form-group col-md-6 mx-1'>
@@ -153,6 +153,7 @@ class SUForm extends Component{
                     </div>
                     <div className='form-row mt-2'>
                         <div className='form-group col-md-6 mx-1'>
+                            Seleziona il ruolo con cui vuoi registrarti: <br/>
                             <input className='form-check-input' type='radio' name='ruolo' id='ruoloProf' value='professionale' onChange={this.onChangeRole}/>
                             <label htmlFor='ruoloProf' className='ms-1'>
                                 Caregiver Professionale

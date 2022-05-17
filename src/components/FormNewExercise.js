@@ -44,7 +44,6 @@ class NEForm extends Component{
             var day = date.getDate();
             var year = date.getFullYear();
             var insertion = year.toString() + '-' + month.toString() + '-' + day.toString();
-            //console.log(insertion);
 
             const obj = {
                 caregiver : this.state.caregiver,
@@ -55,8 +54,8 @@ class NEForm extends Component{
             }
 
             axios.post('http://localhost/tirocinio/newExerciseInList.php', obj)
-                .then(res => console.log(res.data))
-                .catch(error => console.log(error))
+                .then(res => window.location.href = './newExercise/success')
+                .catch(error => window.location.href = './newExercise/error')
 
             this.setState({
                 caregiver : localStorage.getItem('caregiverFiscalcode'),

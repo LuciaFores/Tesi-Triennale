@@ -19,7 +19,7 @@ function Contact(){
         <div>
             <Navbar/>
             <div className='container'>
-                <div className='row'>
+                <div className='row mt-md-3'>
                     <h1>Contattaci!</h1>
                 </div>
                 <div className='row'>
