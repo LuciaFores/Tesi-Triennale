@@ -1,7 +1,9 @@
 import React from 'react';
 import Navbar from '../components/NavbarPRLO';
 import NEForm from '../components/FormNewExercise';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { createExerciseTypesOptions, clearExerciseTypesData, clearAbilititesData, createAbilitiesOptions } from '../components/Utils';
 
 function Redirect(){
     return(
@@ -19,6 +21,42 @@ function Redirect(){
 }
 
 function NewExerciseInList(){
+    if(localStorage.getItem('exerciseTypesData') === null && localStorage.getItem('exerciseTypes') === null){
+        axios.post('http://localhost/tirocinio/getExerciseTypes.php')
+        .then(res => 
+            localStorage.setItem('exerciseTypesData', res.data),
+            window.location.reload()
+        )
+        .catch(error => console.log(error))
+    }
+
+    if(localStorage.getItem('exerciseTypesData') != null && localStorage.getItem('exerciseTypes') === null){
+        clearExerciseTypesData();
+        localStorage.removeItem('exerciseTypesData');
+    }
+
+    if(localStorage.getItem('abilitiesData') === null && localStorage.getItem('abilities') === null){
+        axios.post('http://localhost/tirocinio/getAbilities.php')
+        .then(res => 
+            localStorage.setItem('abilitiesData', res.data),
+            window.location.reload()
+        )
+        .catch(error => console.log(error))
+    }
+
+    if(localStorage.getItem('abilitiesData') != null && localStorage.getItem('abilities') === null){
+        clearAbilititesData();
+        localStorage.removeItem('abilitiesData');
+    }
+
+
+    window.onload = function(){
+        createExerciseTypesOptions();
+        createAbilitiesOptions();
+        localStorage.removeItem('exerciseTypes');
+        localStorage.removeItem('abilities');
+    }
+
     const patientName = localStorage.getItem('patientName');
     return(
         <div>

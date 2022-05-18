@@ -103,7 +103,8 @@ class RegisterPatientForm extends Component{
             axios.post('http://localhost/tirocinio/patientRegistration.php', obj)
                 .then(res => window.location.href = '/caregiverprofile')
                 .catch(error => window.location.href = '/patientae');
-
+            
+           //console.log(obj);
             this.setState({
                 caregiver : localStorage.getItem('caregiverFiscalcode'),
                 name : "",
@@ -139,9 +140,7 @@ class RegisterPatientForm extends Component{
                         <div className='form-group col mx-1'>
                             <label htmlFor='inputDisability'>Disabilità</label>
                             <select className='form-control' id='inputDisability' value={this.state.disabilities} onChange={this.onChangeDisabilities} multiple={true}>
-                                <option value='Psico Motoria'>Disabilità Psico Motoria</option>
-                                <option value='Motoria'>Disabilità Motoria</option>
-                                <option value='Cognitiva'>Disabilità Cognitiva</option>
+
                             </select>
                             <small className='text-muted' id='helpSelect'>Si ricorda che in caso si vogliano selezionare più
                             disabilità è necessario tenere premuto il tasto CTRL (su Windows) oppure il tasto Command ⌘ (su Mac)

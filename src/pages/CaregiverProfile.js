@@ -4,12 +4,13 @@ import Navbar from '../components/NavbarPRLO';
 import FormChoosePatient from '../components/FormChoosePatient';
 import FormRegisterPatient from '../components/FormRegisterPatient';
 import FormCC from '../components/FormCC';
-import { clearUserData, changePatient, clearExTypes } from '../components/Utils';
+import { clearUserData, changePatient, clearExTypes, createDisabilityOptions, clearDisabilitiesData } from '../components/Utils';
 import imgCard from '../img/imgCard.svg';
 import imgCP from '../img/imgCP.svg';
 import imgChoosePatient from '../img/imgChoosePatient.svg';
 import imgAP from '../img/imgAP.svg';
 import imgCC from '../img/imgCC.svg';
+import axios from 'axios';
 
 function UserCard(){
     const fiscalcode = localStorage.getItem('caregiverFiscalcode');
@@ -119,6 +120,25 @@ function CaregiverProfile(){
 
     if(localStorage.getItem('exTypes') != null){
         clearExTypes();
+    }
+
+    if(localStorage.getItem('disabilitiesData') === null && localStorage.getItem('disabilities') === null){
+        axios.post('http://localhost/tirocinio/getDisabilities.php')
+        .then(res => 
+            localStorage.setItem('disabilitiesData', res.data),
+            window.location.reload()
+        )
+        .catch(error => console.log(error))
+    }
+
+    if(localStorage.getItem('disabilitiesData') != null && localStorage.getItem('disabilities') === null){
+        clearDisabilitiesData();
+        localStorage.removeItem('disabilitiesData');
+    }
+
+    window.onload = function(){
+        createDisabilityOptions();
+        localStorage.removeItem('disabilities');
     }
 
     const name = localStorage.getItem('caregiverName');

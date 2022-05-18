@@ -216,6 +216,9 @@ function translateTableAbility(cod){
     if(cod == 5){
         return 'Mucca';
     }
+    if(cod == 6){
+        return 'Pecora';
+    }
 }
 
 export function unicodeToChar(text) {
@@ -290,4 +293,64 @@ export function populateRoutine(exercise){
 
 export function clearRoutine(){
     localStorage.removeItem('routine');
+}
+
+export function createDisabilityOptions(){
+    var values = localStorage.getItem('disabilities').split(',');
+
+    const select = document.querySelector("#inputDisability");
+
+    for(const val of values){
+        var option = document.createElement("option");
+        option.value = val;
+        option.text = "Disabilità " + val.charAt(0).toUpperCase() + val.slice(1);
+        select.options.add(option);
+    }
+}
+
+export function clearDisabilitiesData(){
+    let data = localStorage.getItem('disabilitiesData');
+    data = data.slice(25, (data.length)-1);
+    data = data.replace(/"/g, '');
+    localStorage.setItem('disabilities', data);
+}
+
+export function createExerciseTypesOptions(){
+    var values = localStorage.getItem('exerciseTypes').split(',');
+
+    const select = document.querySelector("#inputExerciseType");
+
+    for(const val of values){
+        var option = document.createElement("option");
+        option.value = val;
+        option.text = val.charAt(0).toUpperCase() + val.slice(1);
+        select.options.add(option);
+    }
+}
+
+export function clearExerciseTypesData(){
+    let data = localStorage.getItem('exerciseTypesData');
+    data = data.slice(25, (data.length)-1);
+    data = data.replace(/"/g, '');
+    localStorage.setItem('exerciseTypes', data);
+}
+
+export function createAbilitiesOptions(){
+    var values = localStorage.getItem('abilities').split(',');
+
+    const select = document.querySelector("#inputAbility");
+
+    for(const val of values){
+        var option = document.createElement("option");
+        option.value = val;
+        option.text = val.charAt(0).toUpperCase() + val.slice(1);
+        select.options.add(option);
+    }
+}
+
+export function clearAbilititesData(){
+    let data = localStorage.getItem('abilitiesData');
+    data = data.slice(25, (data.length)-1);
+    data = data.replace(/"/g, '');
+    localStorage.setItem('abilities', data);
 }

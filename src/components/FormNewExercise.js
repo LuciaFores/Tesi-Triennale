@@ -79,18 +79,10 @@ class NEForm extends Component{
                             <label htmlFor='inputExerciseType'>Tipologia Esercizio</label>
                             <select className='form-control' id='inputExerciseType' value={this.state.exType} onChange={this.onChangeExType}>
                                 <option></option>
-                                <option value='Appaiamento 2D-2D'>Appaiamento 2D-2D</option>
-                                <option value='Esercizi Recettivo'>Esercizi in Recettivo</option>
-                                <option value='Esercizi Espressivo'>Esercizi in Espressivo</option>
                             </select>
                             <label htmlFor='inputAbility'>Abilità Esercizio</label>
                             <select className='form-control' id='inputAbility' value={this.state.ability} onChange={this.onChangeAbility}>
                                 <option></option>
-                                <option value='Cane'>Cane</option>
-                                <option value='Gatto'>Gatto</option>
-                                <option value='Elefante'>Elefante</option>
-                                <option value='Cavallo'>Cavallo</option>
-                                <option value='Mucca'>Mucca</option>
                             </select>
                         </div>
                     </div>
