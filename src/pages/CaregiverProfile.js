@@ -4,13 +4,14 @@ import Navbar from '../components/NavbarPRLO';
 import FormChoosePatient from '../components/FormChoosePatient';
 import FormRegisterPatient from '../components/FormRegisterPatient';
 import FormCC from '../components/FormCC';
-import { clearUserData, changePatient, clearExTypes, createDisabilityOptions, clearDisabilitiesData } from '../components/Utils';
+import { clearUserData, changePatient, clearExTypes, createDisabilityOptions, clearDisabilitiesData, displayMessageBody, confirmDelete } from '../components/Utils';
 import imgCard from '../img/imgCard.svg';
 import imgCP from '../img/imgCP.svg';
 import imgChoosePatient from '../img/imgChoosePatient.svg';
 import imgAP from '../img/imgAP.svg';
 import imgCC from '../img/imgCC.svg';
 import axios from 'axios';
+import CCForm from '../components/FormCC';
 
 function UserCard(){
     const fiscalcode = localStorage.getItem('caregiverFiscalcode');
@@ -103,6 +104,44 @@ function ConnectCaregiver(){
     );
 }
 
+function Notifies(){
+    return(
+        <div className='card border border-primary'>
+            <div className='card-body'>
+                <div className='card-text'>
+                    <h1>Nuove notifiche</h1>
+                </div>
+                <div className='card-text'>
+                    <table className='table table-bordered table-responsive'>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Oggetto Messaggio</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Richiesta di approvazione caregiver Paolo Bianchi</td>
+                                <td><button className='btn btn-primary' onClick={displayMessageBody}>Leggi</button></td>
+                                <td><button className='btn btn-danger' onClick={confirmDelete}>Cancella</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div className='card-text' id='messageBody'>
+                    
+                </div>
+                <div className='d-none' id='acceptanceForm'>
+                        <CCForm/>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 
 function CaregiverProfile(){
     if((localStorage.getItem('caregiverData') === null) && (localStorage.getItem('caregiverFiscalcode') === null)){
@@ -151,6 +190,11 @@ function CaregiverProfile(){
                 <div className='row mt-3'>
                     <div className='col'>
                         <h1>{name} {surname}, questo è il tuo profilo!</h1>
+                    </div>
+                </div>
+                <div className='row mt-3'>
+                    <div className='col-md-12 col-xs-12'>
+                        <Notifies/>
                     </div>
                 </div>
                 <div className='row justify-content-end'>

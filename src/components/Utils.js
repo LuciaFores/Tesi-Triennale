@@ -354,3 +354,103 @@ export function clearAbilititesData(){
     data = data.replace(/"/g, '');
     localStorage.setItem('abilities', data);
 }
+
+export function displayMessageBody(){
+    var div = document.getElementById('messageBody');
+    div.textContent = "";
+
+    const p1 = document.createElement('p');
+
+    const h1 = document.createElement('h1');
+    var title = document.createTextNode('Contenuto del messaggio')
+    h1.appendChild(title);
+
+    var body1 = document.createTextNode(
+        "È stata inviata una richiesta di collegamento da parte del caregiver Paolo Bianchi, il cui codice fiscale è "
+    );
+
+    const strong1 = document.createElement('strong');
+    var cf1 = document.createTextNode('BNCPLA85D08H501D')
+    strong1.appendChild(cf1);
+
+    var body2 = document.createTextNode(
+        " per diventare caregiver del bambino Mario Rossi, il cui codice fiscale è "
+    );
+
+    const strong2 = document.createElement('strong');
+    var cf2 = document.createTextNode('RSSMRA11S11H501O')
+    strong2.appendChild(cf2);
+
+    const p2 = document.createElement('p');
+    var body3 = document.createTextNode('Vuoi accettare? ');
+
+    const buttonYes = document.createElement('button');
+    buttonYes.className = 'btn btn-success';
+    var buttonYesText = document.createTextNode('Sì');
+    buttonYes.appendChild(buttonYesText);
+    buttonYes.addEventListener('click', () => openAcceptanceForm());
+
+    const buttonNo = document.createElement('button');
+    buttonNo.className = 'btn btn-danger ms-2';
+    var buttonNoText = document.createTextNode('No');
+    buttonNo.appendChild(buttonNoText);
+    buttonNo.addEventListener('click', () => closeMessage());
+
+    p1.appendChild(body1);
+    p1.appendChild(strong1);
+    p1.appendChild(body2);
+    p1.appendChild(strong2);
+    p2.appendChild(body3);
+    p2.appendChild(buttonYes);
+    p2.appendChild(buttonNo);
+    div.appendChild(h1);
+    div.appendChild(p1);
+    div.appendChild(p2);
+}
+
+function closeMessage(){
+    var div = document.getElementById('messageBody');
+    var form = document.getElementById('acceptanceForm');
+    div.textContent = "";
+    form.className = "";
+    form.className = "d-none";
+}
+
+function openAcceptanceForm(){
+    var form = document.getElementById('acceptanceForm');
+    form.className = "";
+}
+
+export function confirmDelete(){
+    var div = document.getElementById('messageBody');
+    div.textContent = "";
+
+    const p1 = document.createElement('p');
+
+    const h1 = document.createElement('h1');
+    var title = document.createTextNode('Vuoi cancellare il messaggio?')
+    h1.appendChild(title);
+
+    const buttonYes = document.createElement('button');
+    buttonYes.className = 'btn btn-danger';
+    var buttonYesText = document.createTextNode('Sì');
+    buttonYes.appendChild(buttonYesText);
+    //buttonYes.addEventListener('click', () => openAcceptanceForm());
+
+    const buttonNo = document.createElement('button');
+    buttonNo.className = 'btn btn-success ms-2';
+    var buttonNoText = document.createTextNode('No');
+    buttonNo.appendChild(buttonNoText);
+    buttonNo.addEventListener('click', () => confirmNo());
+
+    p1.appendChild(buttonYes);
+    p1.appendChild(buttonNo);
+    div.appendChild(h1);
+    div.appendChild(p1);
+    
+}
+
+function confirmNo(){
+    var div = document.getElementById('messageBody');
+    div.textContent = "";
+}
