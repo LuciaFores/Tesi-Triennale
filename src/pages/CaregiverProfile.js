@@ -11,7 +11,7 @@ import imgChoosePatient from '../img/imgChoosePatient.svg';
 import imgAP from '../img/imgAP.svg';
 import imgCC from '../img/imgCC.svg';
 import axios from 'axios';
-import CCForm from '../components/FormCC';
+import AcceptanceForm from '../components/FormAcceptance';
 
 function UserCard(){
     const fiscalcode = localStorage.getItem('caregiverFiscalcode');
@@ -134,8 +134,12 @@ function Notifies(){
                 <div className='card-text' id='messageBody'>
                     
                 </div>
-                <div className='d-none' id='acceptanceForm'>
-                        <CCForm/>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='d-none' id='acceptanceForm'>
+                            <AcceptanceForm/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
