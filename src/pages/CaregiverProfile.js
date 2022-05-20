@@ -4,7 +4,7 @@ import Navbar from '../components/NavbarPRLO';
 import FormChoosePatient from '../components/FormChoosePatient';
 import FormRegisterPatient from '../components/FormRegisterPatient';
 import FormCC from '../components/FormCC';
-import { clearUserData, changePatient, clearExTypes, createDisabilityOptions, clearDisabilitiesData, displayMessageBody, confirmDelete } from '../components/Utils';
+import { clearUserData, changePatient, clearExTypes, createDisabilityOptions, clearDisabilitiesData, displayMessageBody, confirmDelete, clearNotificationsData } from '../components/Utils';
 import imgCard from '../img/imgCard.svg';
 import imgCP from '../img/imgCP.svg';
 import imgChoosePatient from '../img/imgChoosePatient.svg';
@@ -12,6 +12,7 @@ import imgAP from '../img/imgAP.svg';
 import imgCC from '../img/imgCC.svg';
 import axios from 'axios';
 import AcceptanceForm from '../components/FormAcceptance';
+import NotifiesTable from '../components/NotifiesTable';
 
 function UserCard(){
     const fiscalcode = localStorage.getItem('caregiverFiscalcode');
@@ -112,24 +113,7 @@ function Notifies(){
                     <h1>Nuove notifiche</h1>
                 </div>
                 <div className='card-text'>
-                    <table className='table table-bordered table-responsive'>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Oggetto Messaggio</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Richiesta di approvazione caregiver Paolo Bianchi</td>
-                                <td><button className='btn btn-primary' onClick={displayMessageBody}>Leggi</button></td>
-                                <td><button className='btn btn-danger' onClick={confirmDelete}>Cancella</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <NotifiesTable/>
                 </div>
                 <div className='card-text' id='messageBody'>
                     
@@ -137,6 +121,7 @@ function Notifies(){
                 <div className='container'>
                     <div className='row'>
                         <div className='d-none' id='acceptanceForm'>
+                            <h3>Compila il form con i campi richiesti per confermare</h3>
                             <AcceptanceForm/>
                         </div>
                     </div>
@@ -179,9 +164,27 @@ function CaregiverProfile(){
         localStorage.removeItem('disabilitiesData');
     }
 
+    if(localStorage.getItem('notificationsData') === null && localStorage.getItem('notifications') === null){
+        const obj = {
+            tutor : localStorage.getItem('caregiverFiscalcode'),
+        }
+        axios.post('http://localhost/tirocinio/getNotifications.php', obj)
+        .then(res => 
+            localStorage.setItem('notificationsData', res.data),
+            window.location.reload()
+        )
+        .catch(error => console.log(error))
+    }
+
+    if(localStorage.getItem('notificationsData') != null && localStorage.getItem('notifications') === null){
+        clearNotificationsData();
+        localStorage.removeItem('notificationsData');
+    }
+
     window.onload = function(){
         createDisabilityOptions();
         localStorage.removeItem('disabilities');
+        localStorage.removeItem('notifications');
     }
 
     const name = localStorage.getItem('caregiverName');

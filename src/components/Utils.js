@@ -355,7 +355,7 @@ export function clearAbilititesData(){
     localStorage.setItem('abilities', data);
 }
 
-export function displayMessageBody(){
+export function displayMessageBody(cgFiscalCode, cgName, cgSurname,ptFiscalCode, ptName, ptSurname){
     var div = document.getElementById('messageBody');
     div.textContent = "";
 
@@ -365,20 +365,30 @@ export function displayMessageBody(){
     var title = document.createTextNode('Contenuto del messaggio')
     h1.appendChild(title);
 
-    var body1 = document.createTextNode(
+    /*var body1 = document.createTextNode(
         "È stata inviata una richiesta di collegamento da parte del caregiver Paolo Bianchi, il cui codice fiscale è "
+    );*/
+
+    var body1 = document.createTextNode(
+        "È stata inviata una richiesta di collegamento da parte del caregiver " + cgName + " " + cgSurname + ", il cui codice fiscale è "
     );
 
     const strong1 = document.createElement('strong');
-    var cf1 = document.createTextNode('BNCPLA85D08H501D')
+    //var cf1 = document.createTextNode('BNCPLA85D08H501D')
+    var cf1 = document.createTextNode(cgFiscalCode)
     strong1.appendChild(cf1);
 
-    var body2 = document.createTextNode(
+    /*var body2 = document.createTextNode(
         " per diventare caregiver del bambino Mario Rossi, il cui codice fiscale è "
+    );*/
+
+    var body2 = document.createTextNode(
+        ", per diventare caregiver del bambino " + ptName + " " +  ptSurname + ", il cui codice fiscale è "
     );
 
     const strong2 = document.createElement('strong');
-    var cf2 = document.createTextNode('RSSMRA11S11H501O')
+    //var cf2 = document.createTextNode('RSSMRA11S11H501O')
+    var cf2 = document.createTextNode(ptFiscalCode)
     strong2.appendChild(cf2);
 
     const p2 = document.createElement('p');
@@ -421,7 +431,7 @@ function openAcceptanceForm(){
     form.className = "";
 }
 
-export function confirmDelete(){
+export function confirmDelete(id){
     var div = document.getElementById('messageBody');
     div.textContent = "";
 
@@ -435,7 +445,7 @@ export function confirmDelete(){
     buttonYes.className = 'btn btn-danger';
     var buttonYesText = document.createTextNode('Sì');
     buttonYes.appendChild(buttonYesText);
-    //buttonYes.addEventListener('click', () => openAcceptanceForm());
+    buttonYes.addEventListener('click', () => deleteMessage(id));
 
     const buttonNo = document.createElement('button');
     buttonNo.className = 'btn btn-success ms-2';
@@ -453,4 +463,53 @@ export function confirmDelete(){
 function confirmNo(){
     var div = document.getElementById('messageBody');
     div.textContent = "";
+}
+
+export function clearNotificationsData(){
+    let data = localStorage.getItem('notificationsData');
+    data = data.slice(25, (data.length)-1);
+    data = data.replace(/"/g, '');
+    localStorage.setItem('notifications', data);
+}
+
+export function rearrangeNotifies(){
+    let allNotifies = localStorage.getItem('notifications').split(',');
+    
+    let notifies = [];
+    for (var i = 0; i<allNotifies.length; i+=7){
+        let notify = []
+        // id
+        notify.push(allNotifies[i])
+        // cgfiscalcode
+        notify.push(allNotifies[i+1]);
+        // cgname
+        notify.push(allNotifies[i+2]);
+        // cgsurname
+        notify.push(allNotifies[i+3]);
+        // ptfiscalcode
+        notify.push(allNotifies[i+4]);
+        // ptname
+        notify.push(allNotifies[i+5]);
+        // ptsurname
+        notify.push(allNotifies[i+6]);
+        notifies.push(notify);
+    }
+    return notifies;
+}
+
+export function createNotifyObject(cgName, cgSurname){
+    let notifyObj = "Richiesta di approvazione caregiver " + cgName + " " + cgSurname;
+    return notifyObj;
+}
+
+function deleteMessage(id){
+    const obj = {
+        id : id,
+    }
+
+    axios.post('http://localhost/tirocinio/deleteNotification.php', obj)
+        .then(res => 
+            window.location.reload()
+        )
+        .catch(error => console.log(error))
 }

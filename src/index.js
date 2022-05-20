@@ -33,6 +33,7 @@ import RSSuccess from './pages/RSSuccess';
 import Appaiamento from './pages/Appaiamento';
 import NESuccess from './pages/NESuccess';
 import NEError from './pages/NEError';
+import CCSuccess from './pages/CCSuccess';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -45,6 +46,7 @@ ReactDOM.render(
             <Route path='forgotpw/success' element={<FPWSuccess/>}/>
             <Route path='forgotpw/error' element={<FPWError/>}/>
             <Route path='caregiverprofile' element={<CaregiverProfile/>}/>
+            <Route path='caregiverprofile/success' element={<CCSuccess/>}/>
             <Route path='caregiverprofile/changePW' element={<ChangePassword/>}/>
             <Route path='caregiverprofile/changePW/pwnm' element={<PasswordNotModified/>}/>
             <Route path='caregiverprofile/changePW/pwmd' element={<PasswordModified/>}/>

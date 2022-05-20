@@ -49,10 +49,10 @@ class AcceptanceForm extends Component{
             patient : this.state.patient,
         };
 
-        /*axios.post('http://localhost/tirocinio/acceptCaregiver.php', obj)
-            .then(res => window.location.href = '/caregiverprofile')
+        axios.post('http://localhost/tirocinio/connectCaregiver.php', obj)
+            .then(res => window.location.href = '/caregiverprofile/success')
             .catch(error => window.location.href = '/caregiverac');
-        */
+        
 
         this.setState({
             caregiver : "",
