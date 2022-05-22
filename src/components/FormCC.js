@@ -36,14 +36,29 @@ class CCForm extends Component{
             patient : this.state.patient,
         };
 
-        axios.post('http://localhost/tirocinio/connectCaregiver.php', obj)
-            .then(res => window.location.href = '/caregiverprofile')
+        const role = localStorage.getItem('caregiverRole');
+
+        if(role === "professionale"){
+            axios.post('http://localhost/tirocinio/connectCaregiver.php', obj)
+            .then(res => window.location.href = '/caregiverprofile/success')
             .catch(error => window.location.href = '/caregiverac');
 
-        this.setState({
-            user : localStorage.getItem('caregiverFiscalcode'),
-            patient : '',
-        })
+            this.setState({
+                user : localStorage.getItem('caregiverFiscalcode'),
+                patient : '',
+            })
+        }
+        else{
+            axios.post('http://localhost/tirocinio/sendConnectRequest.php', obj)
+            .then(res => window.location.href = '/caregiverprofile/requestSent')
+            .catch(error => window.location.href = '/caregiverac');
+
+            this.setState({
+                user : localStorage.getItem('caregiverFiscalcode'),
+                patient : '',
+            })
+        }
+        
     }
 
     render(){

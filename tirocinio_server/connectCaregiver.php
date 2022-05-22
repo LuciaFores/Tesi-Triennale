@@ -26,8 +26,17 @@ if(isset($postdata) && !empty($postdata)){
             $query = "INSERT INTO cgbambino (caregiver, bambino) VALUES ('$caregiver', '$patient')";
             // se l'inserimento è andato a buon fine
             if(mysqli_query($db, $query)){
-                // dico che l'entry è stata creata
-                http_response_code(201);
+                // controllo se la connessione era relativa ad una richiesta e se lo era cancello la richiesta
+                $query = "SELECT id FROM richieste WHERE cfPaziente = '".$patient."' AND cfCaregiver = '".$caregiver."'";
+                $result = mysqli_query($db, $query);
+                $row = mysqli_fetch_assoc($result);
+                if(!empty($row)){
+                    $id = $row['id'];
+                    $query = "DELETE FROM richieste WHERE id = $id";
+                    if(mysqli_query($db, $query)){
+                        http_response_code(201);
+                    }
+                }
             }
             // altrimenti l'inserimento non è andato a buon fine
             else{

@@ -22,6 +22,7 @@ class RegisterPatientForm extends Component{
         this.onChangeFiscalCode = this.onChangeFiscalCode.bind(this);
         this.onChangeDisabilities = this.onChangeDisabilities.bind(this);
         this.onChangeBirthDate = this.onChangeBirthDate.bind(this);
+        this.onChangeTutor = this.onChangeTutor.bind(this);
 
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -32,6 +33,7 @@ class RegisterPatientForm extends Component{
             fiscalCode : "",
             disabilities : [],
             birthDate : "",
+            tutor : "",
         }
     }
 
@@ -69,6 +71,12 @@ class RegisterPatientForm extends Component{
         });
     }
 
+    onChangeTutor(e){
+        this.setState({
+            tutor : e.target.value
+        });
+    }
+
     onSubmit(e){
         e.preventDefault();
 
@@ -85,10 +93,14 @@ class RegisterPatientForm extends Component{
             return false;
         }
 
-        const fiscalCodeValidity = fiscalCodeRE.test(this.state.fiscalCode);
+        const patientfiscalCodeValidity = fiscalCodeRE.test(this.state.fiscalCode);
+        const tutorFiscalCodeValidity = fiscalCodeRE.test(this.state.tutor);
 
-        if(!fiscalCodeValidity){
-            alert("Il codice fiscale inserito non è valido");
+        if(!patientfiscalCodeValidity){
+            alert("Il codice fiscale del paziente inserito non è valido");
+        }
+        if(!tutorFiscalCodeValidity){
+            alert("Il codice fiscale del tutor inserito non è valido");
         }
         else{
             const obj = {
@@ -98,6 +110,7 @@ class RegisterPatientForm extends Component{
                 fiscalCode : this.state.fiscalCode,
                 disabilities : this.state.disabilities,
                 birthDate : this.state.birthDate,
+                tutor : this.state.tutor,
             };
 
             axios.post('http://localhost/tirocinio/patientRegistration.php', obj)
@@ -112,6 +125,7 @@ class RegisterPatientForm extends Component{
                 fiscalCode: "",
                 disabilities : [],
                 birthDate : "",
+                tutor : "",
             })
         }
     }
@@ -132,8 +146,8 @@ class RegisterPatientForm extends Component{
                             <input type='text' className='form-control' id='inputSurname' placeholder='Inserire Cognome' value={this.state.surname} onChange={this.onChangeSurname} required/>
                         </div>
                         <div className='form-group col mx-1'>
-                            <label htmlFor='inputFC'>Codice Fiscale</label>
-                            <input type='text' className='form-control' id='inputFC' placeholder='Inserire Codice Fiscale' value={this.state.fiscalCode} onChange={this.onChangeFiscalCode} required/>
+                            <label htmlFor='inputFC'>Codice Fiscale Paziente</label>
+                            <input type='text' className='form-control' id='inputFC' placeholder='Inserire Codice Fiscale del Paziente' value={this.state.fiscalCode} onChange={this.onChangeFiscalCode} required/>
                         </div>
                     </div>
                     <div className='form-row'>
@@ -149,6 +163,10 @@ class RegisterPatientForm extends Component{
                         <div className='form-group col mx-1'>
                             <label htmlFor='inputBirthDate'>Data di nascita</label>
                             <input type='date' className='form-control' id='inputBirthDate' value={this.state.birthDate} onChange={this.onChangeBirthDate} required/>
+                        </div>
+                        <div className='form-group col mx-1'>
+                            <label htmlFor='inputTFC'>Codice Fiscale Tutore</label>
+                            <input type='text' className='form-control' id='inputTFC' placeholder='Inserire Codice Fiscale del Tutore' value={this.state.tutor} onChange={this.onChangeTutor} required/>
                         </div>
                     </div>
                     <button type='submit' className='btn btn-primary mt-2 mb-2' onClick={this.onSubmit}>Registra il paziente!</button>

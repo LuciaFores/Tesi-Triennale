@@ -13,6 +13,7 @@ if(isset($postdata) && !empty($postdata)){
     $surname = $request->surname;
     $fiscalCode = $request->fiscalCode;
     $birthDate = $request->birthDate;
+    $tutor = $request->tutor;
     $disabilities = $request->disabilities;
     
     $query = "SELECT * FROM utente WHERE cf = '".$fiscalCode."'";
@@ -27,7 +28,7 @@ if(isset($postdata) && !empty($postdata)){
                 $percFisio = mysqli_insert_id($db);
                 $query = "INSERT INTO cgPercFisio (caregiver, percFisio) VALUES ('$caregiver', $percFisio)";
                 if(mysqli_query($db, $query)){
-                    $query = "INSERT INTO bambino (utente, nascita, percFisio) VALUES ('$fiscalCode', '$birthDate', $percFisio)";
+                    $query = "INSERT INTO bambino (utente, nascita, percFisio, tutore) VALUES ('$fiscalCode', '$birthDate', $percFisio, '$tutor)";
                     if(mysqli_query($db, $query)){
                         $query = "INSERT INTO cgbambino (caregiver, bambino) VALUES ('$caregiver', '$fiscalCode')";
                         if(mysqli_query($db, $query)){
