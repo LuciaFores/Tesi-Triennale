@@ -28,20 +28,26 @@ if(isset($postdata) && !empty($postdata)){
                 $percFisio = mysqli_insert_id($db);
                 $query = "INSERT INTO cgPercFisio (caregiver, percFisio) VALUES ('$caregiver', $percFisio)";
                 if(mysqli_query($db, $query)){
-                    $query = "INSERT INTO bambino (utente, nascita, percFisio, tutore) VALUES ('$fiscalCode', '$birthDate', $percFisio, '$tutor)";
+                    $query = "INSERT INTO bambino (utente, nascita, percFisio, tutore) VALUES ('$fiscalCode', '$birthDate', $percFisio, '$tutor')";
                     if(mysqli_query($db, $query)){
                         $query = "INSERT INTO cgbambino (caregiver, bambino) VALUES ('$caregiver', '$fiscalCode')";
                         if(mysqli_query($db, $query)){
-                            for($i = 0; $i < count($disabilities); $i++){
-                                $disability = $disabilities[$i];
-                                // creo il collegamento tra la disabilità e il bambino
-                                $query = "INSERT INTO bdisabilita (bambino, disabilita) VALUES ('$fiscalCode', '$disability')";
-                                if(mysqli_query($db, $query)){
-                                    continue;
+                            $query = "INSERT INTO cgbambino (caregiver, bambino) VALUES ('$tutor', '$fiscalCode')";
+                            if(mysqli_query($db, $query)){
+                                for($i = 0; $i < count($disabilities); $i++){
+                                    $disability = $disabilities[$i];
+                                    // creo il collegamento tra la disabilità e il bambino
+                                    $query = "INSERT INTO bdisabilita (bambino, disabilita) VALUES ('$fiscalCode', '$disability')";
+                                    if(mysqli_query($db, $query)){
+                                        continue;
+                                    }
+                                    else{
+                                        http_response_code(409);
+                                    }
                                 }
-                                else{
-                                    http_response_code(409);
-                                }
+                            }
+                            else{
+                                http_response_code(409);
                             }
                         }
                         else{
