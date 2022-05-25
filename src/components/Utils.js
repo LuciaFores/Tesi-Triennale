@@ -469,6 +469,10 @@ function openAcceptanceForm(){
 }
 
 export function confirmDelete(id){
+    var form = document.getElementById('acceptanceForm');
+    form.className = "";
+    form.className = "d-none";
+
     var div = document.getElementById('messageBody');
     div.textContent = "";
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../components/NavbarSULI';
+import Navbar from '../components/NavbarPRLO';
 
 function RequestSent(){
     if(localStorage.getItem('caregiverFiscalcode') === null){
