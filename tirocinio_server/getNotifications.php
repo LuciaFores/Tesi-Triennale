@@ -11,7 +11,7 @@ if(isset($postdata) && !empty($postdata)){
 
     $tutor = $request -> tutor;
 
-    $query = "SELECT id, cfCaregiver, nomeCaregiver, cognomeCaregiver, cfPaziente, nomePaziente, cognomePaziente FROM richieste WHERE tutore = '".$tutor."'";
+    $query = "SELECT id, cfMittente, nomeMittente, cognomeMittente, cfB, nomeB, cognomeB, tipo FROM notifica WHERE cfDest = '".$tutor."'";
 
     $result = mysqli_query($db, $query);
     $notifies = [];

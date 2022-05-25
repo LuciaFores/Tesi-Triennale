@@ -355,67 +355,104 @@ export function clearAbilititesData(){
     localStorage.setItem('abilities', data);
 }
 
-export function displayMessageBody(cgFiscalCode, cgName, cgSurname,ptFiscalCode, ptName, ptSurname){
+export function displayMessageBody(cgFiscalCode, cgName, cgSurname,ptFiscalCode, ptName, ptSurname, type){
     var div = document.getElementById('messageBody');
     div.textContent = "";
 
-    const p1 = document.createElement('p');
+    if(type === 'richiesta'){
+        const p1 = document.createElement('p');
 
-    const h1 = document.createElement('h1');
-    var title = document.createTextNode('Contenuto del messaggio')
-    h1.appendChild(title);
+        const h1 = document.createElement('h1');
+        var title = document.createTextNode('Contenuto del messaggio')
+        h1.appendChild(title);
 
-    /*var body1 = document.createTextNode(
-        "È stata inviata una richiesta di collegamento da parte del caregiver Paolo Bianchi, il cui codice fiscale è "
-    );*/
+        /*var body1 = document.createTextNode(
+            "È stata inviata una richiesta di collegamento da parte del caregiver Paolo Bianchi, il cui codice fiscale è "
+        );*/
 
-    var body1 = document.createTextNode(
-        "È stata inviata una richiesta di collegamento da parte del caregiver " + cgName + " " + cgSurname + ", il cui codice fiscale è "
-    );
+        var body1 = document.createTextNode(
+            "È stata inviata una richiesta di collegamento da parte del caregiver " + cgName + " " + cgSurname + ", il cui codice fiscale è "
+        );
 
-    const strong1 = document.createElement('strong');
-    //var cf1 = document.createTextNode('BNCPLA85D08H501D')
-    var cf1 = document.createTextNode(cgFiscalCode)
-    strong1.appendChild(cf1);
+        const strong1 = document.createElement('strong');
+        //var cf1 = document.createTextNode('BNCPLA85D08H501D')
+        var cf1 = document.createTextNode(cgFiscalCode)
+        strong1.appendChild(cf1);
 
-    /*var body2 = document.createTextNode(
-        " per diventare caregiver del bambino Mario Rossi, il cui codice fiscale è "
-    );*/
+        /*var body2 = document.createTextNode(
+            " per diventare caregiver del bambino Mario Rossi, il cui codice fiscale è "
+        );*/
 
-    var body2 = document.createTextNode(
-        ", per diventare caregiver del bambino " + ptName + " " +  ptSurname + ", il cui codice fiscale è "
-    );
+        var body2 = document.createTextNode(
+            ", per diventare caregiver del bambino " + ptName + " " +  ptSurname + ", il cui codice fiscale è "
+        );
 
-    const strong2 = document.createElement('strong');
-    //var cf2 = document.createTextNode('RSSMRA11S11H501O')
-    var cf2 = document.createTextNode(ptFiscalCode)
-    strong2.appendChild(cf2);
+        const strong2 = document.createElement('strong');
+        //var cf2 = document.createTextNode('RSSMRA11S11H501O')
+        var cf2 = document.createTextNode(ptFiscalCode)
+        strong2.appendChild(cf2);
 
-    const p2 = document.createElement('p');
-    var body3 = document.createTextNode('Vuoi accettare? ');
+        const p2 = document.createElement('p');
+        var body3 = document.createTextNode('Vuoi accettare? ');
 
-    const buttonYes = document.createElement('button');
-    buttonYes.className = 'btn btn-success';
-    var buttonYesText = document.createTextNode('Sì');
-    buttonYes.appendChild(buttonYesText);
-    buttonYes.addEventListener('click', () => openAcceptanceForm());
+        const buttonYes = document.createElement('button');
+        buttonYes.className = 'btn btn-success';
+        var buttonYesText = document.createTextNode('Sì');
+        buttonYes.appendChild(buttonYesText);
+        buttonYes.addEventListener('click', () => openAcceptanceForm());
 
-    const buttonNo = document.createElement('button');
-    buttonNo.className = 'btn btn-danger ms-2';
-    var buttonNoText = document.createTextNode('No');
-    buttonNo.appendChild(buttonNoText);
-    buttonNo.addEventListener('click', () => closeMessage());
+        const buttonNo = document.createElement('button');
+        buttonNo.className = 'btn btn-danger ms-2';
+        var buttonNoText = document.createTextNode('No');
+        buttonNo.appendChild(buttonNoText);
+        buttonNo.addEventListener('click', () => closeMessage());
 
-    p1.appendChild(body1);
-    p1.appendChild(strong1);
-    p1.appendChild(body2);
-    p1.appendChild(strong2);
-    p2.appendChild(body3);
-    p2.appendChild(buttonYes);
-    p2.appendChild(buttonNo);
-    div.appendChild(h1);
-    div.appendChild(p1);
-    div.appendChild(p2);
+        p1.appendChild(body1);
+        p1.appendChild(strong1);
+        p1.appendChild(body2);
+        p1.appendChild(strong2);
+        p2.appendChild(body3);
+        p2.appendChild(buttonYes);
+        p2.appendChild(buttonNo);
+        div.appendChild(h1);
+        div.appendChild(p1);
+        div.appendChild(p2);
+    }
+    else{
+        const p1 = document.createElement('p');
+
+        const h1 = document.createElement('h1');
+        var title = document.createTextNode('Contenuto del messaggio')
+        h1.appendChild(title);
+
+        /*var body1 = document.createTextNode(
+            "È stata inviata una richiesta di collegamento da parte del caregiver Paolo Bianchi, il cui codice fiscale è "
+        );*/
+
+        var body1 = document.createTextNode(
+            "La tua richiesta di collegamento inviata al tutore " + cgName + " " + cgSurname
+        );
+
+        var body2 = document.createTextNode(
+            " del bambino " + ptName + " " +  ptSurname + " è stata accettata!"
+        );
+
+        const p2 = document.createElement('p');
+
+        const buttonOk = document.createElement('button');
+        buttonOk.className = 'btn btn-primary';
+        var buttonOkText = document.createTextNode('Ok');
+        buttonOk.appendChild(buttonOkText);
+        buttonOk.addEventListener('click', () => closeMessage());
+
+        p1.appendChild(body1);
+        p1.appendChild(body2);
+        p2.appendChild(buttonOk);
+        div.appendChild(h1);
+        div.appendChild(p1);
+        div.appendChild(p2);
+    }
+    
 }
 
 function closeMessage(){
@@ -476,7 +513,7 @@ export function rearrangeNotifies(){
     let allNotifies = localStorage.getItem('notifications').split(',');
     
     let notifies = [];
-    for (var i = 0; i<allNotifies.length; i+=7){
+    for (var i = 0; i<allNotifies.length; i+=8){
         let notify = []
         // id
         notify.push(allNotifies[i])
@@ -492,13 +529,21 @@ export function rearrangeNotifies(){
         notify.push(allNotifies[i+5]);
         // ptsurname
         notify.push(allNotifies[i+6]);
+        // type
+        notify.push(allNotifies[i+7])
         notifies.push(notify);
     }
     return notifies;
 }
 
-export function createNotifyObject(cgName, cgSurname){
-    let notifyObj = "Richiesta di approvazione caregiver " + cgName + " " + cgSurname;
+export function createNotifyObject(cgName, cgSurname, ptName, ptSurname, type){
+    let notifyObj;
+    if(type === 'richiesta'){
+        notifyObj = "Richiesta di approvazione caregiver " + cgName + " " + cgSurname;
+    }
+    else{
+        notifyObj = "La tua richiesta è per diventare caregiver di " + ptName + " " + ptSurname + " stata accettata!";
+    }
     return notifyObj;
 }
 

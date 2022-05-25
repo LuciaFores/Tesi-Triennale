@@ -27,15 +27,39 @@ if(isset($postdata) && !empty($postdata)){
             // se l'inserimento è andato a buon fine
             if(mysqli_query($db, $query)){
                 // controllo se la connessione era relativa ad una richiesta e se lo era cancello la richiesta
-                $query = "SELECT id FROM richieste WHERE cfPaziente = '".$patient."' AND cfCaregiver = '".$caregiver."'";
+                $query = "SELECT * FROM notifica WHERE cfB = '".$patient."' AND cfMittente = '".$caregiver."'";
                 $result = mysqli_query($db, $query);
                 $row = mysqli_fetch_assoc($result);
                 if(!empty($row)){
                     $id = $row['id'];
-                    $query = "DELETE FROM richieste WHERE id = $id";
+                    $cfDest = $row['cfMittente'];
+                    $cfMittente = $row['cfDest'];
+                    $nomeB = $row['nomeB'];
+                    $cognomeB = $row['cognomeB'];
+                    $query = "DELETE FROM notifica WHERE id = $id";
                     if(mysqli_query($db, $query)){
-                        http_response_code(201);
+                        $query = "SELECT nome, cognome FROM utente WHERE cf = '".$cfMittente."'";
+                        $result = mysqli_query($db, $query);
+                        $row = mysqli_fetch_assoc($result);
+                        if(!empty($row)){
+                            $nomeMittente = $row['nome'];
+                            $cognomeMittente = $row['cognome'];
+                            $query = "INSERT INTO notifica (cfMittente, nomeMittente, cognomeMittente, cfB, nomeB, cognomeB, cfDest, tipo) VALUES ('$cfMittente', '$nomeMittente', '$cognomeMittente', '$patient', '$nomeB', '$cognomeB', '$cfDest', 'conferma')";
+                            if(mysqli_query($db, $query)){
+                                http_response_code(201);
+                            }
+                            else{
+                                http_response_code(409);
+                            }
+
+                        }
+                        else{
+                            http_response_code(409);
+                        }
                     }
+                }
+                else{
+                    http_response_code(201);
                 }
             }
             // altrimenti l'inserimento non è andato a buon fine

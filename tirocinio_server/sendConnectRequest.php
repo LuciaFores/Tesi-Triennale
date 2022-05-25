@@ -10,6 +10,7 @@ if(isset($postdata) && !empty($postdata)){
 
     $caregiver = $request->caregiver;
     $patient = $request->patient;
+    $type = $request->type;
     
     // come prima cosa recupero nome e cognome del caregiver che ha effettuato la richiesta
     $query = "SELECT nome, cognome FROM utente WHERE cf = '".$caregiver."'";
@@ -37,7 +38,7 @@ if(isset($postdata) && !empty($postdata)){
                 $ptTutor = $row['tutore'];
 
                 // a questo punto posso inviare la richiesta
-                $query = "INSERT INTO richieste (cfCaregiver, nomeCaregiver, cognomeCaregiver, cfPaziente, nomePaziente, cognomePaziente, tutore) VALUES ('$caregiver', '$cgName', '$cgSurname', '$patient', '$ptName', '$ptSurname', '$ptTutor')";
+                $query = "INSERT INTO notifica (cfMittente, nomeMittente, cognomeMittente, cfB, nomeB, cognomeB, cfDest, tipo) VALUES ('$caregiver', '$cgName', '$cgSurname', '$patient', '$ptName', '$ptSurname', '$ptTutor', '$type')";
                 if(mysqli_query($db, $query)){
                     http_response_code(201);
                 }

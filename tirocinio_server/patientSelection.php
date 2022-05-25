@@ -11,7 +11,7 @@ if(isset($postdata) && !empty($postdata)){
     $patient = $request -> patient;
     $caregiver = $request -> caregiver;
 
-    $query = "SELECT * FROM bambino WHERE utente = '".$patient."'";
+    $query = "SELECT utente, nascita, percFisio FROM bambino WHERE utente = '".$patient."'";
     $result = mysqli_query($db, $query);
     $row_p = mysqli_fetch_assoc($result);
     // vuol dire che il bambino è registrato nel sistema

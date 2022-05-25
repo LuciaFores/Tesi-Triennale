@@ -11,7 +11,7 @@ if(isset($postdata) && !empty($postdata)){
 
     $id = $request -> id;
 
-    $query = "DELETE FROM richieste WHERE id = $id";
+    $query = "DELETE FROM notifica WHERE id = $id";
 
     if(mysqli_query($db, $query)){
         http_response_code(201);

@@ -18,8 +18,8 @@ function NotifiesTable(){
         tableItems = notifies.map((notify) => 
         <tr key={notify[0]}>
             <td>{notify[0]}</td>
-            <td>{createNotifyObject(notify[2], notify[3])}</td>
-            <td><button className='btn btn-primary' onClick={() => displayMessageBody(notify[1], notify[2], notify[3], notify[4], notify[5], notify[6])}>Leggi</button></td>
+            <td>{createNotifyObject(notify[2], notify[3], notify[5], notify[6], notify[7])}</td>
+            <td><button className='btn btn-primary' onClick={() => displayMessageBody(notify[1], notify[2], notify[3], notify[4], notify[5], notify[6], notify[7])}>Leggi</button></td>
             <td><button className='btn btn-danger' onClick={() => confirmDelete(notify[0])}>Cancella</button></td>
         </tr>
         ) 

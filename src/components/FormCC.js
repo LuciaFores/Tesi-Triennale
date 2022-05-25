@@ -13,6 +13,7 @@ class CCForm extends Component{
         this.state = {
             caregiver : localStorage.getItem('caregiverFiscalcode'),
             patient : "",
+            type : "richiesta",
         }
     }
 
@@ -34,6 +35,7 @@ class CCForm extends Component{
         const obj = {
             caregiver : localStorage.getItem('caregiverFiscalcode'),
             patient : this.state.patient,
+            type : "richiesta",
         };
 
         const role = localStorage.getItem('caregiverRole');
@@ -46,6 +48,7 @@ class CCForm extends Component{
             this.setState({
                 user : localStorage.getItem('caregiverFiscalcode'),
                 patient : '',
+                type : "richiesta",
             })
         }
         else{
@@ -56,6 +59,7 @@ class CCForm extends Component{
             this.setState({
                 user : localStorage.getItem('caregiverFiscalcode'),
                 patient : '',
+                type : "richiesta",
             })
         }
         
