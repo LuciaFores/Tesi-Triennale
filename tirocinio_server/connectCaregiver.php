@@ -34,28 +34,18 @@ if(isset($postdata) && !empty($postdata)){
                     $id = $row['id'];
                     $cfDest = $row['cfMittente'];
                     $cfMittente = $row['cfDest'];
-                    $nomeB = $row['nomeB'];
-                    $cognomeB = $row['cognomeB'];
                     $query = "DELETE FROM notifica WHERE id = $id";
                     if(mysqli_query($db, $query)){
-                        $query = "SELECT nome, cognome FROM utente WHERE cf = '".$cfMittente."'";
-                        $result = mysqli_query($db, $query);
-                        $row = mysqli_fetch_assoc($result);
-                        if(!empty($row)){
-                            $nomeMittente = $row['nome'];
-                            $cognomeMittente = $row['cognome'];
-                            $query = "INSERT INTO notifica (cfMittente, nomeMittente, cognomeMittente, cfB, nomeB, cognomeB, cfDest, tipo) VALUES ('$cfMittente', '$nomeMittente', '$cognomeMittente', '$patient', '$nomeB', '$cognomeB', '$cfDest', 'conferma')";
-                            if(mysqli_query($db, $query)){
-                                http_response_code(201);
-                            }
-                            else{
-                                http_response_code(409);
-                            }
-
+                        $query = "INSERT INTO notifica (cfMittente, cfB, cfDest, tipo) VALUES ('$cfMittente', '$patient', '$cfDest', 'conferma')";
+                        if(mysqli_query($db, $query)){
+                            http_response_code(201);
                         }
                         else{
                             http_response_code(409);
                         }
+                    }
+                    else{
+                        http_response_code(409);
                     }
                 }
                 else{

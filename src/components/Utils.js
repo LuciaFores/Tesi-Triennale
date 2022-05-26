@@ -355,7 +355,7 @@ export function clearAbilititesData(){
     localStorage.setItem('abilities', data);
 }
 
-export function displayMessageBody(cgFiscalCode, cgName, cgSurname,ptFiscalCode, ptName, ptSurname, type){
+export function displayMessageBody(cgFiscalCode, cgName, cgSurname, ptFiscalCode, ptName, ptSurname, type){
     var div = document.getElementById('messageBody');
     div.textContent = "";
 
@@ -523,18 +523,18 @@ export function rearrangeNotifies(){
         notify.push(allNotifies[i])
         // cgfiscalcode
         notify.push(allNotifies[i+1]);
-        // cgname
-        notify.push(allNotifies[i+2]);
-        // cgsurname
-        notify.push(allNotifies[i+3]);
         // ptfiscalcode
-        notify.push(allNotifies[i+4]);
-        // ptname
-        notify.push(allNotifies[i+5]);
-        // ptsurname
-        notify.push(allNotifies[i+6]);
+        notify.push(allNotifies[i+2]);
         // type
-        notify.push(allNotifies[i+7])
+        notify.push(allNotifies[i+3]);
+        // cgName
+        notify.push(allNotifies[i+4]);
+        // cgSurname
+        notify.push(allNotifies[i+5]);
+        // ptName
+        notify.push(allNotifies[i+6]);
+        // ptSurname
+        notify.push(allNotifies[i+7]);
         notifies.push(notify);
     }
     return notifies;

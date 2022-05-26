@@ -11,11 +11,25 @@ if(isset($postdata) && !empty($postdata)){
 
     $tutor = $request -> tutor;
 
-    $query = "SELECT id, cfMittente, nomeMittente, cognomeMittente, cfB, nomeB, cognomeB, tipo FROM notifica WHERE cfDest = '".$tutor."'";
+    $query = "SELECT id, cfMittente, cfB, tipo FROM notifica WHERE cfDest = '".$tutor."'";
 
     $result = mysqli_query($db, $query);
     $notifies = [];
     while($notify = mysqli_fetch_array($result, MYSQLI_NUM)){
+        $mittente = $notify[1];
+        $bambino = $notify[2];
+        $query = "SELECT nome, cognome FROM utente WHERE cf = '".$mittente."'";
+        $res = mysqli_query($db, $query);
+        $row = mysqli_fetch_array($res, MYSQLI_NUM);
+        if(!empty($row)){
+            $notify = array_merge($notify, $row);
+        }
+        $query = "SELECT nome, cognome FROM utente WHERE cf = '".$bambino."'";
+        $res = mysqli_query($db, $query);
+        $row = mysqli_fetch_array($res, MYSQLI_NUM);
+        if(!empty($row)){
+            $notify = array_merge($notify, $row);
+        }
         $notifies = array_merge($notifies, $notify);
     }
     echo(json_encode($notifies));
