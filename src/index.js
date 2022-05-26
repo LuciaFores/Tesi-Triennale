@@ -35,6 +35,7 @@ import NESuccess from './pages/NESuccess';
 import NEError from './pages/NEError';
 import CCSuccess from './pages/CCSuccess';
 import RequestSent from './pages/RequestSent';
+import Recettivo from './pages/Recettivo';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -65,6 +66,7 @@ ReactDOM.render(
             <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList' element={<TherapyExercisesList/>}/>
             <Route path='patientProfile/routineSelection' element={<RoutineSelection/>}/>
             <Route path='patientProfile/exercises/appaiamento' element={<Appaiamento/>}/>
+            <Route path='patientProfile/exercises/recettivo' element={<Recettivo/>}/>
             <Route path='userae' element={<UserAlreadyExists/>}/>
             <Route path='usernf' element={<UserNotFound/>}/>
             <Route path='caregiverac' element={<CaregiverAlreadyConnected/>}/>

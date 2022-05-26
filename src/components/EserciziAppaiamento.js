@@ -1,37 +1,5 @@
 import React from 'react';
-import abilities from './Abilities';
-import { getRandomIndex, fisherYatesShuffle } from './Utils';
-
-function gamePreparation(){
-    // Per ora le cambio da codice ma poi verrà parametrizzata prendendo quella scelta dal caregiver
-    let chosenAbility = abilities.find(ability => ability.name === 'Cavallo');
-    let otherAbilities = abilities.filter(ability => ability.name != chosenAbility['name']);
-
-    const min = -1;
-    const max = otherAbilities.length - 1;
-
-    let index1 = getRandomIndex(min, max);
-    let index2 = getRandomIndex(min, max);
-
-    while(index1 === index2){
-        index2 = getRandomIndex(min, max);
-    }
-
-    let wrongAbility1 = otherAbilities[index1];
-    let wrongAbility2 = otherAbilities[index2];
-
-    return [chosenAbility, wrongAbility1, wrongAbility2];
-}
-
-function check(id){
-    let chosenAbility = abilities.find(ability => ability.name === 'Cavallo');
-    if(id === chosenAbility['name']){
-        alert('Corretto!');
-    }
-    else{
-        alert('Non corretto :(');
-    }
-}
+import { fisherYatesShuffle, gamePreparation, check } from './Utils';
 
 function EserciziAppaiamento(){
     let abilities = gamePreparation();
