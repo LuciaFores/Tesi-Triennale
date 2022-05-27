@@ -36,6 +36,7 @@ import NEError from './pages/NEError';
 import CCSuccess from './pages/CCSuccess';
 import RequestSent from './pages/RequestSent';
 import Recettivo from './pages/Recettivo';
+import Espressivo from './pages/Espressivo';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -67,6 +68,7 @@ ReactDOM.render(
             <Route path='patientProfile/routineSelection' element={<RoutineSelection/>}/>
             <Route path='patientProfile/exercises/appaiamento' element={<Appaiamento/>}/>
             <Route path='patientProfile/exercises/recettivo' element={<Recettivo/>}/>
+            <Route path='patientProfile/exercises/espressivo' element={<Espressivo/>}/>
             <Route path='userae' element={<UserAlreadyExists/>}/>
             <Route path='usernf' element={<UserNotFound/>}/>
             <Route path='caregiverac' element={<CaregiverAlreadyConnected/>}/>

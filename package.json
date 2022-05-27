@@ -16,6 +16,7 @@
     "react-router-dom": "^6.2.2",
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.0",
+    "react-speech-recognition": "^3.9.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
