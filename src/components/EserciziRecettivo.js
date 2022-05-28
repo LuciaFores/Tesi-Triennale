@@ -1,32 +1,5 @@
 import React from 'react';
-import { fisherYatesShuffle, gamePreparation, check } from './Utils';
-
-function setIntervalX(func, delay, repetitions){
-    var x = 0;
-    var intervalID = window.setInterval(function(){
-        func();
-
-        if(++x === repetitions){
-            window.clearInterval(intervalID);
-        }
-    }, delay);
-}
-
-function speak(){
-    let speech = new SpeechSynthesisUtterance();
-    let abilities = gamePreparation();
-    let correctAbility = abilities[0];
-
-    speech.lang = 'it';
-        
-    let voices = [];
-    voices = window.speechSynthesis.getVoices();
-    speech.voice = voices[1];
-
-    speech.text = correctAbility['name'];
-
-    window.speechSynthesis.speak(speech);
-}
+import { fisherYatesShuffle, gamePreparation, checkAppaiamento_Recettivo } from './Utils';
 
 function EserciziRecettivo(){
     let abilities = gamePreparation();
@@ -46,14 +19,13 @@ function EserciziRecettivo(){
 
     speech.text = correctAbility['name'];
 
-    speech.onend = function(){alert('finito')};
-
+    // TODO: crea selettore delle voci
 
     return(
         <div>
             <div className='row'>
                 <p>
-                    <button onClick={() => window.speechSynthesis.speak(speech)/*setInterval(function(){window.speechSynthesis.speak(speech)}, 10000)*/}>play</button> 
+                    <button onClick={() => window.speechSynthesis.speak(speech)}>play</button> 
                 </p>
                 <p>
                     <button onClick={() => window.speechSynthesis.pause()}>pause</button>
@@ -63,13 +35,13 @@ function EserciziRecettivo(){
                 </p>
                 <h1>Immagine tra cui scegliere</h1>
                 <div className='col-md-4'>
-                    <img src={pickedAbilities[0]['img']} className='img-fluid' onClick={() => check(pickedAbilities[0]['name'])}/>
+                    <img src={pickedAbilities[0]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[0]['name'])}/>
                 </div>
                 <div className='col-md-4'>
-                    <img src={pickedAbilities[1]['img']} className='img-fluid' onClick={() => check(pickedAbilities[1]['name'])}/>
+                    <img src={pickedAbilities[1]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[1]['name'])}/>
                 </div>
                 <div className='col-md-4'>
-                    <img src={pickedAbilities[2]['img']} className='img-fluid' onClick={() => check(pickedAbilities[2]['name'])}/>
+                    <img src={pickedAbilities[2]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[2]['name'])}/>
                 </div>
             </div>
         </div>

@@ -1,13 +1,13 @@
 import React from 'react';
 import Navbar from "../components/NavbarPRLO";
-import Dictaphone from '../components/Dictaphone';
+import EserciziEspressivo from '../components/EserciziEspressivo';
 
 function Espressivo(){
     return(
         <div>
             <Navbar/>
             <div className='container'>
-                <Dictaphone/>
+                <EserciziEspressivo/>
             </div>
         </div>
     )

@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import SpeechRecognition, {useSpeechRecognition} from 'react-speech-recognition';
+import abilities from './Abilities';
 
 
 
 const Dictaphone = () => {
+    let correctAbility = abilities.find(ability => ability.name === 'Cavallo');
+
     const [message, setMessage] = useState('');
 
 
@@ -11,14 +14,6 @@ const Dictaphone = () => {
         {
             command: "reset",
             callback: () => resetTranscript()
-        },
-        {
-            command: 'zitto',
-            callback: () => setMessage("I wasn't talking.")
-        },
-        {
-            command: 'ciao',
-            callback: () => setMessage('Hi there!')
         }
     ]
 
@@ -51,10 +46,9 @@ const Dictaphone = () => {
     };
 
     function inviaRisposta(){
-        if(transcript === 'cavallo'){
+        if(transcript === correctAbility['name'].toLowerCase()){
             alert('corretto');
             resetTranscript();
-            //stopListening();
         }
         else{
             alert('non corretto');

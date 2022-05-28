@@ -585,9 +585,9 @@ export function gamePreparation(){
     return [chosenAbility, wrongAbility1, wrongAbility2];
 }
 
-export function check(id){
+export function checkAppaiamento_Recettivo(chosenName){
     let chosenAbility = abilities.find(ability => ability.name === 'Cavallo');
-    if(id === chosenAbility['name']){
+    if(chosenName === chosenAbility['name']){
         alert('Corretto!');
     }
     else{

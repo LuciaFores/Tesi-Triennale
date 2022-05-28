@@ -1,5 +1,5 @@
 import React from 'react';
-import { fisherYatesShuffle, gamePreparation, check } from './Utils';
+import { fisherYatesShuffle, gamePreparation, checkAppaiamento_Recettivo } from './Utils';
 
 function EserciziAppaiamento(){
     let abilities = gamePreparation();
@@ -22,13 +22,13 @@ function EserciziAppaiamento(){
             <div className='row'>
                 <h1>Immagine tra cui scegliere</h1>
                 <div className='col-md-4'>
-                    <img src={pickedAbilities[0]['img']} className='img-fluid' onClick={() => check(pickedAbilities[0]['name'])}/>
+                    <img src={pickedAbilities[0]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[0]['name'])}/>
                 </div>
                 <div className='col-md-4'>
-                    <img src={pickedAbilities[1]['img']} className='img-fluid' onClick={() => check(pickedAbilities[1]['name'])}/>
+                    <img src={pickedAbilities[1]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[1]['name'])}/>
                 </div>
                 <div className='col-md-4'>
-                    <img src={pickedAbilities[2]['img']} className='img-fluid' onClick={() => check(pickedAbilities[2]['name'])}/>
+                    <img src={pickedAbilities[2]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[2]['name'])}/>
                 </div>
             </div>
         </div>
