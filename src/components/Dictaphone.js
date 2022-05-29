@@ -2,8 +2,6 @@ import React, {useEffect, useState} from 'react';
 import SpeechRecognition, {useSpeechRecognition} from 'react-speech-recognition';
 import abilities from './Abilities';
 
-
-
 const Dictaphone = () => {
     let correctAbility = abilities.find(ability => ability.name === 'Cavallo');
 
@@ -37,13 +35,35 @@ const Dictaphone = () => {
     };
 
     function inviaRisposta(){
+        var check = document.getElementById('check');
+        check.className = "";
+        check.className = "row";
+
         if(transcript === correctAbility['name'].toLowerCase()){
-            alert('corretto');
-            resetTranscript();
+            var right = document.getElementById('right');
+            right.className = "";
+            right.className = "col text-center";
+
+            var wrong = document.getElementById('wrong');
+            wrong.className = "";
+            wrong.className = "col d-none";
+
+            var exercise = document.getElementById('elements');
+            exercise.className = "";
+            exercise.className = "row d-none"
         }
         else{
-            alert('non corretto');
-            resetTranscript();
+            var wrong = document.getElementById('wrong');
+            wrong.className = "";
+            wrong.className = "col text-center";
+
+            var right = document.getElementById('right');
+            right.className = "";
+            right.className = "col d-none";
+
+            var exercise = document.getElementById('elements');
+            exercise.className = "";
+            exercise.className = "row d-none"
         }
     }
 

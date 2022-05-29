@@ -587,11 +587,36 @@ export function gamePreparation(){
 
 export function checkAppaiamento_Recettivo(chosenName){
     let chosenAbility = abilities.find(ability => ability.name === 'Cavallo');
+    
+    var check = document.getElementById('check');
+    check.className = "";
+    check.className = "row";
+
     if(chosenName === chosenAbility['name']){
-        alert('Corretto!');
+        var right = document.getElementById('right');
+        right.className = "";
+        right.className = "col text-center";
+
+        var wrong = document.getElementById('wrong');
+        wrong.className = "";
+        wrong.className = "col d-none";
+
+        var exercise = document.getElementById('images');
+        exercise.className = "";
+        exercise.className = "row d-none"
     }
     else{
-        alert('Non corretto :(');
+        var wrong = document.getElementById('wrong');
+        wrong.className = "";
+        wrong.className = "col text-center";
+
+        var right = document.getElementById('right');
+        right.className = "";
+        right.className = "col d-none";
+
+        var exercise = document.getElementById('images');
+        exercise.className = "";
+        exercise.className = "row d-none"
     }
 }
 
@@ -603,4 +628,16 @@ export function displayExercise(){
     var exercise = document.getElementById('exercise');
     exercise.className = "";
     exercise.className = "row"
+
+    var check = document.getElementById('check');
+    check.className = "";
+    check.className = "row d-none";
+
+    var right = document.getElementById('right');
+    right.className = "";
+    right.className = "col d-none";
+
+    var wrong = document.getElementById('wrong');
+    wrong.className = "";
+    wrong.className = "col d-none";
 }
