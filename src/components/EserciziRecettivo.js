@@ -24,15 +24,6 @@ function EserciziRecettivo(){
     return(
         <div>
             <div className='row'>
-                <p>
-                    <button onClick={() => window.speechSynthesis.speak(speech)}>play</button> 
-                </p>
-                <p>
-                    <button onClick={() => window.speechSynthesis.pause()}>pause</button>
-                </p>
-                <p>
-                    <button onClick={() => window.speechSynthesis.resume()}>resume</button>
-                </p>
                 <h1>Immagine tra cui scegliere</h1>
                 <div className='col-md-4'>
                     <img src={pickedAbilities[0]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[0]['name'])}/>
@@ -42,6 +33,11 @@ function EserciziRecettivo(){
                 </div>
                 <div className='col-md-4'>
                     <img src={pickedAbilities[2]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[2]['name'])}/>
+                </div>
+            </div>
+            <div className='row mt-5'>
+                <div className='col-md-4 offset-md-4 col-xs-12 text-center'>
+                    <button className='btn btn-primary btn-lg' onClick={() => window.speechSynthesis.speak(speech)}>Riproduci</button> 
                 </div>
             </div>
         </div>

@@ -7,9 +7,6 @@ import abilities from './Abilities';
 const Dictaphone = () => {
     let correctAbility = abilities.find(ability => ability.name === 'Cavallo');
 
-    const [message, setMessage] = useState('');
-
-
     const commands = [
         {
             command: "reset",
@@ -19,17 +16,11 @@ const Dictaphone = () => {
 
     const {
         transcript,
-        interimTranscript,
-        finalTranscript,
         resetTranscript,
         listening,
     } = useSpeechRecognition({commands});
 
-    /*useEffect(() => {
-        if(finalTranscript !== ''){
-            console.log('Got final result: ', finalTranscript);
-        }
-    }, [interimTranscript, finalTranscript]);*/
+    
     if(!SpeechRecognition.browserSupportsSpeechRecognition()){
         return null;
     }
@@ -58,27 +49,36 @@ const Dictaphone = () => {
 
     return (
         <div>
-            <h1>Microfono</h1>
-            <div>
-                <span>
-                    listening:
-                    {' '}
-                    {listening ? 'on' : 'off'}
-                </span>
-                <div>
-                    <button type="button" onClick={resetTranscript}>Reset</button>
-                    <button type="button" onClick={listenContinuously}>Listen</button>
-                    <button type='button' onClick={SpeechRecognition.stopListening}>Stop</button>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'>
+                        <p>
+                            Il microfono è in ascolto?
+                            {' '}
+                            <h3> {listening ? 'Sì' : 'No'} </h3>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div>
-                {message}
-            </div>
-            <div>
-                Risposta: 
-                <span> {transcript}</span>
-                <br/>
-                <button type='button' onClick={inviaRisposta}>Invia Risposta</button>
+                <div className='row mt-3'>
+                    <div className='col-md-4 col-xs-12 text-center'> 
+                        <button className='btn btn-primary btn-lg' onClick={listenContinuously}>Ascolta</button>
+                    </div>
+                    <div className='col-md-4 col-xs-12 text-center'> 
+                        <button className='btn btn-primary btn-lg' onClick={SpeechRecognition.stopListening}>Stop</button>
+                    </div>
+                    <div className='col-md-4 col-xs-12 text-center'> 
+                        <button className='btn btn-primary btn-lg' onClick={resetTranscript}>Reset</button>
+                    </div>
+                </div>
+                <div className='row mt-4'>
+                    <div className='col'>
+                        <p>
+                            Risposta: 
+                            <span><h3> {transcript}</h3></span>
+                        </p>
+                        <button className='btn btn-primary btn-lg' onClick={inviaRisposta}>Invia Risposta</button>
+                    </div>
+                </div>
             </div>
         </div>
     );

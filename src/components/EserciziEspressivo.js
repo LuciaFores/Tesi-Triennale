@@ -12,7 +12,7 @@ function EserciziEspressivo(){
                 <h1>
                     Immagine da riconoscere
                 </h1>
-                <div className='offset-md-4 col-md-4'>
+                <div className='offset-md-4 col-md-4 mb-5'>
                    <img src={correctAbility['img']} className='img-fluid'/>
                 </div>
             </div>

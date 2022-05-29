@@ -594,3 +594,13 @@ export function checkAppaiamento_Recettivo(chosenName){
         alert('Non corretto :(');
     }
 }
+
+export function displayExercise(){
+    var instruction = document.getElementById('instruction');
+    instruction.className = "";
+    instruction.className = "row d-none";
+
+    var exercise = document.getElementById('exercise');
+    exercise.className = "";
+    exercise.className = "row"
+}
