@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AllExercisesTable from '../components/AllExercisesTable';
 import Navbar from '../components/NavbarPRLO';
-import {clearRoutine} from '../components/Utils';
+import {clearRoutine, saveRoutine} from '../components/Utils';
 
 function Redirect(){
     return(
@@ -37,7 +37,7 @@ function RoutineSelection(){
                 <AllExercisesTable/>
                 <div className='row'>
                     <div className='col-md-4 offset-md-7'>
-                        <button className='btn btn-primary'>Avvia la routine!</button>
+                        <button className='btn btn-primary' onClick={saveRoutine}>Avvia la routine!</button>
                     </div>
                 </div>
                 </div>

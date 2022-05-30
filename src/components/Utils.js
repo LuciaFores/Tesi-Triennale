@@ -641,3 +641,26 @@ export function displayExercise(){
     wrong.className = "";
     wrong.className = "offset-md-4 col-md-4 mt-5 d-none";
 }
+
+export function saveRoutine(){
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    var now = year + "-" + month + "-" + day;
+
+    var percFisio = localStorage.getItem("patientExListNum")
+
+    var routineName = percFisio + "_" + now;
+
+    const obj = {
+        name : routineName,
+        exListNum : percFisio
+    }
+
+    axios.post('http://localhost/tirocinio/newRoutine.php', obj)
+        .then(res => 
+            console.log("ok")
+        )
+        .catch(error => console.log(error))
+}
