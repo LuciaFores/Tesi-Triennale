@@ -42,11 +42,11 @@ const Dictaphone = () => {
         if(transcript === correctAbility['name'].toLowerCase()){
             var right = document.getElementById('right');
             right.className = "";
-            right.className = "col text-center";
+            right.className = "offset-md-4 col-md-4 mt-5";
 
             var wrong = document.getElementById('wrong');
             wrong.className = "";
-            wrong.className = "col d-none";
+            wrong.className = "offset-md-4 col-md-4 mt-5 d-none";
 
             var exercise = document.getElementById('elements');
             exercise.className = "";
@@ -55,11 +55,11 @@ const Dictaphone = () => {
         else{
             var wrong = document.getElementById('wrong');
             wrong.className = "";
-            wrong.className = "col text-center";
+            wrong.className = "offset-md-4 col-md-4 mt-5";
 
             var right = document.getElementById('right');
             right.className = "";
-            right.className = "col d-none";
+            right.className = "offset-md-4 col-md-4 mt-5 d-none";
 
             var exercise = document.getElementById('elements');
             exercise.className = "";

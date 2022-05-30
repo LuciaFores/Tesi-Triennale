@@ -595,11 +595,11 @@ export function checkAppaiamento_Recettivo(chosenName){
     if(chosenName === chosenAbility['name']){
         var right = document.getElementById('right');
         right.className = "";
-        right.className = "col text-center";
+        right.className = "offset-md-4 col-md-4 mt-5";
 
         var wrong = document.getElementById('wrong');
         wrong.className = "";
-        wrong.className = "col d-none";
+        wrong.className = "offset-md-4 col-md-4 mt-5 d-none";
 
         var exercise = document.getElementById('images');
         exercise.className = "";
@@ -608,11 +608,11 @@ export function checkAppaiamento_Recettivo(chosenName){
     else{
         var wrong = document.getElementById('wrong');
         wrong.className = "";
-        wrong.className = "col text-center";
+        wrong.className = "offset-md-4 col-md-4 mt-5";
 
         var right = document.getElementById('right');
         right.className = "";
-        right.className = "col d-none";
+        right.className = "offset-md-4 col-md-4 mt-5 d-none";
 
         var exercise = document.getElementById('images');
         exercise.className = "";
@@ -635,9 +635,9 @@ export function displayExercise(){
 
     var right = document.getElementById('right');
     right.className = "";
-    right.className = "col d-none";
+    right.className = "offset-md-4 col-md-4 mt-5 d-none";
 
     var wrong = document.getElementById('wrong');
     wrong.className = "";
-    wrong.className = "col d-none";
+    wrong.className = "offset-md-4 col-md-4 mt-5 d-none";
 }

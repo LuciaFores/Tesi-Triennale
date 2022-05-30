@@ -36,10 +36,10 @@ function EserciziAppaiamento(){
                 </div>
             </div>
             <div className='row d-none' id='check'>
-                <div className='col-8 d-none' id='right'>
+                <div className='offset-md-4 col-md-4 mt-5 d-none' id='right'>
                     <img className='img-fluid' src={imgCheck}/>
                 </div>
-                <div className='col d-none' id='wrong'>
+                <div className='offset-md-4 col-md-4 mt-5 d-none' id='wrong'>
                     <img className='img-fluid' src={imgWrong}/>
                 </div>
             </div>
