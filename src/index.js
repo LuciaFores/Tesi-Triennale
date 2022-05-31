@@ -37,6 +37,8 @@ import CCSuccess from './pages/CCSuccess';
 import RequestSent from './pages/RequestSent';
 import Recettivo from './pages/Recettivo';
 import Espressivo from './pages/Espressivo';
+import Exercises from './pages/Exercises';
+import RoutineEnd from './pages/RoutineEnd';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -66,9 +68,11 @@ ReactDOM.render(
             <Route path='patientProfile/therapyExercisesTypeList/newExercise/contactForm/success' element={<RSSuccess/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList' element={<TherapyExercisesList/>}/>
             <Route path='patientProfile/routineSelection' element={<RoutineSelection/>}/>
+            <Route path='patientProfile/exercises' element={<Exercises/>}/>
             <Route path='patientProfile/exercises/appaiamento' element={<Appaiamento/>}/>
             <Route path='patientProfile/exercises/recettivo' element={<Recettivo/>}/>
             <Route path='patientProfile/exercises/espressivo' element={<Espressivo/>}/>
+            <Route path='patientProfile/exercises/end' element={<RoutineEnd/>}/>
             <Route path='userae' element={<UserAlreadyExists/>}/>
             <Route path='usernf' element={<UserNotFound/>}/>
             <Route path='caregiverac' element={<CaregiverAlreadyConnected/>}/>

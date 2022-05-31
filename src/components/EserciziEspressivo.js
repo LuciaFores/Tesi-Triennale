@@ -6,7 +6,10 @@ import imgCheck from '../img/imgCheck.svg';
 import imgWrong from '../img/imgWrong.svg';
 
 function EserciziEspressivo(){
-    let correctAbility = abilities.find(ability => ability.name === 'Cavallo');
+    var ex = localStorage.getItem('exToBePlayed').split(',');
+    var id = parseInt(ex[2]);
+
+    let correctAbility = abilities.find(ability => ability.id === id);
 
     return(
         <div>

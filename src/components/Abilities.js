@@ -3,28 +3,39 @@ import imgGatto from '../img/abilities_img/imgGatto.svg';
 import imgElefante from '../img/abilities_img/imgElefante.svg';
 import imgCavallo from '../img/abilities_img/imgCavallo.svg';
 import imgMucca from '../img/abilities_img/imgMucca.svg';
+import imgPecora from '../img/abilities_img/imgPecora.svg';
 
 
 let abilities = [
     {
+        id : 1,
         name : "Cane",
         img : imgCane
     },
     {
+        id : 2, 
         name : "Gatto",
         img : imgGatto
     },
     {
+        id : 3,
         name : "Elefante",
         img : imgElefante
     },
     {
+        id : 4,
         name : "Cavallo",
         img : imgCavallo
     },
     {
+        id : 5,
         name : "Mucca",
         img : imgMucca
+    },
+    {
+        id : 6,
+        name : "Pecora",
+        img : imgPecora
     }
 ]
 

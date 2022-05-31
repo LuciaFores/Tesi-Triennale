@@ -565,9 +565,11 @@ function deleteMessage(id){
 }
 
 export function gamePreparation(){
-    // Per ora le cambio da codice ma poi verrà parametrizzata prendendo quella scelta dal caregiver
-    let chosenAbility = abilities.find(ability => ability.name === 'Cavallo');
-    let otherAbilities = abilities.filter(ability => ability.name != chosenAbility['name']);
+    var ex = localStorage.getItem('exToBePlayed').split(',');
+    var id = parseInt(ex[2]);
+
+    let chosenAbility = abilities.find(ability => ability.id === id);
+    let otherAbilities = abilities.filter(ability => ability.id != id);
 
     const min = -1;
     const max = otherAbilities.length - 1;
@@ -586,7 +588,15 @@ export function gamePreparation(){
 }
 
 export function checkAppaiamento_Recettivo(chosenName){
-    let chosenAbility = abilities.find(ability => ability.name === 'Cavallo');
+    var ex = localStorage.getItem('exToBePlayed').split(',');
+    var abilityId = parseInt(ex[2]);
+    var exNum = parseInt(ex[0]);
+
+    localStorage.removeItem('exToBePlayed');
+
+    let chosenAbility = abilities.find(ability => ability.id === abilityId);
+
+    let obj;
     
     var check = document.getElementById('check');
     check.className = "";
@@ -604,6 +614,14 @@ export function checkAppaiamento_Recettivo(chosenName){
         var exercise = document.getElementById('images');
         exercise.className = "";
         exercise.className = "row d-none"
+
+        localStorage.removeItem("exToBePlayed");
+
+        obj = {
+            exNum : exNum,
+            routine : localStorage.getItem('routineName'),
+            esito : "corretto"
+        }
     }
     else{
         var wrong = document.getElementById('wrong');
@@ -617,7 +635,20 @@ export function checkAppaiamento_Recettivo(chosenName){
         var exercise = document.getElementById('images');
         exercise.className = "";
         exercise.className = "row d-none"
+
+        localStorage.removeItem("exToBePlayed");
+
+        obj = {
+            exNum : exNum,
+            routine : localStorage.getItem('routineName'),
+            esito : "errato"
+        }
     }
+    axios.post('http://localhost/tirocinio/saveResult.php', obj)
+        .then(res => 
+            window.location.href = '../exercises'
+            )
+        .catch(error => console.log(error))
 }
 
 export function displayExercise(){
@@ -647,11 +678,17 @@ export function saveRoutine(){
     var day = date.getDate();
     var month = date.getMonth() + 1;
     var year = date.getFullYear();
-    var now = year + "-" + month + "-" + day;
+    var hour = addZero(date.getHours());
+    var minutes = addZero(date.getMinutes());
+    var seconds = addZero(date.getSeconds());
+    var time = hour + ":" + minutes + ":" + seconds; 
+    var now = year + "-" + month + "-" + day + "_" + time;
 
     var percFisio = localStorage.getItem("patientExListNum")
 
     var routineName = percFisio + "_" + now;
+
+    localStorage.setItem("routineName", routineName);
 
     const obj = {
         name : routineName,
@@ -660,7 +697,74 @@ export function saveRoutine(){
 
     axios.post('http://localhost/tirocinio/newRoutine.php', obj)
         .then(res => 
-            console.log("ok")
+            chooseExercise()
         )
         .catch(error => console.log(error))
+}
+
+export function chooseExercise(){
+    var exercises = localStorage.getItem('routine').split(',');
+    exercises.pop();
+    localStorage.setItem('routine', exercises);
+    //playExercises()
+    window.location.href = "../patientProfile/exercises";
+}
+
+function addZero(i){
+    if(i<10){
+        i = "0" + i;
+    }
+    return i
+}
+
+export function playExercises(){
+    var exercises = localStorage.getItem('routine').split(',');
+    var exercise = exercises[0];
+
+    const obj = {
+        exNum : exercise,
+    }
+    axios.post('http://localhost/tirocinio/getExercise.php', obj)
+    .then(res => 
+        localStorage.setItem("exToBePlayedData", res.data),
+        )
+    .catch(error => console.log(error))
+        
+}
+
+export function clearExToBePlayedData(){
+    let data = localStorage.getItem('exToBePlayedData');
+    data = data.slice(25, (data.length)-1)
+    data = data.replace(/"/g, '');
+
+    const datas = data.split(',');
+    var exData = []
+
+    const exIdData= datas[0].split(':');
+    const exId = exIdData[1];
+    exData.push(exId);
+    const exTypeData= datas[1].split(':');
+    const exType = exTypeData[1]
+    exData.push(exType);
+    const exAbilityData = datas[2].split(':');
+    const exAbility = exAbilityData[1];
+    exData.push(exAbility);
+    
+    localStorage.setItem('exToBePlayed', exData);
+}
+
+export function redirect(){
+    var exData = localStorage.getItem('exToBePlayed').split(',');
+
+    var type = exData[1];
+
+    if(type === "Appaiamento 2D-2D"){
+        window.location.href = "../patientProfile/exercises/appaiamento"
+    }
+    else if(type === "Esercizi Espressivo"){
+        window.location.href = "../patientProfile/exercises/espressivo"
+    }
+    else if(type === "Esercizi Recettivo"){
+        window.location.href = "../patientProfile/exercises/recettivo"
+    }
 }

@@ -1,9 +1,14 @@
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import SpeechRecognition, {useSpeechRecognition} from 'react-speech-recognition';
 import abilities from './Abilities';
 
 const Dictaphone = () => {
-    let correctAbility = abilities.find(ability => ability.name === 'Cavallo');
+    var ex = localStorage.getItem('exToBePlayed').split(',');
+    var abilityId = parseInt(ex[2]);
+    var exNum = parseInt(ex[0]);
+
+    let correctAbility = abilities.find(ability => ability.id === abilityId);
 
     const commands = [
         {
@@ -38,6 +43,9 @@ const Dictaphone = () => {
         var check = document.getElementById('check');
         check.className = "";
         check.className = "row";
+        localStorage.removeItem('exToBePlayed');
+
+        let obj;
 
         if(transcript === correctAbility['name'].toLowerCase()){
             var right = document.getElementById('right');
@@ -51,6 +59,14 @@ const Dictaphone = () => {
             var exercise = document.getElementById('elements');
             exercise.className = "";
             exercise.className = "row d-none"
+
+            localStorage.removeItem("exToBePlayed");
+
+            obj = {
+                exNum : exNum,
+                routine : localStorage.getItem('routineName'),
+                esito : "corretto"
+            }
         }
         else{
             var wrong = document.getElementById('wrong');
@@ -64,7 +80,20 @@ const Dictaphone = () => {
             var exercise = document.getElementById('elements');
             exercise.className = "";
             exercise.className = "row d-none"
+
+            localStorage.removeItem("exToBePlayed");
+
+            obj = {
+                exNum : exNum,
+                routine : localStorage.getItem('routineName'),
+                esito : "errato"
+            }
         }
+        axios.post('http://localhost/tirocinio/saveResult.php', obj)
+        .then(res => 
+            window.location.href = '../exercises'
+            )
+        .catch(error => console.log(error))
     }
 
     return (

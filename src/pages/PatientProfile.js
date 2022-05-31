@@ -117,6 +117,18 @@ function PatientProfile(){
     if(localStorage.getItem('allExercisesData') != null){
         localStorage.removeItem('allExercisesData');
     }
+
+    if(localStorage.getItem('exToBePlayed') != null){
+        localStorage.removeItem('exToBePlayed');
+    }
+
+    if(localStorage.getItem('exToBePlayedData') != null){
+        localStorage.removeItem('exToBePlayedData');
+    }
+
+    if(localStorage.getItem('routineName') != null){
+        localStorage.removeItem('routineName');
+    }
     
     const name = localStorage.getItem('patientName');
     const surname = localStorage.getItem('patientSurname');

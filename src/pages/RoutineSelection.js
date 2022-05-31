@@ -21,6 +21,7 @@ function RoutineSelection(){
     }
 
     const patientName = localStorage.getItem('patientName');
+    localStorage.setItem('routine', "");
     return(
         <div>
             <Navbar/>
