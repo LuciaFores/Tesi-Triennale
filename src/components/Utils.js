@@ -153,7 +153,6 @@ export function rearrangeExercises(){
         exercise.push(ability);
         exercisesList.push(exercise);
     }
-    console.log(exercisesList);
     return exercisesList;
 }
 
@@ -284,12 +283,22 @@ export function rearrangeAllExercises(){
 }
 
 export function populateRoutine(exercise){
-    if(localStorage.getItem('routine') === null){
-        localStorage.setItem('routine', '');
+    var id = "#" + createId(exercise);
+    var btn = document.querySelector(id);
+
+    if(btn.innerText != "Aggiunto!"){
+        btn.innerText = "";
+        btn.innerText = "Aggiunto!";
+        btn.className = "";
+        btn.className = "btn btn-success";
+        if(localStorage.getItem('routine') === null){
+            localStorage.setItem('routine', '');
+        }
+        let routine = localStorage.getItem('routine');
+        routine += exercise + ',';
+        localStorage.setItem('routine', routine);
     }
-    let routine = localStorage.getItem('routine');
-    routine += exercise + ',';
-    localStorage.setItem('routine', routine);
+    
 }
 
 export function clearRoutine(){
@@ -767,4 +776,51 @@ export function redirect(){
     else if(type === "Esercizi Recettivo"){
         window.location.href = "../patientProfile/exercises/recettivo"
     }
+}
+
+export function createId(exercise){
+    const btnName = "btn" + exercise;
+    return btnName;
+}
+
+export function clearExerciseResultsData(){
+    let data = localStorage.getItem('exerciseResultsData');
+    data = data.slice(25, (data.length)-1);
+    data = data.replace(/"/g, '');
+    localStorage.setItem('exerciseResults', data);
+}
+
+export function rearrangeExerciseResults(){
+    let exerciseResults = localStorage.getItem('exerciseResults').split(',');
+    let exerciseResultsList = [];
+    for (var i = 0; i<exerciseResults.length; i+=3){
+        let exerciseResult = []
+        exerciseResult.push(exerciseResults[i])
+        exerciseResult.push(exerciseResults[i+1]);
+        exerciseResult.push(exerciseResults[i+2]);
+        exerciseResultsList.push(exerciseResult);
+    }
+    return exerciseResultsList;
+}
+
+export function getData(data){
+    const rout = data.split('_');
+    const date = changeDateFormat(rout[1]);
+    const time = rout[2];
+    return date + " " + time;
+}
+
+export function clearExerciseResults(){
+    localStorage.removeItem('exerciseResults');
+}
+
+export function getResults(exercise, ability){
+    localStorage.setItem("abilityChosen", ability);
+    const obj = {
+        exNum : exercise,
+    }
+
+    axios.post('http://localhost/tirocinio/getExerciseResults.php', obj)
+        .then(res => localStorage.setItem('exerciseResultsData', res.data))
+        .catch(error => console.log('errore'))
 }

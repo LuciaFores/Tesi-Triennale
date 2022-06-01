@@ -17,6 +17,7 @@ class NEForm extends Component{
             exType : '',
             ability : '',
             insertionDate : '',
+            correctResponse : '',
         }
     }
 
@@ -45,13 +46,29 @@ class NEForm extends Component{
             var year = date.getFullYear();
             var insertion = year.toString() + '-' + month.toString() + '-' + day.toString();
 
-            const obj = {
-                caregiver : this.state.caregiver,
-                exListNum : this.state.exListNum,
-                exType : this.state.exType,
-                ability : this.state.ability,
-                insertionDate : insertion,
+            let obj;
+
+            if(this.state.exType === "Esercizi Espressivo"){
+                obj = {
+                    caregiver : this.state.caregiver,
+                    exListNum : this.state.exListNum,
+                    exType : this.state.exType,
+                    ability : this.state.ability,
+                    insertionDate : insertion,
+                    correctResponse : this.state.ability,
+                }
             }
+            else{
+                obj = {
+                    caregiver : this.state.caregiver,
+                    exListNum : this.state.exListNum,
+                    exType : this.state.exType,
+                    ability : this.state.ability,
+                    insertionDate : insertion,
+                    correctResponse : this.state.correctResponse,
+                }
+            }
+            
 
             axios.post('http://localhost/tirocinio/newExerciseInList.php', obj)
                 .then(res => window.location.href = './newExercise/success')
@@ -63,6 +80,8 @@ class NEForm extends Component{
                 exType : '',
                 ability : '',
                 insertionDate : '',
+                correctResponse : '',
+
             })
         }
         else{

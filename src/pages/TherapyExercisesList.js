@@ -89,6 +89,9 @@ function TherapyExercisesList(){
     else{
         window.location.reload();
     }
+    if(localStorage.getItem('abilityChosen') != null){
+        localStorage.removeItem('abilityChosen');
+    }
    
     const exTypeChosen = localStorage.getItem('typeChosen');
     return(

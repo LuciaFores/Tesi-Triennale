@@ -13,6 +13,7 @@ if(isset($postdata) && !empty($postdata)){
     $exType = $request->exType;
     $ability = $request->ability;
     $insertionDate = $request->insertionDate;
+    $correctResponse = $request->correctResponse;
 
     $query = "SELECT cod FROM abilita WHERE descrizione = '".$ability."'";
     $result = mysqli_query($db, $query);
@@ -23,7 +24,7 @@ if(isset($postdata) && !empty($postdata)){
         $result = mysqli_query($db, $query);
         $row = mysqli_fetch_assoc($result);
         if(empty($row)){
-            $query = "INSERT INTO implementazioneEsercizio (inserimento, tipologia, percFisio, abilita) VALUES ('$insertionDate', '$exType', $exListNum, $cod)";
+            $query = "INSERT INTO implementazioneEsercizio (inserimento, rispAcc, tipologia, percFisio, abilita) VALUES ('$insertionDate', '$correctResponse', '$exType', $exListNum, $cod)";
             if(mysqli_query($db,$query)){
                 $exercise = mysqli_insert_id($db);
                 $query = "INSERT INTO cgCreaEs (caregiver, esImpl) VALUES ('$caregiver', $exercise)";

@@ -43,6 +43,9 @@ function TherapyExercisesList(){
     if(localStorage.getItem('exercisesData') != null){
         localStorage.removeItem('exercisesData');
     }
+    if(localStorage.getItem('abilityChosen') != null){
+        localStorage.removeItem('abilityChosen');
+    }
     
 
     const patientName = localStorage.getItem('patientName');

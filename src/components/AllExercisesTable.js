@@ -1,5 +1,5 @@
 import React from 'react';
-import {clearAllExercisesData, populateRoutine, rearrangeAllExercises} from '../components/Utils';
+import {clearAllExercisesData, populateRoutine, rearrangeAllExercises, createId} from '../components/Utils';
 
 function AllExercisesTable(){
     if(localStorage.getItem('allExercisesData') === null && localStorage.getItem('allExercises') === null){
@@ -23,7 +23,7 @@ function AllExercisesTable(){
             <td>{exercise[5]}</td>
             <td>{exercise[6]}</td>
             <td>{exercise[7]}</td>
-            <td><button className='btn btn-primary' onClick={() => populateRoutine(exercise[0])}>Aggiungi!</button></td>
+            <td><button className='btn btn-primary' id={createId(exercise[0])} onClick={() => populateRoutine(exercise[0])}>Aggiungi!</button></td>
         </tr>
     ) 
     return(

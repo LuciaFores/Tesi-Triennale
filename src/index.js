@@ -39,6 +39,7 @@ import Recettivo from './pages/Recettivo';
 import Espressivo from './pages/Espressivo';
 import Exercises from './pages/Exercises';
 import RoutineEnd from './pages/RoutineEnd';
+import ExerciseResults from './pages/ExerciseResults';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -67,6 +68,7 @@ ReactDOM.render(
             <Route path='patientProfile/therapyExercisesTypeList/newExercise/contactForm' element={<Contact/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/newExercise/contactForm/success' element={<RSSuccess/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList' element={<TherapyExercisesList/>}/>
+            <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList/exerciseResults' element={<ExerciseResults/>}/>
             <Route path='patientProfile/routineSelection' element={<RoutineSelection/>}/>
             <Route path='patientProfile/exercises' element={<Exercises/>}/>
             <Route path='patientProfile/exercises/appaiamento' element={<Appaiamento/>}/>

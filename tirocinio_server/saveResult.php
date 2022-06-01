@@ -14,7 +14,13 @@ if(isset($postdata) && !empty($postdata)){
 
     $query = "INSERT INTO esrout (esImpl, routine, esito) VALUES ($exNum, '$routine', '$esito')";
     if(mysqli_query($db, $query)){
-        http_response_code(201);
+        $query = "UPDATE implementazioneEsercizio SET eseguito = true WHERE id = $exNum";
+        if(mysqli_query($db, $query)){
+            http_response_code(201);
+        }
+        else{
+            http_response_code(409);
+        }
     }
     else{
         http_response_code(409);

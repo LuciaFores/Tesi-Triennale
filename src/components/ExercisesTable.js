@@ -1,5 +1,6 @@
 import React from 'react';
-import {clearExercisesData, rearrangeExercises} from '../components/Utils';
+import {clearExercisesData, rearrangeExercises, getResults} from '../components/Utils';
+import { Link } from 'react-router-dom';
 
 function ExercisesTable(){
     if(localStorage.getItem('exercisesData') === null && localStorage.getItem('exercises') === null){
@@ -21,7 +22,7 @@ function ExercisesTable(){
             <td>{exercise[4]}</td>
             <td>{exercise[5]}</td>
             <td>{exercise[6]}</td>
-            <td><button className='btn btn-primary'>Consulta!</button></td>
+            <td><button className='btn btn-primary' onClick={() => getResults(exercise[0], exercise[6])}><Link to='./exerciseResults' className='link-light text-decoration-none'>Consulta!</Link></button></td>
         </tr>
     ) 
     return(
