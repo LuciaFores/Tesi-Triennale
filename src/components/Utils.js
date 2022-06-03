@@ -795,7 +795,8 @@ export function rearrangeExerciseResults(){
     let exerciseResultsList = [];
     for (var i = 0; i<exerciseResults.length; i+=3){
         let exerciseResult = []
-        exerciseResult.push(exerciseResults[i])
+        exerciseResult.push(exerciseResults[i]);
+        localStorage.setItem('ex', exerciseResults[i]);
         exerciseResult.push(exerciseResults[i+1]);
         exerciseResult.push(exerciseResults[i+2]);
         exerciseResultsList.push(exerciseResult);
@@ -823,4 +824,14 @@ export function getResults(exercise, ability){
     axios.post('http://localhost/tirocinio/getExerciseResults.php', obj)
         .then(res => localStorage.setItem('exerciseResultsData', res.data))
         .catch(error => console.log('errore'))
+}
+
+export function updateExercise(id){
+    const role = localStorage.getItem('caregiverRole')
+    if(role === 'nonProfessionale'){
+        alert("Non puoi aggiornare i dati dell'esercizio poiché sei un caregiver non professionale");
+    }
+    else{
+        window.location.href = "/patientProfile/therapyExercisesTypeList/therapyExercisesList/exerciseResults/updateExerciseData"
+    }
 }

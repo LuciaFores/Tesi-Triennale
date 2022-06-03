@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/NavbarPRLO";
-import { clearExerciseResults } from "../components/Utils";
+import { clearExerciseResults, updateExercise } from "../components/Utils";
 
 import ResultTable from "../components/ResultTable";
 
@@ -17,6 +17,10 @@ function ExerciseResults(){
     const exTypeChosen = localStorage.getItem('typeChosen');
     const abilityChosen = localStorage.getItem('abilityChosen');
     const patientName = localStorage.getItem('patientName');
+
+    const exRes = localStorage.getItem('ex');
+
+
     return(
         <div>
             <Navbar/>
@@ -28,7 +32,8 @@ function ExerciseResults(){
                         Nella prima colonna della tabella è riportata la data in cui è stato eseguito l'esercizio e nella seconda l'esito che ha avuto l'esecuzione.
                     </p>
                     <p>
-                        Un <strong>caregiver professionale</strong> può modificare le date di apprendimento, sospensione o ripasso cliccando sul pulsante "Aggiorna dati esercizio!"
+                        Un <strong>caregiver professionale</strong> può dichiarare l'apprendimento o la sospensione dell'esercizio cliccando sul pulsante "Aggiorna dati esercizio!" <br/>
+                        In caso un esercizio sia stato dichiarato come "appreso", il caregiver può indicare la data di ripasso di questo.
                     </p>
                     <p>
                         Se la tabella è <strong>vuota</strong> vuol dire che l'esercizio non è mai stato eseguito e di conseguenza non può essere aggiornato
@@ -39,7 +44,7 @@ function ExerciseResults(){
                 </div>
                 <div className="row">
                     <div className="col-4 offset-5 text-center">
-                        <button className='btn btn-primary' id='' onClick=''>Aggiorna Esercizio!</button>
+                        <button className='btn btn-primary' onClick={() => updateExercise(exRes)}>Aggiorna dati Esercizio!</button>
                     </div>
                 </div>
                 <div className="row">

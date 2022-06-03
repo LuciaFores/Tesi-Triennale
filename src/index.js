@@ -40,6 +40,9 @@ import Espressivo from './pages/Espressivo';
 import Exercises from './pages/Exercises';
 import RoutineEnd from './pages/RoutineEnd';
 import ExerciseResults from './pages/ExerciseResults';
+import UpdateExerciseData from './pages/UpdateExerciseData';
+import UESuccess from './pages/UESuccess';
+import UEError from './pages/UEError';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -69,6 +72,9 @@ ReactDOM.render(
             <Route path='patientProfile/therapyExercisesTypeList/newExercise/contactForm/success' element={<RSSuccess/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList' element={<TherapyExercisesList/>}/>
             <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList/exerciseResults' element={<ExerciseResults/>}/>
+            <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList/exerciseResults/updateExerciseData' element={<UpdateExerciseData/>}/>
+            <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList/exerciseResults/updateExerciseData/success' element={<UESuccess/>}/>
+            <Route path='patientProfile/therapyExercisesTypeList/therapyExercisesList/exerciseResults/updateExerciseData/error' element={<UEError/>}/>
             <Route path='patientProfile/routineSelection' element={<RoutineSelection/>}/>
             <Route path='patientProfile/exercises' element={<Exercises/>}/>
             <Route path='patientProfile/exercises/appaiamento' element={<Appaiamento/>}/>
