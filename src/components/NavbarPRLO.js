@@ -25,7 +25,7 @@ function Navbar(){
                         <HashLink smooth className='nav-link' to='/homelo#contatti'>Contatti</HashLink>
                     </div>
                     <div className='navbar-nav ms-auto'>
-                        <NavLink className='nav-link' to='/caregiverprofile'>{uprIcon} Profile</NavLink>
+                        <NavLink className='nav-link' to='/caregiverprofile'>{uprIcon} Profilo</NavLink>
                         <NavLink className='nav-link' to='/' onClick={() => localStorage.clear()}>{loIcon} Logout</NavLink>
                     </div>
                 </div>

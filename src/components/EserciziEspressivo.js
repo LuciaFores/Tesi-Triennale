@@ -14,7 +14,7 @@ function EserciziEspressivo(){
     return(
         <div>
             <div id='elements'>
-                <div className='row'>
+                <div className='row mt-3'>
                     <h1>
                         Immagine da riconoscere
                     </h1>

@@ -20,14 +20,14 @@ function DescriptionCard(){
     exerciseDescription = unicodeToChar(exerciseDescription);
 
     return(
-        <div className="card mt-4 border-primary">
+        <div className="card mt-4 border-primary h-100">
             <img className="card-img-top img-fluid" src={imgDescription} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
                 <h2 className="card-text">
                     Descrizione dell'esercizio
                 </h2>
-                <p className="mb-md-4">
+                <p>
                     {exerciseDescription}
                 </p>
             </div>
@@ -40,14 +40,14 @@ function ExecutionCard(){
     exerciseExecution = unicodeToChar(exerciseExecution);
 
     return(
-        <div className="card mt-4 border-primary">
+        <div className="card mt-4 border-primary h-100">
             <img className="card-img-top img-fluid" src={imgExecution} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
                 <h2 className="card-text">
                     Modalità di esecuzione
                 </h2>
-                <p className="mb-md-5">
+                <p>
                     {exerciseExecution}
                 </p>
             </div>
@@ -60,14 +60,14 @@ function ResultAttendedCard(){
     exerciseRes = unicodeToChar(exerciseRes);
 
     return(
-        <div className="card mt-4 border-primary">
+        <div className="card mt-4 border-primary h-100">
             <img className="card-img-top img-fluid" src={imgResults} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
                 <h2 className="card-text">
                     Risultati attesi
                 </h2>
-                <p className="mb-md-4">
+                <p>
                     {exerciseRes}
                 </p>
             </div>
@@ -102,17 +102,17 @@ function TherapyExercisesList(){
                     <h1>{exTypeChosen}</h1>
                 </div>
                 <div className="row">
-                    <div className="col-md-4 col-xs-12">
+                    <div className="col-md-4 col-xs-12 pb-3">
                         <DescriptionCard/>
                     </div>
-                    <div className="col-md-4 col-xs-12">
+                    <div className="col-md-4 col-xs-12 pb-3">
                         <ExecutionCard/>
                     </div>
-                    <div className="col-md-4 col-xs-12">
+                    <div className="col-md-4 col-xs-12 pb-3">
                         <ResultAttendedCard/>
                     </div>
                 </div>
-                <div className="row table-responsive mt-md-5 mt-xs-3">
+                <div className="row table-responsive mt-5">
                     <ExercisesTable/>
                 </div>
 

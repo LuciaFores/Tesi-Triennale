@@ -14,23 +14,23 @@ function EserciziAppaiamento(){
     return(
         <div>
             <div id='images'>
-                <div className='row'>
+                <div className='row pb-3 mt-3'>
                     <h1>
-                        Immagine da scegliere
+                        Immagine richiesta
                     </h1>
                     <div className='offset-md-4 col-md-4'>
                     <img src={correctAbility['img']} className='img-fluid'/>
                     </div>
                 </div>
-                <div className='row'>
-                    <h1>Immagine tra cui scegliere</h1>
-                    <div className='col-md-4'>
+                <div className='row pt-5'>
+                    <h1>Immagini tra cui scegliere</h1>
+                    <div className='col-md-4 pb-3'>
                         <img src={pickedAbilities[0]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[0]['name'])}/>
                     </div>
-                    <div className='col-md-4'>
+                    <div className='col-md-4 pb-3'>
                         <img src={pickedAbilities[1]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[1]['name'])}/>
                     </div>
-                    <div className='col-md-4'>
+                    <div className='col-md-4 pb-3'>
                         <img src={pickedAbilities[2]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[2]['name'])}/>
                     </div>
                 </div>

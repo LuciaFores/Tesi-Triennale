@@ -12,9 +12,9 @@ const Dictaphone = () => {
 
     const commands = [
         {
-            command: "reset",
-            callback: () => resetTranscript()
-        }
+          command: 'reset',
+          callback: () => resetTranscript()
+        },
     ]
 
     const {
@@ -22,15 +22,6 @@ const Dictaphone = () => {
         resetTranscript,
         listening,
     } = useSpeechRecognition({commands});
-
-    
-    if(!SpeechRecognition.browserSupportsSpeechRecognition()){
-        return null;
-    }
-
-    if(!SpeechRecognition.browserSupportsSpeechRecognition()){
-        console.log("Your browser does not support speech recognition software! Try Chrome desktop maybe?");
-    }
 
     const listenContinuously = () => {
         SpeechRecognition.startListening({
@@ -109,13 +100,13 @@ const Dictaphone = () => {
                     </div>
                 </div>
                 <div className='row mt-3'>
-                    <div className='col-md-4 col-xs-12 text-center'> 
+                    <div className='col-md-4 col-xs-12 text-center pb-3'> 
                         <button className='btn btn-primary btn-lg' onClick={listenContinuously}>Ascolta</button>
                     </div>
-                    <div className='col-md-4 col-xs-12 text-center'> 
+                    <div className='col-md-4 col-xs-12 text-center pb-3'> 
                         <button className='btn btn-primary btn-lg' onClick={SpeechRecognition.stopListening}>Stop</button>
                     </div>
-                    <div className='col-md-4 col-xs-12 text-center'> 
+                    <div className='col-md-4 col-xs-12 text-center pb-3'> 
                         <button className='btn btn-primary btn-lg' onClick={resetTranscript}>Reset</button>
                     </div>
                 </div>

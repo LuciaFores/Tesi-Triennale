@@ -835,3 +835,8 @@ export function updateExercise(id){
         window.location.href = "/patientProfile/therapyExercisesTypeList/therapyExercisesList/exerciseResults/updateExerciseData"
     }
 }
+
+export function logout(){
+    localStorage.clear();
+    window.location.href = "/"
+}

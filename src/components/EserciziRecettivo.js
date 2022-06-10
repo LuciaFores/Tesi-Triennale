@@ -26,23 +26,24 @@ function EserciziRecettivo(){
     return(
         <div>
             <div id='images'>
-                <div className='row'>
-                    <h1>Immagine tra cui scegliere</h1>
-                    <div className='col-md-4'>
-                        <img src={pickedAbilities[0]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[0]['name'])}/>
-                    </div>
-                    <div className='col-md-4'>
-                        <img src={pickedAbilities[1]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[1]['name'])}/>
-                    </div>
-                    <div className='col-md-4'>
-                        <img src={pickedAbilities[2]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[2]['name'])}/>
-                    </div>
-                </div>
-                <div className='row mt-5'>
+                <div className='row pb-2 mt-5'>
                     <div className='col-md-4 offset-md-4 col-xs-12 text-center'>
                         <button className='btn btn-primary btn-lg' onClick={() => window.speechSynthesis.speak(speech)}>Riproduci</button> 
                     </div>
                 </div>
+                <div className='row pt-5'>
+                    <h1>Immagini tra cui scegliere</h1>
+                    <div className='col-md-4 pb-3'>
+                        <img src={pickedAbilities[0]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[0]['name'])}/>
+                    </div>
+                    <div className='col-md-4 pb-3'>
+                        <img src={pickedAbilities[1]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[1]['name'])}/>
+                    </div>
+                    <div className='col-md-4 pb-3'>
+                        <img src={pickedAbilities[2]['img']} className='img-fluid' onClick={() => checkAppaiamento_Recettivo(pickedAbilities[2]['name'])}/>
+                    </div>
+                </div>
+                
             </div>
             <div className='row d-none' id='check'>
                 <div className='offset-md-4 col-md-4 mt-5 d-none' id='right'>

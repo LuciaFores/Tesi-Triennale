@@ -9,7 +9,7 @@ function Titolo(){
     return(
         <div className='d-flex justify-content-center'>
             <div className='row'>
-                <h1>Autenticati sulla piattaforma!</h1>
+                <h1>Autenticati su TheraGiver!</h1>
             </div>
         </div>
     );
@@ -19,7 +19,7 @@ function Sottotitolo(){
     return(
         <div className='d-flex justify-content-center'>
             <div className='row'>
-                <p>Inserisci qui sotto i dati con cui ti sei registrato alla piattaforma per entrare subito nel tuo account!</p>
+                <p>Inserisci qui sotto i dati con cui ti sei registrato per entrare subito nel tuo account!</p>
             </div>
         </div>
     );

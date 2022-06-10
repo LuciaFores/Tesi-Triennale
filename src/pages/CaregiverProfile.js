@@ -4,12 +4,13 @@ import Navbar from '../components/NavbarPRLO';
 import FormChoosePatient from '../components/FormChoosePatient';
 import FormRegisterPatient from '../components/FormRegisterPatient';
 import FormCC from '../components/FormCC';
-import { clearUserData, changePatient, clearExTypes, createDisabilityOptions, clearDisabilitiesData, displayMessageBody, confirmDelete, clearNotificationsData } from '../components/Utils';
+import { clearUserData, changePatient, clearExTypes, createDisabilityOptions, clearDisabilitiesData, displayMessageBody, confirmDelete, clearNotificationsData, logout } from '../components/Utils';
 import imgCard from '../img/imgCard.svg';
 import imgCP from '../img/imgCP.svg';
 import imgChoosePatient from '../img/imgChoosePatient.svg';
 import imgAP from '../img/imgAP.svg';
 import imgCC from '../img/imgCC.svg';
+import imgLO from '../img/imgLO.svg';
 import axios from 'axios';
 import AcceptanceForm from '../components/FormAcceptance';
 import NotifiesTable from '../components/NotifiesTable';
@@ -45,7 +46,7 @@ function UserCard(){
 
 function ChangePasswordCard(){
     return(
-        <div className="card mt-4 border-primary">
+        <div className="card mt-4 border-primary h-100">
             <img className="card-img-top img-fluid" src={imgCP} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
@@ -60,7 +61,7 @@ function ChangePasswordCard(){
 
 function ChoosePatient(){
     return(
-        <div className="card mt-4 border-primary md-long-card">
+        <div className="card mt-4 border-primary">
             <img className="card-img-top img-fluid" src={imgChoosePatient} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
@@ -75,7 +76,7 @@ function ChoosePatient(){
 
 function RegisterPatient(){
     return(
-        <div className="card mt-4 border-primary md-long-card">
+        <div className="card mt-4 border-primary">
             <img className="card-img-top img-fluid" src={imgAP} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
@@ -91,13 +92,12 @@ function RegisterPatient(){
 
 function ConnectCaregiver(){
     return(
-        <div className="card mt-4 border-primary mb-md-1">
+        <div className="card mt-4 border-primary">
             <img className="card-img-top img-fluid" src={imgCC} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
                 <p className="card-text">
-                    Sei caregiver di un bambino già iscritto alla piattaforma ma non risulti esserlo?
-                    Inserisci qui sotto il codice fiscale del bambino per poter iniziare subito a lavorare con lui!  
+                    Vuoi registrarti come caregiver di un paziente iscritto alla piattaforma? <br/>Compila il form qui sotto! 
                 </p>
                 <FormCC/>
             </div>
@@ -129,6 +129,17 @@ function Notifies(){
             </div>
         </div>
     )
+}
+
+function LogOutCard(){
+    return(
+        <div className="card mt-4 border-primary">
+            <img className="card-img-top img-fluid" src={imgLO} alt="Card image cap"/>
+            <div className="card-body text-center">
+                <button className='btn btn-primary' onClick={() => logout()}>Esci da TheraGiver</button>
+            </div>
+        </div>
+    );
 }
 
 
@@ -208,7 +219,7 @@ function CaregiverProfile(){
                     <div className='col-md-4 col-xs-12 mb-md-2'>
                         <RegisterPatient/>
                     </div>
-                    <div className='col-md-5 col-xs-12'>
+                    <div className='col-md-4 col-xs-12'>
                         <ChoosePatient/>
                         <div className='row'>
                             <div className='col-md-12 col-xs-12'>
@@ -216,12 +227,16 @@ function CaregiverProfile(){
                             </div>
                         </div>
                     </div>
-                    <div className='col-md-3 col-xs-12'>
+                    <div className='col-md-4 col-xs-12'>
                         <UserCard/>
                         <div className='row'>
                             <div className='col-md-12 col-xs-12'>
                                 <ChangePasswordCard/>
-                                <br/>
+                            </div>
+                        </div>
+                        <div className='row mt-4'>
+                            <div className='col-md-12 col-xs-12'>
+                                <LogOutCard/>
                             </div>
                         </div>
                     </div>

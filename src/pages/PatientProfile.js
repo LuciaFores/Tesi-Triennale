@@ -9,11 +9,11 @@ import imgRoutine from '../img/imgRoutine.svg';
 function GoBack(){
     return(
         <div>
-            <div>
-                <p>
-                    Vuoi tornare alla selezione dei pazienti? <br/>
-                    Clicca <Link to='/caregiverprofile' onClick={changePatient}>qui</Link>!
-                </p> 
+            <div className="container">
+                <div className="row mt-4">
+                   <button className="btn btn-primary"><Link className="link-light text-decoration-none" to='/caregiverprofile' onClick={changePatient}>Torna alla selezione dei pazienti</Link></button> 
+                </div>
+                
             </div>
         </div>
     )
@@ -30,7 +30,7 @@ function PatientCard(){
     const disabilities = prettifyDisString(localStorage.getItem('patientDisabilities'));
 
     return(
-        <div className="card mt-4 border-primary">
+        <div className="card mt-4 h-100 border-info">
             <img className="card-img-top img-fluid" src={imgPatientCard} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
@@ -54,7 +54,7 @@ function PatientCard(){
 function TherapyExercisesListCard(){
     const name = localStorage.getItem('patientName');
     return(
-        <div className="card mt-4 border-primary">
+        <div className="card mt-4 h-100 border-info">
             <img className="card-img-top img-fluid" src={imgExList} alt='Card image cap'/>
             <hr/>
             <div className="card-body">
@@ -64,7 +64,7 @@ function TherapyExercisesListCard(){
                     paziente, creare nuove implementazioni di esercizi già assegnati e controllare gli
                     esiti delle esecuzioni degli esercizi da parte del paziente.
                 </p>
-                <button className="btn btn-primary col-7 mb-2"><Link to='/patientProfile/therapyExercisesTypeList' onClick={getTypes} className='link-light text-decoration-none'>Vai al percorso terapeutico di {name}</Link></button>
+                <button className="btn btn-primary col-7 mt-5 offset-2"><Link to='/patientProfile/therapyExercisesTypeList' onClick={getTypes} className='link-light text-decoration-none'>Vai al percorso terapeutico di {name}</Link></button>
             </div>
         </div>
     );
@@ -73,7 +73,7 @@ function TherapyExercisesListCard(){
 function TherapyRoutineExecutionCard(){
     const name = localStorage.getItem('patientName');
     return(
-        <div className="card mt-4 border-primary">
+        <div className="card mt-4 h-100 border-info">
             <img className="card-img-top img-fluid" src={imgRoutine} alt='Card image cap'/>
             <hr/>
             <div className="card-body">
@@ -82,7 +82,7 @@ function TherapyRoutineExecutionCard(){
                     Potrai scegliere quali degli esercizi disponibili nel percorso terapeutico di {name} far 
                     eseguire e poi iniziare l'allenamento.
                 </p>
-                <button className="btn btn-primary col-7 mb-2 offset-1"><Link to='/patientProfile/routineSelection' onClick={getAllExercises} className='link-light text-decoration-none'>Inizia ad allenarti con {name}!</Link></button>
+                <button className="btn btn-primary col-7 mt-5 offset-2"><Link to='/patientProfile/routineSelection' onClick={getAllExercises} className='link-light text-decoration-none'>Inizia ad allenarti con {name}!</Link></button>
             </div>
         </div>
     )
@@ -143,13 +143,13 @@ function PatientProfile(){
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-3 col-xs-12">
+                    <div className="col-md-3 col-xs-12 pb-3">
                         <PatientCard/>
                     </div> 
-                    <div className="col-md-5 col-xs-12">
+                    <div className="col-md-5 col-xs-12 pb-3">
                         <TherapyExercisesListCard/>
                     </div>
-                    <div className="col-md-4 col-xs-12">
+                    <div className="col-md-4 col-xs-12 pb-3">
                         <TherapyRoutineExecutionCard/>
                     </div>
                 </div>

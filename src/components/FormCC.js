@@ -75,7 +75,7 @@ class CCForm extends Component{
                             <input type='text' className='form-control' id='inputPatientFiscalCode' placeholder='Inserire Codice Fiscale del Paziente' value={this.state.patient} onChange={this.onChangePatientFiscalCode} required/>
                         </div>
                     </div>
-                    <button type='submit' className='btn btn-primary mt-2 mb-2' onClick={this.onSubmit}>Collegati al paziente!</button>
+                    <button type='submit' className='btn btn-primary mt-2 mb-1' onClick={this.onSubmit}>Collegati al paziente!</button>
                 </form>
             </div>
         );

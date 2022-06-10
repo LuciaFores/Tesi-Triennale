@@ -26,7 +26,7 @@ function Navbar(){
 
                     </div>
                     <div className='navbar-nav ms-auto'>
-                        <NavLink className='nav-link' to='/signup'>{suIcon} Sign Up</NavLink>
+                        <NavLink className='nav-link' to='/signup'>{suIcon} Registrati</NavLink>
                         <NavLink className='nav-link' to='/login'>{liIcon} Login</NavLink>
                     </div>
                 </div>
