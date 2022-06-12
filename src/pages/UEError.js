@@ -7,10 +7,16 @@ function UEError(){
     return(
         <div>
             <Navbar/>
-            <h1>Esercizio non aggiornato</h1>
-            <p>
-                Ora puoi cliccare <Link to = '../patientProfile/therapyExercisesTypeList'>qui</Link> per tornare al percorso terapeutico di {patientName}
-            </p>
+            <div className='container'> 
+                <div className='row mt-3'>
+                    <h1>Esercizio non aggiornato</h1>
+                </div>
+                <div className='row'>
+                    <p>
+                        Ora puoi cliccare <Link to = '../patientProfile/therapyExercisesTypeList'>qui</Link> per tornare al percorso terapeutico di {patientName}
+                    </p>
+                </div>
+            </div>
         </div>
     )
 }

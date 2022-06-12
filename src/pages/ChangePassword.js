@@ -8,7 +8,7 @@ function Titolo(){
     return(
         <div className='d-flex justify-content-center'>
             <div className='row'>
-            <h1>Cambia la tua password</h1>
+            <h1>Modifica la tua password</h1>
             </div>
         </div>
     );

@@ -49,6 +49,14 @@ function LogIn(){
     if(localStorage.getItem('caregiverFiscalcode') != null){
         window.location.href = '/caregiverprofile';
     }
+
+    if(localStorage.getItem('disabilities') != null){
+        localStorage.removeItem('disabilities');
+    }
+
+    if(localStorage.getItem('notifications') != null){
+        localStorage.removeItem('notifications');
+    }
     
     return(
         <div>

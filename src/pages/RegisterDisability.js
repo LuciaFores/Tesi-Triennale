@@ -19,8 +19,7 @@ function Sottotitolo(){
         <div className='d-flex justify-content-center'>
             <div className='row'>
                 <p>Inserisci qui sotto il nome e la descrizione della disabilità: questa verrà subito registrata
-                nel sistema e un amministratore proovederà al più presto a renderla disponibile nella sezione di
-                scelta della disabilità durante la registrazione del paziente! <br/>
+                nel sistema e sarà immediatamente disponibile per la selezione durante la registrazione di un nuovo paziente! <br/>
                 Funzione abilitata solo per <strong>caregiver professionisti</strong>.</p>
             </div>
         </div>

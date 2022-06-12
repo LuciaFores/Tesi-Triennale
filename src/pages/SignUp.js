@@ -8,7 +8,7 @@ function Titolo(){
     return(
         <div className='d-flex justify-content-center'>
             <div className='row'>
-                <h1>Registrati alla piattaforma!</h1>
+                <h1>Registrati su TheraGiver!</h1>
             </div>
         </div>
     );

@@ -30,7 +30,7 @@ function PatientCard(){
     const disabilities = prettifyDisString(localStorage.getItem('patientDisabilities'));
 
     return(
-        <div className="card mt-4 h-100 border-info">
+        <div className="card mt-4 h-100 border-primary">
             <img className="card-img-top img-fluid" src={imgPatientCard} alt="Card image cap"/>
             <hr/>
             <div className="card-body">
@@ -54,7 +54,7 @@ function PatientCard(){
 function TherapyExercisesListCard(){
     const name = localStorage.getItem('patientName');
     return(
-        <div className="card mt-4 h-100 border-info">
+        <div className="card mt-4 h-100 border-primary">
             <img className="card-img-top img-fluid" src={imgExList} alt='Card image cap'/>
             <hr/>
             <div className="card-body">
@@ -73,7 +73,7 @@ function TherapyExercisesListCard(){
 function TherapyRoutineExecutionCard(){
     const name = localStorage.getItem('patientName');
     return(
-        <div className="card mt-4 h-100 border-info">
+        <div className="card mt-4 h-100 border-primary">
             <img className="card-img-top img-fluid" src={imgRoutine} alt='Card image cap'/>
             <hr/>
             <div className="card-body">

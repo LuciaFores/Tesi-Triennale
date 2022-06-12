@@ -92,6 +92,9 @@ export function prettifyDisString(disabilities){
 }
 
 export function changeDateFormat(date){
+    if(date === 'null'){
+        return
+    }
     return date.split('-').reverse().join('-');
 }
 
@@ -138,16 +141,16 @@ export function clearExercisesData(){
 }
 
 export function rearrangeExercises(){
-    let exercises = localStorage.getItem('exercises').split(',');
+    let exercises = localStorage.getItem('exercises').replace(/null/g, '').split(',');
     let exercisesList = [];
     for (var i = 0; i<exercises.length; i+=7){
         let exercise = []
         exercise.push(exercises[i])
         exercise.push(changeDateFormat(exercises[i+1]));
-        exercise.push(exercises[i+2]);
-        exercise.push(exercises[i+3]);
+        exercise.push(changeDateFormat(exercises[i+2]));
+        exercise.push(changeDateFormat(exercises[i+3]));
         exercise.push(exercises[i+4]);
-        exercise.push(exercises[i+5]);
+        exercise.push(changeDateFormat(exercises[i+5]));
         let cod = exercises[i+6];
         let ability = translateTableAbility(cod);
         exercise.push(ability);
@@ -263,16 +266,16 @@ export function clearAllExercisesData(){
 }
 
 export function rearrangeAllExercises(){
-    let allExercises = localStorage.getItem('allExercises').split(',');
+    let allExercises = localStorage.getItem('allExercises').replace(/null/g, '').split(',');
     let allExercisesList = [];
     for (var i = 0; i<allExercises.length; i+=8){
         let exercise = []
         exercise.push(allExercises[i])
         exercise.push(changeDateFormat(allExercises[i+1]));
-        exercise.push(allExercises[i+2]);
-        exercise.push(allExercises[i+3]);
+        exercise.push(changeDateFormat(allExercises[i+2]));
+        exercise.push(changeDateFormat(allExercises[i+3]));
         exercise.push(allExercises[i+4]);
-        exercise.push(allExercises[i+5]);
+        exercise.push(changeDateFormat(allExercises[i+5]));
         exercise.push(allExercises[i+6]);
         let cod = allExercises[i+7];
         let ability = translateTableAbility(cod);
@@ -827,9 +830,11 @@ export function getResults(exercise, ability){
 }
 
 export function updateExercise(id){
-    const role = localStorage.getItem('caregiverRole')
+    const role = localStorage.getItem('caregiverRole');
+
     if(role === 'nonProfessionale'){
-        alert("Non puoi aggiornare i dati dell'esercizio poiché sei un caregiver non professionale");
+        alert('La funzione di aggiornamento è riservata ai caregiver professionali')
+        return false
     }
     else{
         window.location.href = "/patientProfile/therapyExercisesTypeList/therapyExercisesList/exerciseResults/updateExerciseData"
